@@ -1,0 +1,203 @@
+{
+  "navbar": {
+    "servicios": "Services",
+    "metodologia": "Methodology",
+    "nosotros": "About Us",
+    "blog": "Blog",
+    "contacto": "Let's Talk"
+  },
+  "hero": {
+    "titlePrefix": "Strategy, design, and technology for digital products that ",
+    "rotatingTexts": [
+      "create impact.",
+      "drive innovation.",
+      "evolve."
+    ],
+    "subtitle": "From idea to delivery, we help companies transform their vision into real, scalable, and human-centered products.",
+    "ctaPrimary": "Explore our services",
+    "ctaSecondary": "Explore methodology",
+    "optionalText": "At Rukma Studio, we partner with startups, companies, and digital teams in designing, validating, and building digital experiences that connect strategy, business, and technology."
+  },
+  "services": {
+    "title": "Our Services",
+    "items": [
+      {
+        "id": "01",
+        "slug": "diseno-y-estrategia-de-experiencia",
+        "title": "Experience design and strategy",
+        "subtitle": "UX + Product Design",
+        "image": "https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?auto=format&fit=crop&q=80&w=800",
+        "shortDescription": "We design clear, useful, and human-centered digital experiences, connecting user needs with business goals.",
+        "longDescription": "This service helps companies and product teams better understand their users, identify real problems, streamline digital experiences, and design solutions that are easy to use, viable to build, and aligned with business strategy.\\n\\nWe work from research and problem definition to information architecture, user flows, wireframes, UI design, interactive prototypes, and documentation for development.\\n\\nThe goal is to create simpler, more efficient digital products ready to improve conversion, adoption, and user satisfaction.",
+        "forWho": [
+          "Startups needing to design or improve their digital product.",
+          "Companies looking to optimize platforms, websites, apps, or internal systems.",
+          "Product leaders needing clarity to make decisions.",
+          "Tech teams requiring better UX/UI definitions before development.",
+          "Agencies needing specialized support in user experience.",
+          "Organizations looking to improve the usability, conversion, or satisfaction of their users."
+        ],
+        "value": [
+          "Reduces product uncertainty",
+          "Improves user experience",
+          "Increases conversion and adoption",
+          "Decreases development costs",
+          "Aligns business, design, and technology",
+          "Delivers actionable documentation"
+        ],
+        "duration": "Between 4 and 8 weeks",
+        "plans": [
+          { "name": "UX Starter Plan", "price": "Price to be defined based on scope" },
+          { "name": "Product Design Plan", "price": "Price to be defined based on scope" },
+          { "name": "UX Partner Plan", "price": "Monthly / Hourly block" }
+        ]
+      },
+      {
+        "id": "02",
+        "slug": "prototipado-mvp-y-codificacion",
+        "title": "MVP prototyping and coding",
+        "subtitle": "Digital Products",
+        "image": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=800",
+        "shortDescription": "We turn ideas and designs into functional prototypes or digital MVPs to validate, learn, and move faster to market.",
+        "longDescription": "This service is aimed at companies, startups, and teams that need to transition from an idea, wireframe, or design to a functional version of the product.\\n\\nWe design and build interactive prototypes, landing pages, MVPs, and early versions of digital products using modern technologies and agile processes. The focus is on creating a solution robust enough to validate the model, test the experience, get real feedback, and pave the way for future development stages.",
+        "forWho": [
+          "Startups needing to launch an MVP quickly.",
+          "Companies wanting to validate a new idea before investing in full development.",
+          "Founders who need to show a functional version to users, partners, or investors.",
+          "Innovation teams requiring prototypes for internal pilots.",
+          "Product teams wanting to accelerate proofs of concept."
+        ],
+        "value": [
+          "Allows faster time to market",
+          "Validates before investing more",
+          "Generates evidence for decision-making",
+          "Facilitates sales pitches",
+          "Reduces product risk",
+          "Connects design and development"
+        ],
+        "duration": "Between 3 and 10 weeks",
+        "plans": [
+          { "name": "Prototype Plan", "price": "Price to be defined based on scope" },
+          { "name": "MVP Launch Plan", "price": "Price to be defined based on scope" },
+          { "name": "Product Sprint Plan", "price": "2 to 4 weeks" }
+        ]
+      },
+      {
+        "id": "03",
+        "slug": "brand-experience-e-identidad",
+        "title": "Brand Experience and identity",
+        "subtitle": "For companies",
+        "image": "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&q=80&w=800",
+        "shortDescription": "We design visual identities and cohesive brand experiences for companies, digital products, and new businesses.",
+        "longDescription": "This service helps build or evolve a brand's identity from a strategic, visual, and digital perspective.\\n\\nIt's not just about creating a logo, but defining how a brand expresses itself, is perceived, and is experienced across its different touchpoints: website, digital product, social media, presentations, interfaces, commercial communication, and corporate materials.",
+        "forWho": [
+          "Startups needing to create their identity from scratch.",
+          "Companies wanting to revamp or professionalize their brand.",
+          "Digital products needing their own identity.",
+          "Consultancies, agencies, or professional services looking to stand out.",
+          "Teams wanting to organize their visual and verbal communication."
+        ],
+        "value": [
+          "Increases brand trust",
+          "Improves differentiation",
+          "Streamlines communication",
+          "Facilitates the creation of digital assets",
+          "Connects brand and experience",
+          "Prepares the brand to scale"
+        ],
+        "duration": "Between 3 and 6 weeks",
+        "plans": [
+          { "name": "Identity Starter Plan", "price": "Price to be defined based on scope" },
+          { "name": "Brand Experience Plan", "price": "Price to be defined based on scope" },
+          { "name": "Digital Rebrand Plan", "price": "Price to be defined based on scope" }
+        ]
+      }
+    ]
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "items": [
+      {
+        "question": "What does Rukma Studio do?",
+        "answer": "Rukma Studio helps companies, startups, and digital teams design, validate, and build digital products. We work on UX strategy, Product Design, MVP prototyping, interface design, brand identity, and guidance to turn ideas into real solutions."
+      },
+      {
+        "question": "At what stage of the project can you help us?",
+        "answer": "We can assist from early stages, when there is only an idea or problem to solve, to more advanced stages where a product already exists and needs to improve its experience, conversion, usability, or visual identity.\n\nWe can also participate in specific processes such as UX audits, redesigns, prototypes, MVPs, validations, or designing new features."
+      },
+      {
+        "question": "Do you only do design or also development?",
+        "answer": "We mainly work on strategy, UX, Product Design, and digital identity, but we can also assist in functional prototyping, front-end, MVPs, and building early versions of digital products.\n\nThe level of development depends on the project scope, required technologies, and validation goals."
+      },
+      {
+        "question": "How long does a project take?",
+        "answer": "It depends on the type of service and the complexity of the project.\n\nAs a reference:\n• A UX diagnostic can take between 1 and 3 weeks.\n• A UX/UI design process can take between 4 and 8 weeks.\n• A functional MVP can take between 3 and 10 weeks.\n• An identity project can take between 3 and 6 weeks.\n\nFinal timelines are defined after reviewing objectives, scope, content, features, and the required depth."
+      },
+      {
+        "question": "Do you work with startups or only companies?",
+        "answer": "We work with both profiles.\n\nWe can help startups that need to validate an idea, design their MVP, or prepare a stronger pitch. We also work with companies that need to improve existing products, streamline digital processes, redesign platforms, or create new experiences for their customers and internal teams."
+      },
+      {
+        "question": "What do we need to get started?",
+        "answer": "To get started, we need to understand the project context, business objectives, current state of the solution, involved users, and the main needs or problems identified.\n\nIt is not necessary to have everything figured out. We can help you organize the information, define priorities, and build a clear roadmap to move forward."
+      }
+    ]
+  },
+  "footer": {
+    "subtitle": "Strategy, design, and technology for digital products that create impact.",
+    "companyTitle": "Company",
+    "contactTitle": "Contact",
+    "rights": "© {year} Rukma Studio. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms & Conditions",
+    "ctaTitle1": "Ready to grow your",
+    "ctaTitle2": " brand with confidence?",
+    "ctaButton": "Start your project",
+    "newsletterTitle": "Subscribe to our newsletter",
+    "newsletterDesc": "News, tips, and updates to empower your team.",
+    "newsletterButton": "Subscribe here"
+  },
+  "banner": {
+    "slides": [
+      {
+        "titlePrefix": "We transform your vision into ",
+        "titleHighlight": "digital products",
+        "titleSuffix": " that create impact.",
+        "image": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=2000"
+      },
+      {
+        "titlePrefix": "We design experiences that ",
+        "titleHighlight": "connect",
+        "titleSuffix": " with your users.",
+        "image": "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80&w=2000"
+      },
+      {
+        "titlePrefix": "We build technology that ",
+        "titleHighlight": "scales",
+        "titleSuffix": " your business.",
+        "image": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=2000"
+      }
+    ]
+  },
+  "blog": {
+    "badge": "Blog",
+    "titlePrefix": "Ideas and perspectives for",
+    "titleSuffix": "teams that innovate.",
+    "description": "Discover the latest ideas, strategies, and stories from the Rukma Studio team, where creativity meets data to drive impact.",
+    "searchPlaceholder": "Search articles...",
+    "categoryAll": "ALL",
+    "noResults": "No articles found matching your search.",
+    "homeSectionTitle": "Ideas, perspectives and inspiration",
+    "homeSectionSubtitle": "for digital growth.",
+    "exploreButton": "Explore all resources"
+  },
+  "cases": {
+    "badge": "Success cases",
+    "titlePrefix": "Real results for",
+    "titleSuffix": "ambitious brands.",
+    "description": "Discover how we have helped leading companies and startups solve complex problems through strategy, design, and technology.",
+    "searchPlaceholder": "Search cases...",
+    "categoryAll": "ALL",
+    "noResults": "No cases found matching your search."
+  }
+}

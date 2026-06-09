@@ -1,0 +1,389 @@
+{
+  "navbar": {
+    "servicios": "Servicios",
+    "metodologia": "Metodología",
+    "nosotros": "Nosotros",
+    "blog": "Blog",
+    "contacto": "Hablemos"
+  },
+  "hero": {
+    "titlePrefix": "Estrategia, diseño y tecnología para productos digitales que ",
+    "rotatingTexts": [
+      "generan impacto.",
+      "impulsan innovación.",
+      "evolucionan."
+    ],
+    "subtitle": "Desde la idea hasta el delivery, ayudamos a empresas a transformar visión en productos reales, escalables y centrados en las personas.",
+    "ctaPrimary": "Conoce nuestros servicios",
+    "ctaSecondary": "Explorar metodología",
+    "optionalText": "En Rukma Studio acompañamos a startups, empresas y equipos digitales en el diseño, validación y construcción de experiencias digitales que conectan estrategia, negocio y tecnología."
+  },
+  "services": {
+    "title": "Nuestros Servicios",
+    "items": [
+      {
+        "id": "01",
+        "slug": "diseno-y-estrategia-de-experiencia",
+        "title": "Diseño y estrategia de experiencia",
+        "subtitle": "UX + Product Design",
+        "image": "https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?auto=format&fit=crop&q=80&w=800",
+        "shortDescription": "Diseñamos experiencias digitales claras, útiles y centradas en las personas, conectando las necesidades del usuario con los objetivos del negocio.",
+        "longDescription": "Este servicio ayuda a empresas y equipos de producto a entender mejor a sus usuarios, identificar problemas reales, ordenar la experiencia digital y diseñar soluciones que sean fáciles de usar, viables de construir y coherentes con la estrategia del negocio.\\n\\nTrabajamos desde la investigación y definición del problema hasta la arquitectura de información, flujos de usuario, wireframes, diseño UI, prototipos interactivos y documentación para desarrollo.\\n\\nEl objetivo es crear productos digitales más simples, eficientes y preparados para mejorar la conversión, la adopción y la satisfacción de los usuarios.",
+        "forWho": [
+          "Startups que necesitan diseñar o mejorar su producto digital.",
+          "Empresas que quieren optimizar plataformas, sitios web, apps o sistemas internos.",
+          "Líderes de producto que necesitan claridad para tomar decisiones.",
+          "Equipos de tecnología que requieren mejores definiciones UX/UI antes del desarrollo.",
+          "Agencias que necesitan apoyo especializado en experiencia de usuario.",
+          "Organizaciones que buscan mejorar la usabilidad, conversión o satisfacción de sus usuarios."
+        ],
+        "value": [
+          { "title": "Reduce la incertidumbre del producto", "description": "Ayuda a tomar decisiones basadas en evidencia, no solo en supuestos." },
+          { "title": "Mejora la experiencia del usuario", "description": "Permite crear interfaces más claras, simples y fáciles de usar." },
+          { "title": "Aumenta la conversión y adopción", "description": "Optimiza recorridos clave para que los usuarios completen acciones importantes." },
+          { "title": "Disminuye costos de desarrollo", "description": "Detecta problemas antes de construir, evitando retrabajos costosos." },
+          { "title": "Alinea negocio, diseño y tecnología", "description": "Genera una visión compartida entre stakeholders, producto y desarrollo." },
+          { "title": "Entrega documentación accionable", "description": "Facilita el traspaso a equipos técnicos con flujos, prototipos y especificaciones claras." }
+        ],
+        "process": {
+          "duration": "Entre 4 y 8 semanas",
+          "distribution": [
+            { "name": "Discovery", "percentage": "30%" },
+            { "name": "Design", "percentage": "40%" },
+            { "name": "Validation", "percentage": "20%" },
+            { "name": "Delivery", "percentage": "10%" }
+          ],
+          "milestones": [
+            { "title": "Discovery & Research", "description": "Levantamiento de objetivos, revisión del producto actual, benchmark, entrevistas, análisis de usuarios y definición de oportunidades." },
+            { "title": "Definición estratégica", "description": "Priorización de problemas, definición de hipótesis, journey maps, arquitectura de información y criterios de éxito." },
+            { "title": "Diseño UX/UI", "description": "Creación de flujos, wireframes, diseño visual, componentes, pantallas clave y prototipos navegables." },
+            { "title": "Validación", "description": "Pruebas con usuarios, revisión heurística, iteraciones de diseño y ajustes según hallazgos." },
+            { "title": "Delivery para desarrollo", "description": "Preparación de archivos, documentación funcional, criterios de interacción y handoff al equipo técnico." }
+          ]
+        },
+        "duration": "Entre 4 y 8 semanas",
+        "plans": [
+          {
+            "name": "Plan Starter UX",
+            "description": "Ideal para evaluar, ordenar o rediseñar una experiencia puntual.",
+            "includes": [
+              "Revisión UX del producto actual.",
+              "Benchmark básico.",
+              "Arquitectura de información inicial.",
+              "Wireframes de pantallas clave.",
+              "Recomendaciones priorizadas."
+            ],
+            "priceLabel": "Desde",
+            "price": "valor a definir según alcance."
+          },
+          {
+            "name": "Plan Product Design",
+            "description": "Ideal para diseñar una experiencia digital completa o una nueva funcionalidad.",
+            "includes": [
+              "Discovery inicial.",
+              "Flujos de usuario.",
+              "Wireframes.",
+              "Diseño UI de alta fidelidad.",
+              "Prototipo navegable.",
+              "Documentación para desarrollo."
+            ],
+            "priceLabel": "Desde",
+            "price": "valor a definir según alcance."
+          },
+          {
+            "name": "Plan UX Partner",
+            "description": "Ideal para empresas que necesitan acompañamiento continuo.",
+            "includes": [
+              "Soporte mensual UX/UI.",
+              "Revisión de funcionalidades.",
+              "Diseño de mejoras.",
+              "Optimización de experiencia.",
+              "Apoyo en decisiones de producto."
+            ],
+            "priceLabel": "Modalidad",
+            "price": "mensual / bolsa de horas."
+          }
+        ],
+        "conditions": [
+          "El cliente debe contar con un responsable interno para validaciones y toma de decisiones.",
+          "Los tiempos pueden variar según disponibilidad de información, stakeholders y feedback.",
+          "Las pruebas con usuarios pueden requerir reclutamiento adicional.",
+          "El desarrollo técnico no está incluido en este servicio, salvo que se contrate como alcance complementario.",
+          "La documentación se entrega en herramientas acordadas, como Figma, Notion, Google Drive u otra plataforma definida.",
+          "Cambios fuera del alcance inicial pueden requerir cotización adicional."
+        ]
+      },
+      {
+        "id": "02",
+        "slug": "prototipado-mvp-y-codificacion",
+        "title": "Prototipado MVP y codificación de productos digitales",
+        "subtitle": "Productos Digitales",
+        "image": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=800",
+        "shortDescription": "Convertimos ideas y diseños en prototipos funcionales o MVPs digitales para validar, aprender y avanzar más rápido hacia el mercado.",
+        "longDescription": "Este servicio está orientado a empresas, startups y equipos que necesitan pasar de una idea, wireframe o diseño a una versión funcional del producto.\n\nDiseñamos y construimos prototipos interactivos, landing pages, MVPs y primeras versiones de productos digitales utilizando tecnologías modernas y procesos ágiles. El foco está en crear una solución suficientemente robusta para validar el modelo, probar la experiencia, obtener feedback real y preparar el camino para futuras etapas de desarrollo.\n\nIntegramos diseño UX/UI, front-end, herramientas no-code, low-code o desarrollo personalizado según el nivel de madurez del proyecto.",
+        "forWho": [
+          "Startups que necesitan lanzar un MVP rápidamente.",
+          "Empresas que quieren validar una nueva idea antes de invertir en desarrollo completo.",
+          "Fundadores que necesitan mostrar una versión funcional a usuarios, socios o inversionistas.",
+          "Equipos de innovación que requieren prototipos para pilotos internos.",
+          "Agencias o consultoras que necesitan apoyo para materializar productos digitales.",
+          "Equipos de producto que quieren acelerar pruebas de concepto."
+        ],
+        "value": [
+          { "title": "Permite salir antes al mercado", "description": "Reduce el tiempo entre la idea y una versión funcional." },
+          { "title": "Valida antes de invertir más", "description": "Ayuda a probar hipótesis de negocio, experiencia y tecnología." },
+          { "title": "Genera evidencia para decidir", "description": "Permite obtener feedback real de usuarios o stakeholders." },
+          { "title": "Facilita presentaciones comerciales", "description": "Un MVP funcional comunica mejor que una presentación estática." },
+          { "title": "Reduce riesgo de producto", "description": "Ayuda a detectar fallas, oportunidades y mejoras antes de escalar." },
+          { "title": "Conecta diseño y desarrollo", "description": "Evita la desconexión entre prototipo visual y construcción técnica." }
+        ],
+        "process": {
+          "duration": "Entre 3 y 10 semanas, según complejidad, integraciones y cantidad de funcionalidades.",
+          "distribution": [
+            { "name": "Discovery", "percentage": "20%" },
+            { "name": "Design", "percentage": "25%" },
+            { "name": "Validation", "percentage": "20%" },
+            { "name": "Delivery", "percentage": "35%" }
+          ],
+          "milestones": [
+            { "title": "Definición del MVP", "description": "Identificación del problema, usuarios, propuesta de valor, funcionalidades críticas y alcance mínimo viable." },
+            { "title": "Priorización funcional", "description": "Definición de qué se construye ahora, qué queda para futuras etapas y cuáles son los criterios de éxito." },
+            { "title": "Diseño de experiencia e interfaz", "description": "Diseño de flujos, pantallas principales, componentes y prototipo navegable." },
+            { "title": "Codificación o construcción funcional", "description": "Desarrollo front-end, landing, prototipo funcional, dashboard, formulario, portal o módulo según el alcance." },
+            { "title": "Validación y ajustes", "description": "Revisión con usuarios, stakeholders o equipo interno para detectar mejoras." },
+            { "title": "Entrega y preparación para escalar", "description": "Documentación, recomendaciones técnicas, backlog futuro y handoff." }
+          ]
+        },
+        "duration": "Entre 3 y 10 semanas",
+        "plans": [
+          {
+            "name": "Plan Prototype",
+            "description": "Ideal para visualizar una idea y probar navegación o interacción.",
+            "includes": [
+              "Definición de flujo principal.",
+              "Diseño UI de pantallas clave.",
+              "Prototipo navegable.",
+              "Recomendaciones de mejora."
+            ],
+            "priceLabel": "Desde",
+            "price": "valor a definir según alcance."
+          },
+          {
+            "name": "Plan MVP Launch",
+            "description": "Ideal para construir una primera versión funcional.",
+            "includes": [
+              "Definición del MVP.",
+              "Diseño UX/UI.",
+              "Desarrollo front-end o low-code.",
+              "Versión funcional inicial.",
+              "Ajustes posteriores a validación."
+            ],
+            "priceLabel": "Desde",
+            "price": "valor a definir según alcance."
+          },
+          {
+            "name": "Plan Product Sprint",
+            "description": "Ideal para equipos que necesitan avanzar rápido en una solución específica.",
+            "includes": [
+              "Workshop inicial.",
+              "Priorización.",
+              "Diseño rápido.",
+              "Construcción funcional.",
+              "Validación.",
+              "Roadmap siguiente etapa."
+            ],
+            "priceLabel": "Duración sugerida",
+            "price": "2 a 4 semanas."
+          }
+        ],
+        "conditions": [
+          "El MVP se define con alcance acotado y funcionalidades priorizadas.",
+          "Integraciones complejas, back-end avanzado, pasarelas de pago o autenticación personalizada pueden requerir cotización adicional.",
+          "El servicio puede realizarse con tecnologías no-code, low-code o desarrollo front-end según necesidad.",
+          "La infraestructura, hosting, dominio o servicios externos pueden no estar incluidos.",
+          "El cliente debe entregar accesos, contenidos, lineamientos de marca y validaciones en los tiempos acordados.",
+          "El objetivo del MVP es validar y aprender, no construir una versión final completamente escalada desde el inicio."
+        ]
+      },
+      {
+        "id": "03",
+        "slug": "brand-experience-e-identidad",
+        "title": "Brand Experience e identidad",
+        "subtitle": "Para empresas",
+        "image": "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&q=80&w=800",
+        "shortDescription": "Diseñamos identidades visuales y experiencias de marca coherentes para empresas, productos digitales y nuevos negocios.",
+        "longDescription": "Este servicio ayuda a construir o evolucionar la identidad de una marca desde una mirada estratégica, visual y digital.\\n\\nNo se trata solo de crear un logo, sino de definir cómo una marca se expresa, se percibe y se experimenta en sus distintos puntos de contacto: sitio web, producto digital, redes sociales, presentaciones, interfaces, comunicación comercial y materiales corporativos.\\n\\nTrabajamos la identidad desde el propósito, la personalidad, el sistema visual, el tono de voz y su aplicación en entornos digitales, para que la marca sea coherente, reconocible y preparada para crecer.",
+        "forWho": [
+          "Startups que necesitan crear su identidad desde cero.",
+          "Empresas que quieren renovar o profesionalizar su marca.",
+          "Productos digitales que necesitan una identidad propia.",
+          "Consultoras, agencias o servicios profesionales que buscan diferenciarse.",
+          "Emprendedores que necesitan una presencia digital más sólida.",
+          "Equipos que quieren ordenar su comunicación visual y verbal."
+        ],
+        "value": [
+          { "title": "Aumenta la confianza de la marca", "description": "Una identidad profesional mejora la percepción del negocio." },
+          { "title": "Mejora la diferenciación", "description": "Ayuda a destacar frente a competidores con una propuesta visual clara." },
+          { "title": "Ordena la comunicación", "description": "Define criterios para comunicar de forma consistente." },
+          { "title": "Facilita la creación de piezas digitales", "description": "Entrega un sistema visual reutilizable para web, redes, producto y presentaciones." },
+          { "title": "Conecta marca y experiencia", "description": "Alinea identidad visual, tono, interfaz y relación con usuarios." },
+          { "title": "Prepara la marca para escalar", "description": "Permite crecer con una base visual y estratégica coherente." }
+        ],
+        "process": {
+          "duration": "Entre 3 y 6 semanas",
+          "distribution": [
+            { "name": "Discovery", "percentage": "30%" },
+            { "name": "Design", "percentage": "45%" },
+            { "name": "Validation", "percentage": "15%" },
+            { "name": "Delivery", "percentage": "10%" }
+          ],
+          "milestones": [
+            { "title": "Diagnóstico de marca", "description": "Revisión del contexto, objetivos, competencia, referentes y percepción actual." },
+            { "title": "Estrategia de identidad", "description": "Definición de personalidad, atributos, tono de voz, propuesta de valor y narrativa base." },
+            { "title": "Exploración visual", "description": "Moodboards, rutas creativas, paleta cromática, tipografías y estilo visual." },
+            { "title": "Diseño de identidad", "description": "Desarrollo de logotipo, sistema visual, variantes, iconografía, recursos gráficos y aplicaciones." },
+            { "title": "Aplicaciones digitales", "description": "Adaptación de la identidad a sitio web, redes sociales, presentaciones, interfaces o piezas clave." },
+            { "title": "Brand kit o guía básica", "description": "Entrega de lineamientos para uso correcto de marca y continuidad visual." }
+          ]
+        },
+        "duration": "Entre 3 y 6 semanas",
+        "plans": [
+          {
+            "name": "Plan Identity Starter",
+            "description": "Ideal para marcas nuevas o emprendimientos que necesitan una base sólida.",
+            "includes": [
+              "Exploración conceptual.",
+              "Logotipo principal.",
+              "Paleta de colores.",
+              "Tipografías sugeridas.",
+              "Aplicaciones básicas."
+            ],
+            "priceLabel": "Desde",
+            "price": "valor a definir según alcance."
+          },
+          {
+            "name": "Plan Brand Experience",
+            "description": "Ideal para empresas o productos digitales que necesitan una identidad más completa.",
+            "includes": [
+              "Estrategia de marca.",
+              "Sistema visual.",
+              "Logotipo y variantes.",
+              "Tono de voz base.",
+              "Aplicaciones digitales.",
+              "Brand kit."
+            ],
+            "priceLabel": "Desde",
+            "price": "valor a definir según alcance."
+          },
+          {
+            "name": "Plan Rebrand Digital",
+            "description": "Ideal para empresas que necesitan actualizar su imagen y presencia digital.",
+            "includes": [
+              "Auditoría de marca actual.",
+              "Redefinición visual.",
+              "Optimización de identidad.",
+              "Aplicaciones web y producto.",
+              "Guía de uso."
+            ],
+            "priceLabel": "Desde",
+            "price": "valor a definir según alcance."
+          }
+        ],
+        "conditions": [
+          "El servicio puede incluir naming, pero debe definirse como alcance adicional si requiere exploración profunda.",
+          "La creación de piezas masivas para redes sociales, campañas o contenido continuo no está incluida salvo acuerdo específico.",
+          "El diseño de sitio web completo puede considerarse un servicio complementario.",
+          "El cliente debe entregar información de marca, referentes, objetivos y restricciones existentes.",
+          "Las rondas de ajustes deben definirse previamente.",
+          "La entrega puede incluir archivos editables, versiones exportadas y guía básica de uso."
+        ]
+      }
+    ]
+  },
+  "faq": {
+    "title": "Preguntas frecuentes",
+    "items": [
+      {
+        "question": "¿Qué hace Rukma Studio?",
+        "answer": "Rukma Studio ayuda a empresas, startups y equipos digitales a diseñar, validar y construir productos digitales. Trabajamos en estrategia UX, Product Design, prototipado MVP, diseño de interfaces, identidad de marca y acompañamiento para llevar ideas hacia soluciones reales."
+      },
+      {
+        "question": "¿En qué etapa del proyecto pueden ayudarnos?",
+        "answer": "Podemos apoyar desde etapas tempranas, cuando solo existe una idea o problema por resolver, hasta etapas más avanzadas, donde ya existe un producto que necesita mejorar su experiencia, conversión, usabilidad o identidad visual.\n\nTambién podemos participar en procesos puntuales como auditorías UX, rediseños, prototipos, MVPs, validaciones o diseño de nuevas funcionalidades."
+      },
+      {
+        "question": "¿Trabajan solo diseño o también desarrollo?",
+        "answer": "Trabajamos principalmente desde estrategia, UX, Product Design e identidad digital, pero también podemos apoyar en prototipado funcional, front-end, MVPs y construcción de primeras versiones de productos digitales.\n\nEl nivel de desarrollo depende del alcance del proyecto, las tecnologías requeridas y los objetivos de validación."
+      },
+      {
+        "question": "¿Cuánto tiempo demora un proyecto?",
+        "answer": "Depende del tipo de servicio y la complejidad del proyecto.\n\nComo referencia:\n• Un diagnóstico UX puede tomar entre 1 y 3 semanas.\n• Un proceso de diseño UX/UI puede tomar entre 4 y 8 semanas.\n• Un MVP funcional puede tomar entre 3 y 10 semanas.\n• Un proyecto de identidad puede tomar entre 3 y 6 semanas.\n\nLos tiempos finales se definen luego de revisar objetivos, alcance, contenidos, funcionalidades y nivel de profundidad requerido."
+      },
+      {
+        "question": "¿Trabajan con startups o solo con empresas?",
+        "answer": "Trabajamos con ambos perfiles.\n\nPodemos ayudar a startups que necesitan validar una idea, diseñar su MVP o preparar una presentación más sólida. También trabajamos con empresas que necesitan mejorar productos existentes, ordenar procesos digitales, rediseñar plataformas o crear nuevas experiencias para sus clientes y equipos internos."
+      },
+      {
+        "question": "¿Qué necesitamos para comenzar?",
+        "answer": "Para comenzar necesitamos entender el contexto del proyecto, los objetivos del negocio, el estado actual de la solución, los usuarios involucrados y las principales necesidades o problemas detectados.\n\nNo es necesario tener todo resuelto. Podemos ayudarte a ordenar la información, definir prioridades y construir una ruta clara para avanzar."
+      }
+    ]
+  },
+  "footer": {
+    "subtitle": "Estrategia, diseño y tecnología para productos digitales que generan impacto.",
+    "companyTitle": "Empresa",
+    "contactTitle": "Contacto",
+    "rights": "© {year} Rukma Studio. Todos los derechos reservados.",
+    "privacy": "Aviso de Privacidad",
+    "terms": "Términos y Condiciones",
+    "ctaTitle1": "¿Listo para hacer crecer",
+    "ctaTitle2": " tu marca con confianza?",
+    "ctaButton": "Comienza tu proyecto",
+    "newsletterTitle": "Suscríbete al newsletter",
+    "newsletterDesc": "Noticias, tips y actualizaciones para potenciar tu equipo.",
+    "newsletterButton": "Suscríbete aquí"
+  },
+  "banner": {
+    "slides": [
+      {
+        "titlePrefix": "Transformamos tu visión en ",
+        "titleHighlight": "productos digitales",
+        "titleSuffix": " que generan impacto.",
+        "image": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=2000"
+      },
+      {
+        "titlePrefix": "Diseñamos experiencias que ",
+        "titleHighlight": "conectan",
+        "titleSuffix": " con tus usuarios.",
+        "image": "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80&w=2000"
+      },
+      {
+        "titlePrefix": "Construimos tecnología que ",
+        "titleHighlight": "escala",
+        "titleSuffix": " tu negocio.",
+        "image": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=2000"
+      }
+    ]
+  },
+  "blog": {
+    "badge": "Blog",
+    "titlePrefix": "Ideas y perspectivas para",
+    "titleSuffix": "equipos que innovan.",
+    "description": "Descubre las últimas ideas, estrategias e historias del equipo de Rukma Studio, donde la creatividad se une a los datos y la información genera impacto.",
+    "searchPlaceholder": "Buscar artículos...",
+    "categoryAll": "TODOS",
+    "noResults": "No se encontraron artículos que coincidan con tu búsqueda.",
+    "homeSectionTitle": "Ideas, perspectivas e inspiración",
+    "homeSectionSubtitle": "para el crecimiento digital.",
+    "exploreButton": "Explora todos los recursos"
+  },
+  "cases": {
+    "badge": "Casos de éxito",
+    "titlePrefix": "Resultados reales para",
+    "titleSuffix": "marcas ambiciosas.",
+    "description": "Conoce cómo hemos ayudado a empresas líderes y startups a resolver problemas complejos a través de estrategia, diseño y tecnología.",
+    "searchPlaceholder": "Buscar casos...",
+    "categoryAll": "TODOS",
+    "noResults": "No se encontraron casos que coincidan con tu búsqueda."
+  }
+}
