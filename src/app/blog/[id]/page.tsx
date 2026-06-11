@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { PageBackground } from "@/components/PageBackground";
 import { mockPosts } from "@/data/mockPosts";
 import Link from "next/link";
 import Image from "next/image";
@@ -15,7 +16,10 @@ export default function BlogPostPage({ params }: { params: { id: string } }) {
   }).toUpperCase();
 
   return (
-    <main className="min-h-screen bg-[#0D0F12] relative text-white">
+    <main className="min-h-screen bg-[#0D0F12] relative text-white overflow-hidden">
+      <PageBackground />
+
+      <div className="relative z-10">
       <Navbar />
 
       <article className="pt-40 pb-24 px-6">
@@ -96,6 +100,7 @@ export default function BlogPostPage({ params }: { params: { id: string } }) {
       </article>
 
       <Footer />
+      </div>
     </main>
   );
 }

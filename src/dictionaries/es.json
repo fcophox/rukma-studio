@@ -19,7 +19,9 @@
     "optionalText": "En Rukma Studio acompañamos a startups, empresas y equipos digitales en el diseño, validación y construcción de experiencias digitales que conectan estrategia, negocio y tecnología."
   },
   "services": {
+    "badge": "Conoce nuestras capacidades",
     "title": "Nuestros Servicios",
+    "description": "Combinamos estrategia, diseño y tecnología para acompañarte en cada etapa de tu producto digital. Explora nuestras áreas de especialización y descubre cómo podemos ayudarte a crecer.",
     "items": [
       {
         "id": "01",
@@ -38,27 +40,72 @@
           "Organizaciones que buscan mejorar la usabilidad, conversión o satisfacción de sus usuarios."
         ],
         "value": [
-          { "title": "Reduce la incertidumbre del producto", "description": "Ayuda a tomar decisiones basadas en evidencia, no solo en supuestos." },
-          { "title": "Mejora la experiencia del usuario", "description": "Permite crear interfaces más claras, simples y fáciles de usar." },
-          { "title": "Aumenta la conversión y adopción", "description": "Optimiza recorridos clave para que los usuarios completen acciones importantes." },
-          { "title": "Disminuye costos de desarrollo", "description": "Detecta problemas antes de construir, evitando retrabajos costosos." },
-          { "title": "Alinea negocio, diseño y tecnología", "description": "Genera una visión compartida entre stakeholders, producto y desarrollo." },
-          { "title": "Entrega documentación accionable", "description": "Facilita el traspaso a equipos técnicos con flujos, prototipos y especificaciones claras." }
+          {
+            "title": "Reduce la incertidumbre del producto",
+            "description": "Ayuda a tomar decisiones basadas en evidencia, no solo en supuestos."
+          },
+          {
+            "title": "Mejora la experiencia del usuario",
+            "description": "Permite crear interfaces más claras, simples y fáciles de usar."
+          },
+          {
+            "title": "Aumenta la conversión y adopción",
+            "description": "Optimiza recorridos clave para que los usuarios completen acciones importantes."
+          },
+          {
+            "title": "Disminuye costos de desarrollo",
+            "description": "Detecta problemas antes de construir, evitando retrabajos costosos."
+          },
+          {
+            "title": "Alinea negocio, diseño y tecnología",
+            "description": "Genera una visión compartida entre stakeholders, producto y desarrollo."
+          },
+          {
+            "title": "Entrega documentación accionable",
+            "description": "Facilita el traspaso a equipos técnicos con flujos, prototipos y especificaciones claras."
+          }
         ],
         "process": {
           "duration": "Entre 4 y 8 semanas",
           "distribution": [
-            { "name": "Discovery", "percentage": "30%" },
-            { "name": "Design", "percentage": "40%" },
-            { "name": "Validation", "percentage": "20%" },
-            { "name": "Delivery", "percentage": "10%" }
+            {
+              "name": "Discovery",
+              "percentage": "30%"
+            },
+            {
+              "name": "Design",
+              "percentage": "40%"
+            },
+            {
+              "name": "Validation",
+              "percentage": "20%"
+            },
+            {
+              "name": "Delivery",
+              "percentage": "10%"
+            }
           ],
           "milestones": [
-            { "title": "Discovery & Research", "description": "Levantamiento de objetivos, revisión del producto actual, benchmark, entrevistas, análisis de usuarios y definición de oportunidades." },
-            { "title": "Definición estratégica", "description": "Priorización de problemas, definición de hipótesis, journey maps, arquitectura de información y criterios de éxito." },
-            { "title": "Diseño UX/UI", "description": "Creación de flujos, wireframes, diseño visual, componentes, pantallas clave y prototipos navegables." },
-            { "title": "Validación", "description": "Pruebas con usuarios, revisión heurística, iteraciones de diseño y ajustes según hallazgos." },
-            { "title": "Delivery para desarrollo", "description": "Preparación de archivos, documentación funcional, criterios de interacción y handoff al equipo técnico." }
+            {
+              "title": "Discovery & Research",
+              "description": "Levantamiento de objetivos, revisión del producto actual, benchmark, entrevistas, análisis de usuarios y definición de oportunidades."
+            },
+            {
+              "title": "Definición estratégica",
+              "description": "Priorización de problemas, definición de hipótesis, journey maps, arquitectura de información y criterios de éxito."
+            },
+            {
+              "title": "Diseño UX/UI",
+              "description": "Creación de flujos, wireframes, diseño visual, componentes, pantallas clave y prototipos navegables."
+            },
+            {
+              "title": "Validación",
+              "description": "Pruebas con usuarios, revisión heurística, iteraciones de diseño y ajustes según hallazgos."
+            },
+            {
+              "title": "Delivery para desarrollo",
+              "description": "Preparación de archivos, documentación funcional, criterios de interacción y handoff al equipo técnico."
+            }
           ]
         },
         "duration": "Entre 4 y 8 semanas",
@@ -130,28 +177,76 @@
           "Equipos de producto que quieren acelerar pruebas de concepto."
         ],
         "value": [
-          { "title": "Permite salir antes al mercado", "description": "Reduce el tiempo entre la idea y una versión funcional." },
-          { "title": "Valida antes de invertir más", "description": "Ayuda a probar hipótesis de negocio, experiencia y tecnología." },
-          { "title": "Genera evidencia para decidir", "description": "Permite obtener feedback real de usuarios o stakeholders." },
-          { "title": "Facilita presentaciones comerciales", "description": "Un MVP funcional comunica mejor que una presentación estática." },
-          { "title": "Reduce riesgo de producto", "description": "Ayuda a detectar fallas, oportunidades y mejoras antes de escalar." },
-          { "title": "Conecta diseño y desarrollo", "description": "Evita la desconexión entre prototipo visual y construcción técnica." }
+          {
+            "title": "Permite salir antes al mercado",
+            "description": "Reduce el tiempo entre la idea y una versión funcional."
+          },
+          {
+            "title": "Valida antes de invertir más",
+            "description": "Ayuda a probar hipótesis de negocio, experiencia y tecnología."
+          },
+          {
+            "title": "Genera evidencia para decidir",
+            "description": "Permite obtener feedback real de usuarios o stakeholders."
+          },
+          {
+            "title": "Facilita presentaciones comerciales",
+            "description": "Un MVP funcional comunica mejor que una presentación estática."
+          },
+          {
+            "title": "Reduce riesgo de producto",
+            "description": "Ayuda a detectar fallas, oportunidades y mejoras antes de escalar."
+          },
+          {
+            "title": "Conecta diseño y desarrollo",
+            "description": "Evita la desconexión entre prototipo visual y construcción técnica."
+          }
         ],
         "process": {
           "duration": "Entre 3 y 10 semanas, según complejidad, integraciones y cantidad de funcionalidades.",
           "distribution": [
-            { "name": "Discovery", "percentage": "20%" },
-            { "name": "Design", "percentage": "25%" },
-            { "name": "Validation", "percentage": "20%" },
-            { "name": "Delivery", "percentage": "35%" }
+            {
+              "name": "Discovery",
+              "percentage": "20%"
+            },
+            {
+              "name": "Design",
+              "percentage": "25%"
+            },
+            {
+              "name": "Validation",
+              "percentage": "20%"
+            },
+            {
+              "name": "Delivery",
+              "percentage": "35%"
+            }
           ],
           "milestones": [
-            { "title": "Definición del MVP", "description": "Identificación del problema, usuarios, propuesta de valor, funcionalidades críticas y alcance mínimo viable." },
-            { "title": "Priorización funcional", "description": "Definición de qué se construye ahora, qué queda para futuras etapas y cuáles son los criterios de éxito." },
-            { "title": "Diseño de experiencia e interfaz", "description": "Diseño de flujos, pantallas principales, componentes y prototipo navegable." },
-            { "title": "Codificación o construcción funcional", "description": "Desarrollo front-end, landing, prototipo funcional, dashboard, formulario, portal o módulo según el alcance." },
-            { "title": "Validación y ajustes", "description": "Revisión con usuarios, stakeholders o equipo interno para detectar mejoras." },
-            { "title": "Entrega y preparación para escalar", "description": "Documentación, recomendaciones técnicas, backlog futuro y handoff." }
+            {
+              "title": "Definición del MVP",
+              "description": "Identificación del problema, usuarios, propuesta de valor, funcionalidades críticas y alcance mínimo viable."
+            },
+            {
+              "title": "Priorización funcional",
+              "description": "Definición de qué se construye ahora, qué queda para futuras etapas y cuáles son los criterios de éxito."
+            },
+            {
+              "title": "Diseño de experiencia e interfaz",
+              "description": "Diseño de flujos, pantallas principales, componentes y prototipo navegable."
+            },
+            {
+              "title": "Codificación o construcción funcional",
+              "description": "Desarrollo front-end, landing, prototipo funcional, dashboard, formulario, portal o módulo según el alcance."
+            },
+            {
+              "title": "Validación y ajustes",
+              "description": "Revisión con usuarios, stakeholders o equipo interno para detectar mejoras."
+            },
+            {
+              "title": "Entrega y preparación para escalar",
+              "description": "Documentación, recomendaciones técnicas, backlog futuro y handoff."
+            }
           ]
         },
         "duration": "Entre 3 y 10 semanas",
@@ -222,28 +317,76 @@
           "Equipos que quieren ordenar su comunicación visual y verbal."
         ],
         "value": [
-          { "title": "Aumenta la confianza de la marca", "description": "Una identidad profesional mejora la percepción del negocio." },
-          { "title": "Mejora la diferenciación", "description": "Ayuda a destacar frente a competidores con una propuesta visual clara." },
-          { "title": "Ordena la comunicación", "description": "Define criterios para comunicar de forma consistente." },
-          { "title": "Facilita la creación de piezas digitales", "description": "Entrega un sistema visual reutilizable para web, redes, producto y presentaciones." },
-          { "title": "Conecta marca y experiencia", "description": "Alinea identidad visual, tono, interfaz y relación con usuarios." },
-          { "title": "Prepara la marca para escalar", "description": "Permite crecer con una base visual y estratégica coherente." }
+          {
+            "title": "Aumenta la confianza de la marca",
+            "description": "Una identidad profesional mejora la percepción del negocio."
+          },
+          {
+            "title": "Mejora la diferenciación",
+            "description": "Ayuda a destacar frente a competidores con una propuesta visual clara."
+          },
+          {
+            "title": "Ordena la comunicación",
+            "description": "Define criterios para comunicar de forma consistente."
+          },
+          {
+            "title": "Facilita la creación de piezas digitales",
+            "description": "Entrega un sistema visual reutilizable para web, redes, producto y presentaciones."
+          },
+          {
+            "title": "Conecta marca y experiencia",
+            "description": "Alinea identidad visual, tono, interfaz y relación con usuarios."
+          },
+          {
+            "title": "Prepara la marca para escalar",
+            "description": "Permite crecer con una base visual y estratégica coherente."
+          }
         ],
         "process": {
           "duration": "Entre 3 y 6 semanas",
           "distribution": [
-            { "name": "Discovery", "percentage": "30%" },
-            { "name": "Design", "percentage": "45%" },
-            { "name": "Validation", "percentage": "15%" },
-            { "name": "Delivery", "percentage": "10%" }
+            {
+              "name": "Discovery",
+              "percentage": "30%"
+            },
+            {
+              "name": "Design",
+              "percentage": "45%"
+            },
+            {
+              "name": "Validation",
+              "percentage": "15%"
+            },
+            {
+              "name": "Delivery",
+              "percentage": "10%"
+            }
           ],
           "milestones": [
-            { "title": "Diagnóstico de marca", "description": "Revisión del contexto, objetivos, competencia, referentes y percepción actual." },
-            { "title": "Estrategia de identidad", "description": "Definición de personalidad, atributos, tono de voz, propuesta de valor y narrativa base." },
-            { "title": "Exploración visual", "description": "Moodboards, rutas creativas, paleta cromática, tipografías y estilo visual." },
-            { "title": "Diseño de identidad", "description": "Desarrollo de logotipo, sistema visual, variantes, iconografía, recursos gráficos y aplicaciones." },
-            { "title": "Aplicaciones digitales", "description": "Adaptación de la identidad a sitio web, redes sociales, presentaciones, interfaces o piezas clave." },
-            { "title": "Brand kit o guía básica", "description": "Entrega de lineamientos para uso correcto de marca y continuidad visual." }
+            {
+              "title": "Diagnóstico de marca",
+              "description": "Revisión del contexto, objetivos, competencia, referentes y percepción actual."
+            },
+            {
+              "title": "Estrategia de identidad",
+              "description": "Definición de personalidad, atributos, tono de voz, propuesta de valor y narrativa base."
+            },
+            {
+              "title": "Exploración visual",
+              "description": "Moodboards, rutas creativas, paleta cromática, tipografías y estilo visual."
+            },
+            {
+              "title": "Diseño de identidad",
+              "description": "Desarrollo de logotipo, sistema visual, variantes, iconografía, recursos gráficos y aplicaciones."
+            },
+            {
+              "title": "Aplicaciones digitales",
+              "description": "Adaptación de la identidad a sitio web, redes sociales, presentaciones, interfaces o piezas clave."
+            },
+            {
+              "title": "Brand kit o guía básica",
+              "description": "Entrega de lineamientos para uso correcto de marca y continuidad visual."
+            }
           ]
         },
         "duration": "Entre 3 y 6 semanas",
@@ -385,5 +528,60 @@
     "searchPlaceholder": "Buscar casos...",
     "categoryAll": "TODOS",
     "noResults": "No se encontraron casos que coincidan con tu búsqueda."
+  },
+  "contact": {
+    "page": {
+      "title": "¿Cómo prefieres que hablemos?",
+      "subtitle": "Selecciona la opción que mejor se adapte a tus necesidades para comenzar.",
+      "card1Title": "Hablemos por\nmensaje",
+      "card1Desc": "Cuéntame en qué estás trabajando hoy, en que puedo apoyarte o qué necesitas potenciar.",
+      "card2Title": "Generemos una\nconsultoría UX",
+      "card2Desc": "Revisemos tu producto digital y generemos una Roadmaps para optimizar tu negocio.",
+      "card3Title": "Agendemos una\nreunión virtual",
+      "card3Desc": "Un cafe virtual, agenda un horario disponible y hablemos con calma sobre lo que necesitas."
+    },
+    "forms": {
+      "hide": "Ocultar",
+      "nameLabel": "Nombre",
+      "namePlaceholder": "Tu nombre",
+      "emailLabel": "Correo electrónico",
+      "emailPlaceholder": "tu@correo.com",
+      "messageLabel": "Mensaje",
+      "send": "Enviar",
+      "teamRukma": "Hey, somos el Equipo Rukma,",
+      "message": {
+        "title": "Hablemos por mensaje",
+        "placeholder": "Cuéntame sobre tu proyecto...",
+        "footer": "revisaremos tu mensaje y nos pondremos en contacto contigo a la brevedad posible."
+      },
+      "consulting": {
+        "title": "Generemos una consultoría UX",
+        "placeholder": "Generemos una consultoría UX: Cuéntame sobre tu proyecto...",
+        "timeLabel": "Tiempo estimado de desarrollo",
+        "timePlaceholder": "Ej. 2 meses",
+        "urlLabel": "URL a consultar",
+        "urlOptional": "(Opcional)",
+        "urlPlaceholder": "https://tuweb.com",
+        "budgetTitle": "¿Tienes un presupuesto inicial?",
+        "budgetDesc": "Actívalo si ya cuentas con una idea inicial de inversión. Solo es referencial",
+        "footer": "analizaremos tu solicitud para ofrecerte recomendaciones claras, estratégicas y accionables."
+      },
+      "meeting": {
+        "title": "Agendemos una reunión virtual",
+        "dayLabel": "Selecciona el día para agendar",
+        "timeLabel": "Horario de reunión (15 mins)",
+        "meetNote": "Reunión de contacto por Teams o Google Meet.",
+        "footer": "nos reuniremos contigo en este espacio breve para entender tu visión y explorar cómo podemos colaborar.",
+        "days": [
+          "DOM",
+          "LUN",
+          "MAR",
+          "MIÉ",
+          "JUE",
+          "VIE",
+          "SÁB"
+        ]
+      }
+    }
   }
 }

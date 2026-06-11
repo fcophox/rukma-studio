@@ -82,8 +82,8 @@ export function BannerDivider() {
         </motion.div>
 
         {/* Navigation Dots */}
-        <div className="absolute right-6 top-1/2 transform -translate-y-1/2 flex flex-col gap-3 z-20">
-          {dict.banner.slides.map((_, idx) => (
+        <div className="absolute right-6 top-1/2 transform -translate-y-1/2 flex flex-col gap-3 z-30">
+          {dict.banner.slides.map((_: any, idx: number) => (
             <div 
               key={idx} 
               className={`w-2 rounded-full transition-all duration-300 ${idx === currentIndex ? "h-8 bg-color-terciario" : "h-2 bg-white/30"}`} 

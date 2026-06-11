@@ -19,7 +19,9 @@
     "optionalText": "At Rukma Studio, we partner with startups, companies, and digital teams in designing, validating, and building digital experiences that connect strategy, business, and technology."
   },
   "services": {
+    "badge": "Discover our capabilities",
     "title": "Our Services",
+    "description": "We blend strategy, design and technology to support you at every stage of your digital product. Explore our areas of expertise and find out how we can help you grow.",
     "items": [
       {
         "id": "01",
@@ -47,9 +49,18 @@
         ],
         "duration": "Between 4 and 8 weeks",
         "plans": [
-          { "name": "UX Starter Plan", "price": "Price to be defined based on scope" },
-          { "name": "Product Design Plan", "price": "Price to be defined based on scope" },
-          { "name": "UX Partner Plan", "price": "Monthly / Hourly block" }
+          {
+            "name": "UX Starter Plan",
+            "price": "Price to be defined based on scope"
+          },
+          {
+            "name": "Product Design Plan",
+            "price": "Price to be defined based on scope"
+          },
+          {
+            "name": "UX Partner Plan",
+            "price": "Monthly / Hourly block"
+          }
         ]
       },
       {
@@ -77,9 +88,18 @@
         ],
         "duration": "Between 3 and 10 weeks",
         "plans": [
-          { "name": "Prototype Plan", "price": "Price to be defined based on scope" },
-          { "name": "MVP Launch Plan", "price": "Price to be defined based on scope" },
-          { "name": "Product Sprint Plan", "price": "2 to 4 weeks" }
+          {
+            "name": "Prototype Plan",
+            "price": "Price to be defined based on scope"
+          },
+          {
+            "name": "MVP Launch Plan",
+            "price": "Price to be defined based on scope"
+          },
+          {
+            "name": "Product Sprint Plan",
+            "price": "2 to 4 weeks"
+          }
         ]
       },
       {
@@ -107,9 +127,18 @@
         ],
         "duration": "Between 3 and 6 weeks",
         "plans": [
-          { "name": "Identity Starter Plan", "price": "Price to be defined based on scope" },
-          { "name": "Brand Experience Plan", "price": "Price to be defined based on scope" },
-          { "name": "Digital Rebrand Plan", "price": "Price to be defined based on scope" }
+          {
+            "name": "Identity Starter Plan",
+            "price": "Price to be defined based on scope"
+          },
+          {
+            "name": "Brand Experience Plan",
+            "price": "Price to be defined based on scope"
+          },
+          {
+            "name": "Digital Rebrand Plan",
+            "price": "Price to be defined based on scope"
+          }
         ]
       }
     ]
@@ -199,5 +228,60 @@
     "searchPlaceholder": "Search cases...",
     "categoryAll": "ALL",
     "noResults": "No cases found matching your search."
+  },
+  "contact": {
+    "page": {
+      "title": "How would you prefer to talk?",
+      "subtitle": "Select the option that best suits your needs to get started.",
+      "card1Title": "Let's talk by\nmessage",
+      "card1Desc": "Tell me what you are working on today, how I can support you, or what you need to enhance.",
+      "card2Title": "Let's generate a\nUX consultancy",
+      "card2Desc": "Let's review your digital product and generate a roadmap to optimize your business.",
+      "card3Title": "Let's schedule a\nvirtual meeting",
+      "card3Desc": "A virtual coffee, schedule an available time and let's calmly discuss what you need."
+    },
+    "forms": {
+      "hide": "Hide",
+      "nameLabel": "Name",
+      "namePlaceholder": "Your name",
+      "emailLabel": "Email address",
+      "emailPlaceholder": "you@email.com",
+      "messageLabel": "Message",
+      "send": "Send",
+      "teamRukma": "Hey, we are Team Rukma,",
+      "message": {
+        "title": "Let's talk by message",
+        "placeholder": "Tell me about your project...",
+        "footer": "we will review your message and get in touch with you as soon as possible."
+      },
+      "consulting": {
+        "title": "Let's generate a UX consultancy",
+        "placeholder": "Let's generate a UX consultancy: Tell me about your project...",
+        "timeLabel": "Estimated development time",
+        "timePlaceholder": "E.g. 2 months",
+        "urlLabel": "URL to review",
+        "urlOptional": "(Optional)",
+        "urlPlaceholder": "https://yourweb.com",
+        "budgetTitle": "Do you have an initial budget?",
+        "budgetDesc": "Activate it if you already have an initial investment idea. It's just a reference.",
+        "footer": "we will analyze your request to offer clear, strategic, and actionable recommendations."
+      },
+      "meeting": {
+        "title": "Let's schedule a virtual meeting",
+        "dayLabel": "Select the day to schedule",
+        "timeLabel": "Meeting time (15 mins)",
+        "meetNote": "Contact meeting via Teams or Google Meet.",
+        "footer": "we will meet with you in this brief space to understand your vision and explore how we can collaborate.",
+        "days": [
+          "SUN",
+          "MON",
+          "TUE",
+          "WED",
+          "THU",
+          "FRI",
+          "SAT"
+        ]
+      }
+    }
   }
 }

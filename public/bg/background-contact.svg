@@ -1,0 +1,45 @@
+<svg width="1672" height="941" viewBox="0 0 1672 941" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_n_30_139)">
+<g clip-path="url(#clip0_30_139)">
+<rect width="1672" height="941" fill="url(#paint0_radial_30_139)"/>
+<g filter="url(#filter1_f_30_139)">
+<path d="M2400.07 141.55C2934.83 586.092 2729.55 1086.08 2560.06 1280.5L2449.07 1508.3L-752.564 2193.92L-1184.55 176.694C-1574.75 -1645.45 446.3 -1488.58 879.352 -679.478C1312.4 129.627 1731.62 -414.129 2400.07 141.55Z" fill="url(#paint1_linear_30_139)"/>
+</g>
+</g>
+</g>
+<defs>
+<filter id="filter0_n_30_139" x="0" y="0" width="1672" height="941" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feTurbulence type="fractalNoise" baseFrequency="0.5 0.5" stitchTiles="stitch" numOctaves="3" result="noise" seed="4884" />
+<feColorMatrix in="noise" type="luminanceToAlpha" result="alphaNoise" />
+<feComponentTransfer in="alphaNoise" result="coloredNoise1">
+<feFuncA type="discrete" tableValues="1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 "/>
+</feComponentTransfer>
+<feComposite operator="in" in2="shape" in="coloredNoise1" result="noise1Clipped" />
+<feFlood flood-color="rgba(0, 0, 0, 0.11)" result="color1Flood" />
+<feComposite operator="in" in2="noise1Clipped" in="color1Flood" result="color1" />
+<feMerge result="effect1_noise_30_139">
+<feMergeNode in="shape" />
+<feMergeNode in="color1" />
+</feMerge>
+</filter>
+<filter id="filter1_f_30_139" x="-1834.27" y="-1855.94" width="5178.7" height="4649.87" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="300" result="effect1_foregroundBlur_30_139"/>
+</filter>
+<radialGradient id="paint0_radial_30_139" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(272 700) rotate(-15.5362) scale(1769.66 3144.39)">
+<stop stop-color="#F0F0F2"/>
+<stop offset="0.548077" stop-color="#E3E7E7"/>
+<stop offset="0.822115" stop-color="#79968D"/>
+</radialGradient>
+<linearGradient id="paint1_linear_30_139" x1="992.713" y1="635.291" x2="907.665" y2="-385.066" gradientUnits="userSpaceOnUse">
+<stop stop-color="#020203"/>
+<stop offset="1" stop-color="#103034"/>
+</linearGradient>
+<clipPath id="clip0_30_139">
+<rect width="1672" height="941" fill="white"/>
+</clipPath>
+</defs>
+</svg>

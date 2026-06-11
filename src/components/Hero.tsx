@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import { motion } from "framer-motion";
+import DarkVeil from "./DarkVeil";
 
 export function Hero() {
   const { dict } = useLanguage();
@@ -25,13 +26,29 @@ export function Hero() {
 
   return (
     <section className="relative min-h-screen overflow-hidden bg-[#0D0F12]">
+
+      {/* Animated DarkVeil effect layered over the image */}
+      <div className="absolute inset-0 h-full w-full pointer-events-none opacity-100">
+        <DarkVeil
+          hueShift={48}
+          speed={0.6}
+          warpAmount={0.1}
+          noiseIntensity={0.2}
+          scanlineIntensity={0.05}
+          scanlineFrequency={2}
+        />
+      </div>
+
+      {/* Static background image */}
       <img
         src="/bg/background.svg"
         alt="Background"
-        className="absolute inset-0 h-full w-full object-cover pointer-events-none"
+        className="absolute inset-0 h-full w-full object-cover pointer-events-none opacity-40"
       />
+
+
       {/* Gradient overlay for smooth transition at the bottom */}
-      <div className="absolute bottom-0 left-0 right-0 h-4/4 bg-gradient-to-t from-[#0D0F12] to-transparent pointer-events-none" />
+      <div className="absolute bottom-0 left-0 right-0 h-4/4 bg-gradient-to-t from-[#0D0F12] to-[#0D0F12]/50 pointer-events-none" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 py-24 flex h-full min-h-screen flex-col justify-center">
         <motion.div

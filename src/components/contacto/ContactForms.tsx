@@ -5,12 +5,16 @@ import { MessageForm } from "./MessageForm";
 import { ConsultingForm } from "./ConsultingForm";
 import { MeetingForm } from "./MeetingForm";
 
+import { useLanguage } from "@/context/LanguageContext";
+
 interface ContactFormsProps {
   selectedOption: string | null;
   onClose: () => void;
 }
 
 export function ContactForms({ selectedOption, onClose }: ContactFormsProps) {
+  const { dict } = useLanguage();
+
   return (
     <AnimatePresence mode="wait">
       {selectedOption && (
@@ -29,7 +33,7 @@ export function ContactForms({ selectedOption, onClose }: ContactFormsProps) {
               onClick={onClose}
               className="absolute top-0 right-0 px-4 py-2 rounded-full border border-white/10 text-white/50 hover:text-white hover:bg-white/5 transition-all text-sm"
             >
-              Ocultar
+              {dict.contact.forms.hide}
             </button>
 
             <div className="max-w-3xl mx-auto mt-4">

@@ -14,15 +14,27 @@ export function Services() {
   return (
     <section className="bg-fondo-oscuro py-32 px-6" id="servicios">
       <div className="max-w-7xl mx-auto">
-        <motion.h2 
+        <motion.div
           initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.7 }}
-          className="text-4xl md:text-5xl font-light text-white text-center mb-16 tracking-tight"
+          className="max-w-3xl mx-auto text-center mb-16"
         >
-          {dict.services.title}
-        </motion.h2>
+          {dict.services.badge && (
+            <span className="block text-[11px] font-bold text-color-terciario uppercase tracking-[0.2em] mb-5">
+              {dict.services.badge}
+            </span>
+          )}
+          <h2 className="text-4xl md:text-5xl font-light text-white tracking-tight">
+            {dict.services.title}
+          </h2>
+          {dict.services.description && (
+            <p className="mt-6 text-base md:text-lg text-white/60 font-light leading-relaxed">
+              {dict.services.description}
+            </p>
+          )}
+        </motion.div>
 
         {/* Master View: Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

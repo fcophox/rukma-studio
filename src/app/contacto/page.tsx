@@ -5,9 +5,11 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { MessageCircle, Users, Calendar } from "lucide-react";
 import { ContactForms } from "@/components/contacto/ContactForms";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function ContactPage() {
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
+  const { dict } = useLanguage();
 
   const handleSelect = (option: string) => {
     if (selectedOption === option) {
@@ -22,18 +24,26 @@ export default function ContactPage() {
   };
 
   return (
-    <main className="min-h-screen bg-[#0D0F12] relative text-white">
-      <Navbar />
+    <main className="min-h-screen bg-[#0D0F12] relative text-white overflow-hidden">
+      <img
+        src="/bg/background-contact.svg"
+        alt="Background Contact"
+        className="absolute inset-0 h-full w-full object-cover pointer-events-none opacity-60"
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0D0F12]/50 to-[#0D0F12] pointer-events-none" />
       
-      <section className="pt-40 pb-24 px-6 min-h-[80vh] flex flex-col justify-center">
+      <div className="relative z-10">
+        <Navbar />
+        
+        <section className="pt-40 pb-24 px-6 min-h-[80vh] flex flex-col justify-center">
         <div className="max-w-6xl mx-auto w-full">
           
           <div className="mb-16 text-center max-w-2xl mx-auto">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight leading-[1.1] mb-6 text-white/90">
-              ¿Cómo prefieres que hablemos?
+              {dict.contact.page.title}
             </h1>
             <p className="text-lg text-white/60 font-light">
-              Selecciona la opción que mejor se adapte a tus necesidades para comenzar.
+              {dict.contact.page.subtitle}
             </p>
           </div>
 
@@ -58,13 +68,13 @@ export default function ContactPage() {
                   {selectedOption === "mensaje" && <div className="w-3 h-3 rounded-full bg-color-terciario" />}
                 </div>
               </div>
-              <h3 className={`text-2xl font-medium mb-6 transition-colors ${
+              <h3 className={`text-2xl font-medium mb-6 whitespace-pre-line transition-colors ${
                 selectedOption === "mensaje" ? "text-color-terciario" : "text-white/90 group-hover:text-color-terciario"
               }`}>
-                Hablemos por<br />mensaje
+                {dict.contact.page.card1Title}
               </h3>
               <p className="text-white/50 font-light leading-relaxed">
-                Cuéntame en qué estás trabajando hoy, en que puedo apoyarte o qué necesitas potenciar.
+                {dict.contact.page.card1Desc}
               </p>
             </button>
 
@@ -87,13 +97,13 @@ export default function ContactPage() {
                   {selectedOption === "consultoria" && <div className="w-3 h-3 rounded-full bg-color-terciario" />}
                 </div>
               </div>
-              <h3 className={`text-2xl font-medium mb-6 transition-colors ${
+              <h3 className={`text-2xl font-medium mb-6 whitespace-pre-line transition-colors ${
                 selectedOption === "consultoria" ? "text-color-terciario" : "text-white/90 group-hover:text-color-terciario"
               }`}>
-                Generemos una<br />consultoría UX
+                {dict.contact.page.card2Title}
               </h3>
               <p className="text-white/50 font-light leading-relaxed">
-                Revisemos tu producto digital y generemos una Roadmaps para optimizar tu negocio.
+                {dict.contact.page.card2Desc}
               </p>
             </button>
 
@@ -116,13 +126,13 @@ export default function ContactPage() {
                   {selectedOption === "reunion" && <div className="w-3 h-3 rounded-full bg-color-terciario" />}
                 </div>
               </div>
-              <h3 className={`text-2xl font-medium mb-6 transition-colors ${
+              <h3 className={`text-2xl font-medium mb-6 whitespace-pre-line transition-colors ${
                 selectedOption === "reunion" ? "text-color-terciario" : "text-white/90 group-hover:text-color-terciario"
               }`}>
-                Agendemos una<br />reunión virtual
+                {dict.contact.page.card3Title}
               </h3>
               <p className="text-white/50 font-light leading-relaxed">
-                Un cafe virtual, agenda un horario disponible y hablemos con calma sobre lo que necesitas.
+                {dict.contact.page.card3Desc}
               </p>
             </button>
 
@@ -134,6 +144,7 @@ export default function ContactPage() {
       </section>
 
       <Footer />
+      </div>
     </main>
   );
 }

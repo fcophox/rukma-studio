@@ -10,7 +10,7 @@ export function Footer() {
   if (!dict) return null;
 
   return (
-    <footer className="bg-fondo-oscuro pt-24 pb-8 px-6 border-t border-white/5">
+    <footer className="bg-fondo-oscuro pt-16 md:pt-24 pb-8 px-6 border-t border-white/5">
       <div className="max-w-7xl mx-auto">
         {/* Top Section - Logo */}
         <div className="mb-12">
@@ -20,14 +20,14 @@ export function Footer() {
               alt="Rukma Studio Logo Horizontal"
               width={240}
               height={48}
-              className="h-16 w-auto opacity-90 hover:opacity-100 transition-opacity"
+              className="h-10 sm:h-12 md:h-16 w-auto max-w-full opacity-90 hover:opacity-100 transition-opacity"
             />
           </Link>
         </div>
 
         {/* Navigation & Socials */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 mb-12">
-          <nav className="flex flex-wrap items-center gap-6 md:gap-10 text-[11px] font-bold tracking-[0.2em] uppercase text-white/80">
+          <nav className="flex flex-wrap items-center gap-x-5 gap-y-3 md:gap-10 text-[11px] font-bold tracking-[0.2em] uppercase text-white/80">
             <Link href="#servicios" className="hover:text-white transition-colors">{dict.navbar.servicios}</Link>
             <Link href="/casos" className="hover:text-white transition-colors">Casos</Link>
             <Link href="#nosotros" className="hover:text-white transition-colors">{dict.navbar.nosotros}</Link>
@@ -35,7 +35,7 @@ export function Footer() {
             <Link href="/contacto" className="hover:text-white transition-colors">{dict.footer.contactTitle}</Link>
           </nav>
           
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 shrink-0">
             {/* Social Icons */}
             <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white/80 hover:bg-white/10 hover:text-white transition-colors">
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -61,14 +61,14 @@ export function Footer() {
         </div>
 
         {/* Divider */}
-        <div className="w-full h-px bg-white/10 mb-16"></div>
+        <div className="w-full h-px bg-white/10 mb-12 md:mb-16"></div>
 
         {/* Body Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
-          
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
+
           {/* Left Column - CTA */}
-          <div className="lg:col-span-7 flex flex-col items-start gap-10">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-white tracking-tight leading-[1.1]">
+          <div className="lg:col-span-7 flex flex-col items-start gap-8 md:gap-10">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-white tracking-tight leading-[1.1]">
               {dict.footer.ctaTitle1}<br className="hidden md:block" />{dict.footer.ctaTitle2}
             </h2>
             <Link 
@@ -113,7 +113,7 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-24 pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-texto-secundario/60">
+        <div className="mt-16 md:mt-24 pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-texto-secundario/60 text-center md:text-left">
           <p>{dict.footer.rights.replace('{year}', new Date().getFullYear().toString())}</p>
           <div className="flex gap-6">
             <Link href="/privacidad" className="hover:text-white transition-colors">{dict.footer.privacy}</Link>
