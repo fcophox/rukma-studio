@@ -40,27 +40,124 @@
           "Organizations looking to improve the usability, conversion, or satisfaction of their users."
         ],
         "value": [
-          "Reduces product uncertainty",
-          "Improves user experience",
-          "Increases conversion and adoption",
-          "Decreases development costs",
-          "Aligns business, design, and technology",
-          "Delivers actionable documentation"
+          {
+            "title": "Reduces product uncertainty",
+            "description": "Helps make evidence-based decisions, not just assumptions."
+          },
+          {
+            "title": "Improves user experience",
+            "description": "Allows creating clearer, simpler, and easier to use interfaces."
+          },
+          {
+            "title": "Increases conversion and adoption",
+            "description": "Optimizes key journeys so users complete important actions."
+          },
+          {
+            "title": "Decreases development costs",
+            "description": "Detects problems before building, avoiding costly reworks."
+          },
+          {
+            "title": "Aligns business, design, and technology",
+            "description": "Generates a shared vision among stakeholders, product, and development."
+          },
+          {
+            "title": "Delivers actionable documentation",
+            "description": "Facilitates handoff to technical teams with flows, prototypes, and clear specs."
+          }
         ],
         "duration": "Between 4 and 8 weeks",
         "plans": [
           {
             "name": "UX Starter Plan",
-            "price": "Price to be defined based on scope"
+            "description": "Ideal for evaluating, organizing, or redesigning a specific experience.",
+            "includes": [
+              "UX review of the current product.",
+              "Basic benchmark.",
+              "Initial information architecture.",
+              "Wireframes of key screens.",
+              "Prioritized recommendations."
+            ],
+            "priceLabel": "From",
+            "price": "price to be defined based on scope."
           },
           {
             "name": "Product Design Plan",
-            "price": "Price to be defined based on scope"
+            "description": "Ideal for designing a complete digital experience or a new feature.",
+            "includes": [
+              "Initial discovery.",
+              "User flows.",
+              "Wireframes.",
+              "High-fidelity UI design.",
+              "Navigable prototype.",
+              "Documentation for development."
+            ],
+            "priceLabel": "From",
+            "price": "price to be defined based on scope."
           },
           {
             "name": "UX Partner Plan",
-            "price": "Monthly / Hourly block"
+            "description": "Ideal for companies needing continuous support.",
+            "includes": [
+              "Monthly UX/UI support.",
+              "Feature review.",
+              "Design of improvements.",
+              "Experience optimization.",
+              "Support in product decisions."
+            ],
+            "priceLabel": "Modality",
+            "price": "monthly / hourly block."
           }
+        ],
+        "process": {
+          "duration": "Between 4 and 8 weeks",
+          "distribution": [
+            {
+              "name": "Discovery",
+              "percentage": "30%"
+            },
+            {
+              "name": "Design",
+              "percentage": "40%"
+            },
+            {
+              "name": "Validation",
+              "percentage": "20%"
+            },
+            {
+              "name": "Delivery",
+              "percentage": "10%"
+            }
+          ],
+          "milestones": [
+            {
+              "title": "Discovery & Research",
+              "description": "Goal setting, current product review, benchmark, interviews, user analysis, and opportunity definition."
+            },
+            {
+              "title": "Strategic definition",
+              "description": "Problem prioritization, hypothesis definition, journey maps, information architecture, and success criteria."
+            },
+            {
+              "title": "UX/UI Design",
+              "description": "Creation of flows, wireframes, visual design, components, key screens, and navigable prototypes."
+            },
+            {
+              "title": "Validation",
+              "description": "User testing, heuristic review, design iterations, and adjustments based on findings."
+            },
+            {
+              "title": "Delivery for development",
+              "description": "File preparation, functional documentation, interaction criteria, and handoff to the tech team."
+            }
+          ]
+        },
+        "conditions": [
+          "The client must have an internal responsible party for validations and decision-making.",
+          "Times may vary depending on the availability of information, stakeholders, and feedback.",
+          "User testing may require additional recruitment.",
+          "Technical development is not included in this service, unless contracted as an additional scope.",
+          "Documentation is delivered in agreed tools, such as Figma, Notion, Google Drive, or another defined platform.",
+          "Changes outside the initial scope may require an additional quote."
         ]
       },
       {
@@ -79,27 +176,127 @@
           "Product teams wanting to accelerate proofs of concept."
         ],
         "value": [
-          "Allows faster time to market",
-          "Validates before investing more",
-          "Generates evidence for decision-making",
-          "Facilitates sales pitches",
-          "Reduces product risk",
-          "Connects design and development"
+          {
+            "title": "Allows faster time to market",
+            "description": "Reduces the time between an idea and a functional version."
+          },
+          {
+            "title": "Validates before investing more",
+            "description": "Helps test business, experience, and technology hypotheses."
+          },
+          {
+            "title": "Generates evidence to decide",
+            "description": "Allows getting real feedback from users or stakeholders."
+          },
+          {
+            "title": "Facilitates commercial pitches",
+            "description": "A functional MVP communicates better than a static presentation."
+          },
+          {
+            "title": "Reduces product risk",
+            "description": "Helps detect flaws, opportunities, and improvements before scaling."
+          },
+          {
+            "title": "Connects design and development",
+            "description": "Avoids the disconnect between visual prototype and technical build."
+          }
         ],
         "duration": "Between 3 and 10 weeks",
         "plans": [
           {
             "name": "Prototype Plan",
-            "price": "Price to be defined based on scope"
+            "description": "Ideal for visualizing an idea and testing navigation or interaction.",
+            "includes": [
+              "Main flow definition.",
+              "UI design of key screens.",
+              "Navigable prototype.",
+              "Recommendations for improvement."
+            ],
+            "priceLabel": "From",
+            "price": "price to be defined based on scope."
           },
           {
             "name": "MVP Launch Plan",
-            "price": "Price to be defined based on scope"
+            "description": "Ideal for building an initial functional version.",
+            "includes": [
+              "MVP definition.",
+              "UX/UI design.",
+              "Front-end or low-code development.",
+              "Initial functional version.",
+              "Post-validation adjustments."
+            ],
+            "priceLabel": "From",
+            "price": "price to be defined based on scope."
           },
           {
             "name": "Product Sprint Plan",
-            "price": "2 to 4 weeks"
+            "description": "Ideal for teams needing to move fast on a specific solution.",
+            "includes": [
+              "Initial workshop.",
+              "Prioritization.",
+              "Fast design.",
+              "Functional build.",
+              "Validation.",
+              "Next stage roadmap."
+            ],
+            "priceLabel": "Suggested duration",
+            "price": "2 to 4 weeks."
           }
+        ],
+        "process": {
+          "duration": "Between 3 and 10 weeks, depending on complexity, integrations, and number of features.",
+          "distribution": [
+            {
+              "name": "Discovery",
+              "percentage": "20%"
+            },
+            {
+              "name": "Design",
+              "percentage": "25%"
+            },
+            {
+              "name": "Validation",
+              "percentage": "20%"
+            },
+            {
+              "name": "Delivery",
+              "percentage": "35%"
+            }
+          ],
+          "milestones": [
+            {
+              "title": "MVP Definition",
+              "description": "Identification of the problem, users, value proposition, critical features, and minimum viable scope."
+            },
+            {
+              "title": "Feature Prioritization",
+              "description": "Definition of what is built now, what is left for future stages, and what the success criteria are."
+            },
+            {
+              "title": "Experience and UI Design",
+              "description": "Design of flows, main screens, components, and navigable prototype."
+            },
+            {
+              "title": "Coding or functional build",
+              "description": "Front-end development, landing, functional prototype, dashboard, form, portal, or module depending on the scope."
+            },
+            {
+              "title": "Validation and adjustments",
+              "description": "Review with users, stakeholders, or internal team to detect improvements."
+            },
+            {
+              "title": "Delivery and scaling prep",
+              "description": "Documentation, technical recommendations, future backlog, and handoff."
+            }
+          ]
+        },
+        "conditions": [
+          "The MVP is defined with a limited scope and prioritized features.",
+          "Complex integrations, advanced back-end, payment gateways, or custom authentication may require an additional quote.",
+          "The service can be performed with no-code, low-code technologies, or front-end development as needed.",
+          "Infrastructure, hosting, domain, or external services may not be included.",
+          "The client must deliver accesses, contents, brand guidelines, and validations within agreed times.",
+          "The goal of the MVP is to validate and learn, not to build a fully scaled final version from the start."
         ]
       },
       {
@@ -118,27 +315,128 @@
           "Teams wanting to organize their visual and verbal communication."
         ],
         "value": [
-          "Increases brand trust",
-          "Improves differentiation",
-          "Streamlines communication",
-          "Facilitates the creation of digital assets",
-          "Connects brand and experience",
-          "Prepares the brand to scale"
+          {
+            "title": "Increases brand trust",
+            "description": "A professional identity improves the business perception."
+          },
+          {
+            "title": "Improves differentiation",
+            "description": "Helps stand out from competitors with a clear visual proposal."
+          },
+          {
+            "title": "Streamlines communication",
+            "description": "Defines criteria to communicate consistently."
+          },
+          {
+            "title": "Facilitates creating digital assets",
+            "description": "Delivers a reusable visual system for web, social, product, and pitches."
+          },
+          {
+            "title": "Connects brand and experience",
+            "description": "Aligns visual identity, tone, interface, and relationship with users."
+          },
+          {
+            "title": "Prepares the brand to scale",
+            "description": "Allows growing with a coherent visual and strategic foundation."
+          }
         ],
         "duration": "Between 3 and 6 weeks",
         "plans": [
           {
             "name": "Identity Starter Plan",
-            "price": "Price to be defined based on scope"
+            "description": "Ideal for new brands or startups needing a solid foundation.",
+            "includes": [
+              "Conceptual exploration.",
+              "Main logo.",
+              "Color palette.",
+              "Suggested typography.",
+              "Basic applications."
+            ],
+            "priceLabel": "From",
+            "price": "price to be defined based on scope."
           },
           {
             "name": "Brand Experience Plan",
-            "price": "Price to be defined based on scope"
+            "description": "Ideal for companies or digital products needing a more complete identity.",
+            "includes": [
+              "Brand strategy.",
+              "Visual system.",
+              "Logo and variants.",
+              "Core tone of voice.",
+              "Digital applications.",
+              "Brand kit."
+            ],
+            "priceLabel": "From",
+            "price": "price to be defined based on scope."
           },
           {
             "name": "Digital Rebrand Plan",
-            "price": "Price to be defined based on scope"
+            "description": "Ideal for companies needing to update their image and digital presence.",
+            "includes": [
+              "Current brand audit.",
+              "Visual redefinition.",
+              "Identity optimization.",
+              "Web and product applications.",
+              "Brand guidelines."
+            ],
+            "priceLabel": "From",
+            "price": "price to be defined based on scope."
           }
+        ],
+        "process": {
+          "duration": "Between 3 and 6 weeks",
+          "distribution": [
+            {
+              "name": "Discovery",
+              "percentage": "30%"
+            },
+            {
+              "name": "Design",
+              "percentage": "45%"
+            },
+            {
+              "name": "Validation",
+              "percentage": "15%"
+            },
+            {
+              "name": "Delivery",
+              "percentage": "10%"
+            }
+          ],
+          "milestones": [
+            {
+              "title": "Brand Diagnostic",
+              "description": "Review of context, goals, competition, references, and current perception."
+            },
+            {
+              "title": "Identity strategy",
+              "description": "Definition of personality, attributes, tone of voice, value proposition, and base narrative."
+            },
+            {
+              "title": "Visual exploration",
+              "description": "Moodboards, creative routes, color palette, typography, and visual style."
+            },
+            {
+              "title": "Identity design",
+              "description": "Development of logo, visual system, variants, iconography, graphic assets, and applications."
+            },
+            {
+              "title": "Digital applications",
+              "description": "Adapting the identity to the website, social networks, presentations, interfaces, or key pieces."
+            },
+            {
+              "title": "Brand kit or basic guide",
+              "description": "Delivery of guidelines for correct brand usage and visual continuity."
+            }
+          ]
+        },
+        "conditions": [
+          "The service may include naming, but it must be defined as an additional scope if deep exploration is required.",
+          "The creation of massive assets for social networks, campaigns, or continuous content is not included unless specifically agreed upon.",
+          "Full website design can be considered an additional service.",
+          "The client must provide brand info, references, goals, and existing restrictions.",
+          "Rounds of revisions must be defined in advance.",
+          "Delivery may include editable files, exported versions, and a basic usage guide."
         ]
       }
     ]
