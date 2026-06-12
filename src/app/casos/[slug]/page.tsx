@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { PageBackground } from "@/components/PageBackground";
@@ -5,8 +6,35 @@ import { mockCases } from "@/data/mockCases";
 import Link from "next/link";
 import Image from "next/image";
 
-export default function CaseStudyPage({ params }: { params: { slug: string } }) {
-  const caseItem = mockCases.find((c) => c.slug === params.slug) || mockCases[0];
+type Props = {
+  params: Promise<{ slug: string }>;
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const caseItem = mockCases.find((c) => c.slug === slug) || mockCases[0];
+
+  return {
+    title: caseItem.title,
+    description: caseItem.shortDescription,
+    openGraph: {
+      title: caseItem.title,
+      description: caseItem.shortDescription,
+      url: `https://rukma.studio/casos/${caseItem.slug}`,
+      type: "article",
+      images: [
+        { url: caseItem.image, width: 800, height: 600, alt: caseItem.title },
+      ],
+    },
+    alternates: {
+      canonical: `https://rukma.studio/casos/${caseItem.slug}`,
+    },
+  };
+}
+
+export default async function CaseStudyPage({ params }: Props) {
+  const { slug } = await params;
+  const caseItem = mockCases.find((c) => c.slug === slug) || mockCases[0];
 
   // Datos simulados para mantener el mismo template visual del blog
   const author = "Equipo Rukma";

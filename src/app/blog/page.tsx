@@ -6,8 +6,18 @@ import { PageBackground } from "@/components/PageBackground";
 import { mockPosts } from "@/data/mockPosts";
 
 export const metadata = {
-  title: "Blog | Rukma Studio",
-  description: "Ideas y perspectivas para equipos que innovan.",
+  title: "Blog",
+  description:
+    "Ideas, perspectivas y recursos para equipos que innovan. Artículos sobre UX, Product Design, tecnología y estrategia digital.",
+  openGraph: {
+    title: "Blog | Rukma Studio",
+    description:
+      "Ideas, perspectivas y recursos para equipos que innovan.",
+    url: "https://rukma.studio/blog",
+  },
+  alternates: {
+    canonical: "https://rukma.studio/blog",
+  },
 };
 
 export default function BlogPage() {

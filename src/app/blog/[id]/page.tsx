@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { PageBackground } from "@/components/PageBackground";
@@ -5,8 +6,33 @@ import { mockPosts } from "@/data/mockPosts";
 import Link from "next/link";
 import Image from "next/image";
 
-export default function BlogPostPage({ params }: { params: { id: string } }) {
-  const post = mockPosts.find((p) => p.id === parseInt(params.id)) || mockPosts[0];
+type Props = {
+  params: Promise<{ id: string }>;
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { id } = await params;
+  const post = mockPosts.find((p) => p.id === parseInt(id)) || mockPosts[0];
+
+  return {
+    title: post.title,
+    description: `${post.title} — Artículo del blog de Rukma Studio sobre ${post.category.toLowerCase()}.`,
+    openGraph: {
+      title: post.title,
+      description: `Artículo sobre ${post.category.toLowerCase()} por ${post.author}.`,
+      url: `https://rukma.studio/blog/${post.id}`,
+      type: "article",
+      images: [{ url: post.image, width: 800, height: 600, alt: post.title }],
+    },
+    alternates: {
+      canonical: `https://rukma.studio/blog/${post.id}`,
+    },
+  };
+}
+
+export default async function BlogPostPage({ params }: Props) {
+  const { id } = await params;
+  const post = mockPosts.find((p) => p.id === parseInt(id)) || mockPosts[0];
 
   // Formatear la fecha en estilo "20 DE ABRIL DE 2026"
   const formattedDate = new Date(post.date).toLocaleDateString("es-ES", {

@@ -6,8 +6,18 @@ import { PageBackground } from "@/components/PageBackground";
 import { mockCases } from "@/data/mockCases";
 
 export const metadata = {
-  title: "Casos de Éxito | Rukma Studio",
-  description: "Resultados reales para marcas ambiciosas.",
+  title: "Casos de Éxito",
+  description:
+    "Resultados reales para marcas ambiciosas. Conoce cómo hemos ayudado a empresas a resolver problemas complejos con estrategia, diseño y tecnología.",
+  openGraph: {
+    title: "Casos de Éxito | Rukma Studio",
+    description:
+      "Resultados reales para marcas ambiciosas.",
+    url: "https://rukma.studio/casos",
+  },
+  alternates: {
+    canonical: "https://rukma.studio/casos",
+  },
 };
 
 export default function CasesPage() {
