@@ -583,5 +583,19 @@
         ]
       }
     }
+  },
+  "serviceDetail": {
+    "backToServices": "Volver a servicios",
+    "forWho": "¿Para quién es?",
+    "howItAddsValue": "¿Cómo aporta valor?",
+    "estimatedDuration": "Duración estimada:",
+    "standardProcess": "Proceso estándar",
+    "suggestedDistribution": "Distribución sugerida",
+    "processMilestones": "Hitos del proceso",
+    "processMilestonesSubtitle": "Un paso a paso claro y estructurado para asegurar que cada etapa del proyecto aporte valor y nos acerque al objetivo final.",
+    "availablePlans": "Planes disponibles",
+    "includes": "Incluye",
+    "getQuote": "Cotizar",
+    "assumptionsAndConditions": "Supuestos y condiciones"
   }
 }

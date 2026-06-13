@@ -173,6 +173,7 @@
           "Companies wanting to validate a new idea before investing in full development.",
           "Founders who need to show a functional version to users, partners, or investors.",
           "Innovation teams requiring prototypes for internal pilots.",
+          "Agencies or consultancies needing support to materialize digital products.",
           "Product teams wanting to accelerate proofs of concept."
         ],
         "value": [
@@ -312,6 +313,7 @@
           "Companies wanting to revamp or professionalize their brand.",
           "Digital products needing their own identity.",
           "Consultancies, agencies, or professional services looking to stand out.",
+          "Entrepreneurs needing a more solid digital presence.",
           "Teams wanting to organize their visual and verbal communication."
         ],
         "value": [
@@ -581,5 +583,19 @@
         ]
       }
     }
+  },
+  "serviceDetail": {
+    "backToServices": "Back to services",
+    "forWho": "Who is it for?",
+    "howItAddsValue": "How does it add value?",
+    "estimatedDuration": "Estimated duration:",
+    "standardProcess": "Standard process",
+    "suggestedDistribution": "Suggested distribution",
+    "processMilestones": "Process milestones",
+    "processMilestonesSubtitle": "A clear and structured step-by-step to ensure each stage of the project adds value and brings us closer to the final goal.",
+    "availablePlans": "Available plans",
+    "includes": "Includes",
+    "getQuote": "Get a quote",
+    "assumptionsAndConditions": "Assumptions and conditions"
   }
 }

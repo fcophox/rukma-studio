@@ -244,20 +244,50 @@ const enValue03 = [
   { title: "Prepares the brand to scale", description: "Allows growing with a coherent visual and strategic foundation." }
 ];
 
+// ForWho translations
+const enForWho01 = [
+  "Startups needing to design or improve their digital product.",
+  "Companies looking to optimize platforms, websites, apps, or internal systems.",
+  "Product leaders needing clarity to make decisions.",
+  "Tech teams requiring better UX/UI definitions before development.",
+  "Agencies needing specialized support in user experience.",
+  "Organizations looking to improve the usability, conversion, or satisfaction of their users."
+];
+
+const enForWho02 = [
+  "Startups needing to launch an MVP quickly.",
+  "Companies wanting to validate a new idea before investing in full development.",
+  "Founders who need to show a functional version to users, partners, or investors.",
+  "Innovation teams requiring prototypes for internal pilots.",
+  "Agencies or consultancies needing support to materialize digital products.",
+  "Product teams wanting to accelerate proofs of concept."
+];
+
+const enForWho03 = [
+  "Startups needing to create their identity from scratch.",
+  "Companies wanting to revamp or professionalize their brand.",
+  "Digital products needing their own identity.",
+  "Consultancies, agencies, or professional services looking to stand out.",
+  "Entrepreneurs needing a more solid digital presence.",
+  "Teams wanting to organize their visual and verbal communication."
+];
+
 // Update item 0
-enData.services.items[0].value = enValue03; // I'll assign these carefully
+enData.services.items[0].forWho = enForWho01;
+enData.services.items[0].value = enValue01;
 enData.services.items[0].process = enProcess01;
 enData.services.items[0].plans = enPlans01;
 enData.services.items[0].conditions = enConditions01;
-enData.services.items[0].value = enValue01;
 
 // Update item 1
+enData.services.items[1].forWho = enForWho02;
 enData.services.items[1].value = enValue02;
 enData.services.items[1].process = enProcess02;
 enData.services.items[1].plans = enPlans02;
 enData.services.items[1].conditions = enConditions02;
 
 // Update item 2
+enData.services.items[2].forWho = enForWho03;
 enData.services.items[2].value = enValue03;
 enData.services.items[2].process = enProcess03;
 enData.services.items[2].plans = enPlans03;
