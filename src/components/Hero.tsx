@@ -57,7 +57,7 @@ export function Hero() {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="max-w-5xl space-y-10"
         >
-          <h1 className="text-5xl md:text-6xl lg:text-[4.5rem] font-light text-white tracking-tight leading-[1.1]">
+          <h1 className="text-[2.5rem] sm:text-5xl md:text-6xl lg:text-[4.5rem] font-light text-white tracking-tight leading-[1.12] md:leading-[1.1]">
             {dict.hero.titlePrefix}
             <br className="hidden md:block" />
             <span
