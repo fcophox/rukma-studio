@@ -219,23 +219,21 @@ export function ServiceDetailClient({ slug }: { slug: string }) {
               {selectedService.value?.length > 0 && (
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16">
                   {/* Left: título sticky */}
-                  <div className="md:col-span-4">
-                    <div className="sticky top-32 space-y-4">
-                      <h4 className="text-3xl md:text-4xl font-light text-white leading-snug">
-                        {dict.serviceDetail?.howItAddsValue || "¿Cómo aporta valor al negocio?"}
-                      </h4>
-                      {selectedService.duration && (
-                        <p className="text-white/40 text-sm">
-                          {dict.serviceDetail?.estimatedDuration || "Duración estimada:"}{" "}
-                          <span className="text-white/70 font-medium">{selectedService.duration}</span>
-                        </p>
-                      )}
-                    </div>
+                  <div className="md:col-span-6 md:sticky md:top-32 h-fit space-y-4">
+                    <h4 className="text-3xl md:text-4xl font-light text-white leading-snug">
+                      {dict.serviceDetail?.howItAddsValue || "¿Cómo aporta valor al negocio?"}
+                    </h4>
+                    {selectedService.duration && (
+                      <p className="text-white/40 text-sm">
+                        {dict.serviceDetail?.estimatedDuration || "Duración estimada:"}{" "}
+                        <span className="text-white/70 font-medium">{selectedService.duration}</span>
+                      </p>
+                    )}
                   </div>
 
                   {/* Right: cards grid */}
-                  <div className="md:col-span-8">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="md:col-span-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-1 gap-8">
                       {selectedService.value.map((item: any, i: number) => {
                         const icons = [
                           // shield
