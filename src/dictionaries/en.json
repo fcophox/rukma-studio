@@ -518,16 +518,18 @@
     "noResults": "No articles found matching your search.",
     "homeSectionTitle": "Ideas, perspectives and inspiration",
     "homeSectionSubtitle": "for digital growth.",
-    "exploreButton": "Explore all resources"
+    "exploreButton": "Explore all resources",
+    "emptyState": "New articles coming soon."
   },
   "cases": {
     "badge": "Success cases",
-    "titlePrefix": "Real results for",
-    "titleSuffix": "ambitious brands.",
+    "titlePrefix": "Real results for ",
+    "rotatingTexts": ["ambitious brands", "leading industries", "prestigious companies", "complex challenges"],
     "description": "Discover how we have helped leading companies and startups solve complex problems through strategy, design, and technology.",
     "searchPlaceholder": "Search cases...",
     "categoryAll": "ALL",
-    "noResults": "No cases found matching your search."
+    "noResults": "No cases found matching your search.",
+    "emptyState": "New success stories coming soon."
   },
   "contact": {
     "page": {
@@ -596,6 +598,35 @@
     "availablePlans": "Available plans",
     "includes": "Includes",
     "getQuote": "Get a quote",
-    "assumptionsAndConditions": "Assumptions and conditions"
+    "assumptionsAndConditions": "Assumptions and conditions",
+    "whyNeed": "Why you need it",
+    "whatGet": "What you get",
+    "forWhoTitle": "This service is for you if you are...",
+    "audience": [
+      {
+        "title": "FUNDS & ACCELERATORS",
+        "description": "Investors or Strategic Partners. They require a clear vision of the UX potential and scalability of the products they fund. They seek to evaluate and optimize digital experiences before investing.",
+        "why": "To have confidence that the investment translates into real adoption.",
+        "what": "UX maturity diagnosis, impact projection, and improvement roadmap."
+      },
+      {
+        "title": "CORPORATE",
+        "description": "Enterprise system modernization. Their legacy systems are outdated and slow. We modernize the experience of their internal platforms or customer-facing digital products.",
+        "why": "To improve user retention and operational efficiency.",
+        "what": "A modern, agile interface with high conversion rates."
+      },
+      {
+        "title": "OUTSOURCING",
+        "description": "Agencies lacking technical capacity. They have design flow but lack the capability for deep validation and UX. We integrate with their team as a strategic arm.",
+        "why": "They need UX specialists without full-time hiring.",
+        "what": "A silent partner ensuring premium and effective deliveries."
+      },
+      {
+        "title": "STARTUPS",
+        "description": "Founding teams with a validated idea or early product. They need to organize their vision, design their product experience, or prepare to raise investment with a stronger proposition.",
+        "why": "To reduce product risk and move forward with clear direction.",
+        "what": "UX strategy, product design, and investment-ready prototypes."
+      }
+    ]
   }
 }

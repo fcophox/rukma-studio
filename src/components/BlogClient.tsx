@@ -3,8 +3,18 @@
 import { useState, useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { BlogPost } from "@/data/mockPosts";
 import { useLanguage } from "@/context/LanguageContext";
+
+interface BlogPost {
+  id: string;
+  slug: string;
+  title: string;
+  image: string;
+  author: string;
+  authorImage: string;
+  category: string;
+  date: string;
+}
 
 interface BlogClientProps {
   posts: BlogPost[];

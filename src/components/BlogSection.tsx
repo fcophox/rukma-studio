@@ -1,41 +1,90 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
 import { motion } from "framer-motion";
+import { cms, type Article } from "@/lib/cms";
+
+interface FeaturedPost {
+  slug: string;
+  title: string;
+  image: string;
+  category: string;
+  author: string;
+}
+
+function toFeaturedPost(a: Article): FeaturedPost {
+  const data = (a.data ?? {}) as { topic?: string; author?: string };
+  return {
+    slug: a.slug,
+    title: a.title,
+    image: a.cover_image_url ?? "",
+    category: data.topic ?? "",
+    author: data.author ?? "Equipo Rukma",
+  };
+}
+
+function EmptyPostCard({ message }: { message: string }) {
+  return (
+    <div aria-hidden>
+      <div className="relative w-full aspect-2/1 rounded-2xl overflow-hidden mb-6 border border-dashed border-white/10 bg-white/[0.02] flex items-center justify-center">
+        <svg className="w-10 h-10 text-white/10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={1.5}
+            d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+          />
+        </svg>
+      </div>
+      <div className="flex items-center justify-between mb-4">
+        <div className="flex items-center gap-3">
+          <div className="w-8 h-8 rounded-full bg-white/5 border border-white/10" />
+          <div className="h-2 w-24 rounded-full bg-white/5" />
+        </div>
+        <div className="h-2 w-16 rounded-full bg-white/5" />
+      </div>
+      {message ? (
+        <p className="text-sm text-white/40 leading-snug">{message}</p>
+      ) : (
+        <div className="h-2 w-40 rounded-full bg-white/5" />
+      )}
+    </div>
+  );
+}
+
+const EMPTY_SLOTS = [0, 1, 2];
 
 export function BlogSection() {
-  const { dict } = useLanguage();
+  const { dict, lang } = useLanguage();
+  const [posts, setPosts] = useState<FeaturedPost[]>([]);
+  const [loaded, setLoaded] = useState(false);
 
-  const posts = [
-    {
-      id: 1,
-      title: "Protegiendo tus activos digitales en la era de la IA",
-      category: "SEGURIDAD",
-      author: "Equipo Rukma",
-      authorImage: "https://i.pravatar.cc/150?u=a042581f4e29026704d",
-      image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800",
-    },
-    {
-      id: 2,
-      title: "La Seguridad en Software: Un Pilar Irrenunciable del Desarrollo Moderno.",
-      category: "SEGURIDAD",
-      author: "Equipo Rukma",
-      authorImage: "https://i.pravatar.cc/150?u=a042581f4e29026704d",
-      image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800",
-    },
-    {
-      id: 3,
-      title: "La importancia de la diversidad y la inclusión en el entorno laboral actual",
-      category: "NEGOCIO",
-      author: "Equipo Rukma",
-      authorImage: "https://i.pravatar.cc/150?u=a042581f4e29026704d",
-      image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800",
-    }
-  ];
+  useEffect(() => {
+    let active = true;
+    setLoaded(false);
+    cms.articles
+      .list({ category: "blog", locale: lang, limit: 3 })
+      .then((articles) => {
+        if (active) setPosts(articles.map(toFeaturedPost));
+      })
+      .catch(() => {
+        if (active) setPosts([]);
+      })
+      .finally(() => {
+        if (active) setLoaded(true);
+      });
+    return () => {
+      active = false;
+    };
+  }, [lang]);
 
   if (!dict?.blog) return null;
+
+  const isEmpty = loaded && posts.length === 0;
+  const emptyMessage = dict.blog.emptyState;
 
   return (
     <section className="py-24 px-6 bg-[#0D0F12]">
@@ -73,42 +122,49 @@ export function BlogSection() {
 
         {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {posts.map((post, index) => (
-            <motion.div
-              key={post.id}
-              initial={{ opacity: 0, y: 40, filter: "blur(10px)" }}
-              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.7, delay: index * 0.2, ease: "easeOut" }}
-            >
-              <Link href={`/blog/${post.id}`} className="group block" data-cursor="card">
-                <div className="relative w-full aspect-2/1 rounded-2xl overflow-hidden mb-6">
-                  <Image
-                    src={post.image}
-                    alt={post.title}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                </div>
-
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center gap-3">
-                    <div className="relative w-8 h-8 rounded-full overflow-hidden border border-white/10">
-                      <Image src={post.authorImage} alt={post.author} fill className="object-cover" />
+          {isEmpty
+            ? EMPTY_SLOTS.map((i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 40, filter: "blur(10px)" }}
+                  whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.7, delay: i * 0.2, ease: "easeOut" }}
+                >
+                  <EmptyPostCard message={i === 0 ? emptyMessage : ""} />
+                </motion.div>
+              ))
+            : posts.map((post, index) => (
+                <motion.div
+                  key={post.slug}
+                  initial={{ opacity: 0, y: 40, filter: "blur(10px)" }}
+                  whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.7, delay: index * 0.2, ease: "easeOut" }}
+                >
+                  <Link href={`/blog/${post.slug}`} className="group block" data-cursor="card">
+                    <div className="relative w-full aspect-2/1 rounded-2xl overflow-hidden mb-6">
+                      {post.image && (
+                        <Image
+                          src={post.image}
+                          alt={post.title}
+                          fill
+                          className="object-cover transition-transform duration-700 group-hover:scale-105"
+                        />
+                      )}
                     </div>
-                    <span className="text-sm font-medium text-white">{post.author}</span>
-                  </div>
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-white/40">
-                    {post.category}
-                  </span>
-                </div>
-
-                <h3 className="text-lg md:text-xl text-white/90 font-medium leading-snug group-hover:text-color-terciario transition-colors">
-                  {post.title}
-                </h3>
-              </Link>
-            </motion.div>
-          ))}
+                    <div className="flex items-center justify-between mb-4">
+                      <span className="text-sm font-medium text-white">{post.author}</span>
+                      <span className="text-[10px] font-bold uppercase tracking-widest text-white/40">
+                        {post.category}
+                      </span>
+                    </div>
+                    <h3 className="text-lg md:text-xl text-white/90 font-medium leading-snug group-hover:text-color-terciario transition-colors">
+                      {post.title}
+                    </h3>
+                  </Link>
+                </motion.div>
+              ))}
         </div>
 
       </div>

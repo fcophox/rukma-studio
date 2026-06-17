@@ -3,7 +3,39 @@ import { Footer } from "@/components/Footer";
 import { BlogClient } from "@/components/BlogClient";
 import { BlogHeader } from "@/components/BlogHeader";
 import { PageBackground } from "@/components/PageBackground";
-import { mockPosts } from "@/data/mockPosts";
+
+const mockPosts = [
+  {
+    id: "1",
+    slug: "ux-research-2024",
+    title: "UX Research en 2024: Métodos que están transformando productos digitales",
+    image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&q=80&w=800",
+    author: "Equipo Rukma",
+    authorImage: "/icon.svg",
+    category: "UX RESEARCH",
+    date: "2024-01-15",
+  },
+  {
+    id: "2",
+    slug: "diseno-sistemas",
+    title: "Cómo construir un Design System escalable",
+    image: "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?auto=format&fit=crop&q=80&w=800",
+    author: "Equipo Rukma",
+    authorImage: "/icon.svg",
+    category: "PRODUCT DESIGN",
+    date: "2024-02-20",
+  },
+  {
+    id: "3",
+    slug: "mvp-estrategia",
+    title: "MVP: De la idea al producto en 8 semanas",
+    image: "https://images.unsplash.com/photo-1512758017271-d7b84c2113f1?auto=format&fit=crop&q=80&w=800",
+    author: "Equipo Rukma",
+    authorImage: "/icon.svg",
+    category: "ESTRATEGIA",
+    date: "2024-03-10",
+  },
+];
 
 export const metadata = {
   title: "Blog",

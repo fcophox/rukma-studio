@@ -1,6 +1,5 @@
 import type { MetadataRoute } from "next";
-import { mockPosts } from "@/data/mockPosts";
-import { mockCases } from "@/data/mockCases";
+import { cms } from "@/lib/cms";
 
 const BASE_URL = "https://rukma.studio";
 
@@ -11,7 +10,7 @@ const serviceSlugs = [
   "brand-experience-e-identidad",
 ];
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();
 
   // Static pages
@@ -50,21 +49,31 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.9,
   }));
 
-  // Blog post pages
-  const blogPages: MetadataRoute.Sitemap = mockPosts.map((post) => ({
-    url: `${BASE_URL}/blog/${post.id}`,
-    lastModified: new Date(post.date),
-    changeFrequency: "yearly" as const,
-    priority: 0.6,
-  }));
+  // Contenido del CMS (locale por defecto 'es'). Si falla, no rompe el sitemap.
+  let blogPages: MetadataRoute.Sitemap = [];
+  let casePages: MetadataRoute.Sitemap = [];
+  try {
+    const [posts, cases] = await Promise.all([
+      cms.articles.list({ category: "blog" }),
+      cms.articles.list({ category: "casos" }),
+    ]);
 
-  // Case study pages
-  const casePages: MetadataRoute.Sitemap = mockCases.map((c) => ({
-    url: `${BASE_URL}/casos/${c.slug}`,
-    lastModified: now,
-    changeFrequency: "monthly" as const,
-    priority: 0.7,
-  }));
+    blogPages = posts.map((post) => ({
+      url: `${BASE_URL}/blog/${post.slug}`,
+      lastModified: post.published_at ? new Date(post.published_at) : now,
+      changeFrequency: "yearly" as const,
+      priority: 0.6,
+    }));
+
+    casePages = cases.map((c) => ({
+      url: `${BASE_URL}/casos/${c.slug}`,
+      lastModified: c.published_at ? new Date(c.published_at) : now,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    }));
+  } catch {
+    // Sin credenciales / sin conexión: devuelve solo las páginas estáticas.
+  }
 
   return [...staticPages, ...servicePages, ...blogPages, ...casePages];
 }

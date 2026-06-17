@@ -3,8 +3,16 @@
 import { useState, useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { SuccessCase } from "@/data/mockCases";
 import { useLanguage } from "@/context/LanguageContext";
+
+interface SuccessCase {
+  id: string;
+  slug: string;
+  title: string;
+  image: string;
+  category: string;
+  shortDescription: string;
+}
 
 interface CasesClientProps {
   casesData: SuccessCase[];

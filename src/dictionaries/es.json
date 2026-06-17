@@ -518,16 +518,18 @@
     "noResults": "No se encontraron artículos que coincidan con tu búsqueda.",
     "homeSectionTitle": "Ideas, perspectivas e inspiración",
     "homeSectionSubtitle": "para el crecimiento digital.",
-    "exploreButton": "Explora todos los recursos"
+    "exploreButton": "Explora todos los recursos",
+    "emptyState": "Pronto publicaremos nuevos artículos."
   },
   "cases": {
     "badge": "Casos de éxito",
-    "titlePrefix": "Resultados reales para",
-    "titleSuffix": "marcas ambiciosas.",
+    "titlePrefix": "Resultados reales para ",
+    "rotatingTexts": ["marcas ambiciosas", "grandes industrias", "empresas de prestigio", "desafíos complejos"],
     "description": "Conoce cómo hemos ayudado a empresas líderes y startups a resolver problemas complejos a través de estrategia, diseño y tecnología.",
     "searchPlaceholder": "Buscar casos...",
     "categoryAll": "TODOS",
-    "noResults": "No se encontraron casos que coincidan con tu búsqueda."
+    "noResults": "No se encontraron casos que coincidan con tu búsqueda.",
+    "emptyState": "Pronto compartiremos nuevos casos de éxito."
   },
   "contact": {
     "page": {
@@ -596,6 +598,35 @@
     "availablePlans": "Planes disponibles",
     "includes": "Incluye",
     "getQuote": "Cotizar",
-    "assumptionsAndConditions": "Supuestos y condiciones"
+    "assumptionsAndConditions": "Supuestos y condiciones",
+    "whyNeed": "Por qué lo necesitas",
+    "whatGet": "Qué obtienes",
+    "forWhoTitle": "Este servicio es para ti si eres...",
+    "audience": [
+      {
+        "title": "FONDOS & ACELERADORAS",
+        "description": "Inversores o Partners Estratégicos. Requieren una visión clara del potencial UX y escalabilidad de los productos que financian. Buscan evaluar y optimizar experiencias digitales antes de invertir.",
+        "why": "Para tener confianza en que la inversión se traduce en adopción real.",
+        "what": "Diagnóstico de madurez UX, proyección de impacto y roadmap de mejora."
+      },
+      {
+        "title": "CORPORATIVOS",
+        "description": "Modernización de sistemas empresariales. Sus sistemas actuales son obsoletos y lentos. Modernizamos la experiencia de sus plataformas internas o productos digitales hacia sus clientes.",
+        "why": "Para mejorar la retención de usuarios y eficiencia operativa.",
+        "what": "Una interfaz moderna, ágil y con altas tasas de conversión."
+      },
+      {
+        "title": "OUTSOURCING",
+        "description": "Agencias con falta de capacidad técnica. Tienen flujo de diseño pero no la capacidad para validación profunda y UX. Nos acoplamos a su equipo como brazo estratégico.",
+        "why": "Necesitan especialistas UX sin incurrir en contratación full-time.",
+        "what": "Un partner silencioso que asegura entregas premium y efectivas."
+      },
+      {
+        "title": "STARTUPS",
+        "description": "Equipos fundadores con idea validada o producto temprano. Necesitan ordenar su visión, diseñar la experiencia de su producto o prepararse para levantar inversión con una propuesta más sólida.",
+        "why": "Para reducir el riesgo de producto y avanzar con dirección clara.",
+        "what": "Estrategia UX, diseño de producto y prototipos listos para inversión."
+      }
+    ]
   }
 }
