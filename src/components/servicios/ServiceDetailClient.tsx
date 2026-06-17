@@ -21,7 +21,7 @@ export function ServiceDetailClient({ slug }: { slug: string }) {
       setActiveAudience((prev) => (prev + 1) % audienceItems.length);
     }, 4000);
     return () => clearInterval(interval);
-  }, [audienceItems.length]);
+  }, [audienceItems.length, activeAudience]);
 
   if (!dict?.services) return null;
 
@@ -41,7 +41,7 @@ export function ServiceDetailClient({ slug }: { slug: string }) {
         <Navbar />
 
         <article className="pt-40 pb-24 px-6">
-          <div className="max-w-5xl mx-auto">
+          <div className="max-w-6xl mx-auto">
             {/* ===== Header (estilo artículo) ===== */}
             {/* Botón volver */}
             <Link
@@ -98,18 +98,32 @@ export function ServiceDetailClient({ slug }: { slug: string }) {
 
                     {/* Tabs */}
                     <div className="flex flex-wrap gap-2">
-                      {audienceItems.map((tab: any, i: number) => (
-                        <button
-                          key={i}
-                          onClick={() => setActiveAudience(i)}
-                          className={`text-[11px] font-bold tracking-[0.2em] uppercase px-5 py-2.5 rounded-full transition-all duration-300 ${i === activeAudience
-                            ? "bg-color-terciario text-[#0D0F12]"
-                            : "bg-white/5 text-white/60 hover:text-white hover:bg-white/10 border border-white/10"
+                      {audienceItems.map((tab: any, i: number) => {
+                        const isActive = i === activeAudience;
+                        return (
+                          <button
+                            key={i}
+                            onClick={() => setActiveAudience(i)}
+                            className={`relative text-[11px] font-bold tracking-[0.2em] uppercase px-5 py-2.5 rounded-full overflow-hidden transition-all duration-300 border focus:outline-none ${
+                              isActive
+                                ? "border-color-terciario/40 text-color-terciario font-bold bg-white/[0.02]"
+                                : "bg-white/5 text-white/60 hover:text-white hover:bg-white/10 border-white/10"
                             }`}
-                        >
-                          {tab.title}
-                        </button>
-                      ))}
+                          >
+                            {/* Background fill progress */}
+                            {isActive && (
+                              <motion.div
+                                key={activeAudience}
+                                initial={{ scaleX: 0 }}
+                                animate={{ scaleX: 1 }}
+                                transition={{ duration: 4, ease: "linear" }}
+                                className="absolute inset-0 bg-color-terciario/20 origin-left z-0"
+                              />
+                            )}
+                            <span className="relative z-10">{tab.title}</span>
+                          </button>
+                        );
+                      })}
                     </div>
 
                     {/* Main card — split layout */}
@@ -285,32 +299,43 @@ export function ServiceDetailClient({ slug }: { slug: string }) {
 
               {/* Proceso (si existe) */}
               {selectedService.process && (
-                <div className="space-y-8  pt-24">
-                  <h4 className="text-5xl font-light text-white">
-                    {dict.serviceDetail?.standardProcess || "Proceso estándar paso"}
-                  </h4>
+                <div className="space-y-12 pt-24 border-t border-white/5">
+                  {/* Header */}
+                  <div className="text-center max-w-3xl mx-auto space-y-4">
+                    <h4 className="text-4xl md:text-5xl font-light text-white leading-tight">
+                      {dict.serviceDetail?.standardProcess || "Proceso estándar"}
+                    </h4>
+                    <p className="text-white/60 text-lg font-light leading-relaxed">
+                      {dict.serviceDetail?.processMilestonesSubtitle || "Un paso a paso claro y estructurado para asegurar que cada etapa del proyecto aporte valor y nos acerque al objetivo final."}
+                    </p>
+                  </div>
 
+                  {/* Distribution block (Effort / Tiempos) */}
                   {selectedService.process.distribution && (
-                    <div className="space-y-4">
-                      <h5 className="text-sm font-medium text-white/50 uppercase tracking-widest">
-                        {dict.serviceDetail?.suggestedDistribution || "Distribución sugerida"}
-                      </h5>
+                    <div className="space-y-4 max-w-5xl mx-auto">
+                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs font-bold tracking-wider text-white/40 uppercase mb-2">
+                        <span>● Tiempos de aplicación (Distribución del esfuerzo)</span>
+                        <span>Esfuerzo total: 100%</span>
+                      </div>
 
-                      {/* Segmented Progress Bar with Labels */}
-                      <div className="w-full h-14 md:h-16 bg-white/5 rounded-full flex overflow-hidden shadow-inner">
+                      {/* Segmented Progress Bar */}
+                      <div className="w-full h-18 bg-white/5 rounded-full flex overflow-hidden shadow-inner border border-white/5">
                         {selectedService.process.distribution.map((dist: any, i: number) => {
-                          const opacities = ["bg-color-terciario", "bg-color-terciario/80", "bg-color-terciario/60", "bg-color-terciario/40", "bg-color-terciario/20"];
-                          const textColors = ["text-[#0D0F12]", "text-[#0D0F12]", "text-[#0D0F12]", "text-white", "text-white"];
+                          const colors = [
+                            "bg-[#0F2A2E] text-color-terciario border-r border-white/5",
+                            "bg-color-terciario text-[#0D0F12] border-r border-white/5",
+                            "bg-color-secundario text-white border-r border-white/5",
+                            "bg-[#1b2529] text-white/70"
+                          ];
 
                           return (
                             <div
                               key={i}
-                              className={`h-full flex flex-col items-center justify-center overflow-hidden px-1 md:px-2 border-r border-[#0D0F12]/10 last:border-r-0 ${opacities[i % opacities.length]} ${textColors[i % textColors.length]}`}
+                              className={`h-full flex flex-col items-center justify-center overflow-hidden px-2 last:border-r-0 ${colors[i % colors.length]}`}
                               style={{ width: dist.percentage }}
-                              title={`${dist.name} - ${dist.percentage}`}
                             >
-                              <span className="font-bold text-sm md:text-base leading-none mb-1">{dist.percentage}</span>
-                              <span className="text-[10px] md:text-xs font-medium truncate w-full text-center opacity-80 leading-none">{dist.name}</span>
+                              <span className="font-light text-md leading-none mb-2">{dist.name}</span>
+                              <span className="text-xs font-semibold opacity-80 leading-none">{dist.percentage}</span>
                             </div>
                           );
                         })}
@@ -318,28 +343,57 @@ export function ServiceDetailClient({ slug }: { slug: string }) {
                     </div>
                   )}
 
+                  {/* Roadmap Grid */}
                   {selectedService.process.milestones && (
-                    <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 pt-4">
-                      <div className="md:col-span-4">
-                        <div className="sticky top-32">
-                          <h5 className="text-sm font-medium text-white/50 uppercase tracking-widest mb-4">
-                            {dict.serviceDetail?.processMilestones || "Hitos del proceso"}
-                          </h5>
-                          <p className="text-white/70 text-base md:text-lg leading-relaxed">
-                            {dict.serviceDetail?.processMilestonesSubtitle || "Un paso a paso claro y estructurado para asegurar que cada etapa del proyecto aporte valor y nos acerque al objetivo final."}
-                          </p>
-                        </div>
+                    <div className="relative max-w-5xl mx-auto mt-16 pb-12">
+                      {/* Background dashed columns */}
+                      <div className="absolute inset-y-0 left-0 w-full grid grid-cols-1 md:grid-cols-8 pointer-events-none z-0 border-l border-r border-dashed border-white/5">
+                        <div className="border-r border-dashed border-white/5 h-full hidden md:block"></div>
+                        <div className="border-r border-dashed border-white/5 h-full hidden md:block"></div>
+                        <div className="border-r border-dashed border-white/5 h-full hidden md:block"></div>
+                        <div className="border-r border-dashed border-white/5 h-full hidden md:block"></div>
+                        <div className="border-r border-dashed border-white/5 h-full hidden md:block"></div>
+                        <div className="border-r border-dashed border-white/5 h-full hidden md:block"></div>
+                        <div className="border-r border-dashed border-white/5 h-full hidden md:block"></div>
+                        <div className="h-full hidden md:block"></div>
                       </div>
-                      <div className="md:col-span-8">
-                        <div className="space-y-8">
-                          {selectedService.process.milestones.map((milestone: any, i: number) => (
-                            <div key={i} className="relative pl-8 border-l-2 border-white/10">
-                              <div className="absolute w-3 h-3 bg-color-terciario rounded-full -left-[7px] top-2"></div>
-                              <h6 className="text-xl text-white font-medium mb-2">{i + 1}. {milestone.title}</h6>
-                              <p className="text-white/60 text-lg leading-relaxed">{milestone.description}</p>
+
+
+
+                      {/* Cards container */}
+                      <div className="relative z-10 flex flex-col gap-8 w-full">
+                        {selectedService.process.milestones.map((milestone: any, i: number) => {
+                          const totalMilestones = selectedService.process.milestones.length;
+
+                          // Determine column start based on milestone index and total count
+                          const firstColCount = Math.ceil(totalMilestones / 3);
+                          const secondColCount = Math.ceil((totalMilestones - firstColCount) / 2);
+                          let col = 1;
+                          if (i >= firstColCount) {
+                            if (i < firstColCount + secondColCount) col = 2;
+                            else col = 3;
+                          }
+
+                          const mlClass = col === 1 ? "ml-0" : col === 2 ? "md:ml-[30%]" : "md:ml-[60%]";
+                          const isAccentCard = i % 2 !== 0;
+
+                          return (
+                            <div
+                              key={i}
+                              className={`w-full md:w-[40%] p-6 rounded-3xl transition-all duration-300 ${mlClass} ${isAccentCard
+                                ? "bg-gradient-to-br from-color-primario to-[#1b444a] border border-color-terciario/20 shadow-[0_0_30px_rgba(183,206,199,0.1)] text-white"
+                                : "bg-white/[0.02] border border-white/5 hover:border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.2)]"
+                                }`}
+                            >
+                              <h6 className="text-xl font-medium mb-3 flex items-start gap-2">
+                                <span className="text-white font-light text-lg leading-tight">{milestone.title}</span>
+                              </h6>
+                              <p className={`text-sm font-light leading-tight ${isAccentCard ? "text-white/80" : "text-white/60"}`}>
+                                {milestone.description}
+                              </p>
                             </div>
-                          ))}
-                        </div>
+                          );
+                        })}
                       </div>
                     </div>
                   )}
