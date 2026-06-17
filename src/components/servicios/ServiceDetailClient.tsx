@@ -19,7 +19,7 @@ export function ServiceDetailClient({ slug }: { slug: string }) {
     if (audienceItems.length < 2) return;
     const interval = setInterval(() => {
       setActiveAudience((prev) => (prev + 1) % audienceItems.length);
-    }, 4000);
+    }, 6000);
     return () => clearInterval(interval);
   }, [audienceItems.length, activeAudience]);
 
@@ -92,23 +92,22 @@ export function ServiceDetailClient({ slug }: { slug: string }) {
                 return (
                   <div className="space-y-8">
                     {/* Section title */}
-                    <h4 className="text-2xl md:text-3xl font-light text-white">
-                      {dict.serviceDetail?.forWhoTitle || "Este servicio es para ti si eres..."}
+                    <h4 className="text-2xl md:text-5xl font-light text-white text-center">
+                      {dict.serviceDetail?.forWhoTitle || "Este servicio puede ser para ti"}
                     </h4>
 
                     {/* Tabs */}
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-2 justify-center">
                       {audienceItems.map((tab: any, i: number) => {
                         const isActive = i === activeAudience;
                         return (
                           <button
                             key={i}
                             onClick={() => setActiveAudience(i)}
-                            className={`relative text-[11px] font-bold tracking-[0.2em] uppercase px-5 py-2.5 rounded-full overflow-hidden transition-all duration-300 border focus:outline-none ${
-                              isActive
-                                ? "border-color-terciario/40 text-color-terciario font-bold bg-white/[0.02]"
-                                : "bg-white/5 text-white/60 hover:text-white hover:bg-white/10 border-white/10"
-                            }`}
+                            className={`relative text-[11px] font-bold tracking-[0.2em] uppercase px-5 py-2.5 rounded-full overflow-hidden transition-all duration-300 border focus:outline-none ${isActive
+                              ? "border-color-terciario/40 text-color-terciario font-bold bg-white/[0.02]"
+                              : "bg-white/5 text-white/60 hover:text-white hover:bg-white/10 border-white/10"
+                              }`}
                           >
                             {/* Background fill progress */}
                             {isActive && (
@@ -116,7 +115,7 @@ export function ServiceDetailClient({ slug }: { slug: string }) {
                                 key={activeAudience}
                                 initial={{ scaleX: 0 }}
                                 animate={{ scaleX: 1 }}
-                                transition={{ duration: 4, ease: "linear" }}
+                                transition={{ duration: 6, ease: "linear" }}
                                 className="absolute inset-0 bg-color-terciario/20 origin-left z-0"
                               />
                             )}
