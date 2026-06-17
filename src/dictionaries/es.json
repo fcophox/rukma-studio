@@ -39,6 +39,7 @@
           "Agencias que necesitan apoyo especializado en experiencia de usuario.",
           "Organizaciones que buscan mejorar la usabilidad, conversión o satisfacción de sus usuarios."
         ],
+        "valueDescription": "Un diseño centrado en el usuario no solo mejora la usabilidad, sino que impacta directamente en los resultados del negocio y optimiza recursos.",
         "value": [
           {
             "title": "Reduce la incertidumbre del producto",
@@ -111,7 +112,7 @@
         "duration": "Entre 4 y 8 semanas",
         "plans": [
           {
-            "name": "Plan Starter UX",
+            "name": "Starter UX",
             "description": "Ideal para evaluar, ordenar o rediseñar una experiencia puntual.",
             "includes": [
               "Revisión UX del producto actual.",
@@ -124,7 +125,7 @@
             "price": "valor a definir según alcance."
           },
           {
-            "name": "Plan Product Design",
+            "name": "Product Design",
             "description": "Ideal para diseñar una experiencia digital completa o una nueva funcionalidad.",
             "includes": [
               "Discovery inicial.",
@@ -138,7 +139,7 @@
             "price": "valor a definir según alcance."
           },
           {
-            "name": "Plan UX Partner",
+            "name": "UX Partner",
             "description": "Ideal para empresas que necesitan acompañamiento continuo.",
             "includes": [
               "Soporte mensual UX/UI.",
@@ -176,6 +177,7 @@
           "Agencias o consultoras que necesitan apoyo para materializar productos digitales.",
           "Equipos de producto que quieren acelerar pruebas de concepto."
         ],
+        "valueDescription": "Construir un MVP te permite salir al mercado rápido, validar hipótesis con usuarios reales y minimizar el riesgo técnico y financiero.",
         "value": [
           {
             "title": "Permite salir antes al mercado",
@@ -252,7 +254,7 @@
         "duration": "Entre 3 y 10 semanas",
         "plans": [
           {
-            "name": "Plan Prototype",
+            "name": "Prototype",
             "description": "Ideal para visualizar una idea y probar navegación o interacción.",
             "includes": [
               "Definición de flujo principal.",
@@ -264,7 +266,7 @@
             "price": "valor a definir según alcance."
           },
           {
-            "name": "Plan MVP Launch",
+            "name": "MVP Launch",
             "description": "Ideal para construir una primera versión funcional.",
             "includes": [
               "Definición del MVP.",
@@ -277,7 +279,7 @@
             "price": "valor a definir según alcance."
           },
           {
-            "name": "Plan Product Sprint",
+            "name": "Product Sprint",
             "description": "Ideal para equipos que necesitan avanzar rápido en una solución específica.",
             "includes": [
               "Workshop inicial.",
@@ -316,6 +318,7 @@
           "Emprendedores que necesitan una presencia digital más sólida.",
           "Equipos que quieren ordenar su comunicación visual y verbal."
         ],
+        "valueDescription": "Una marca sólida y coherente en todos los puntos de contacto digitales genera confianza, fidelidad y diferenciación en el mercado.",
         "value": [
           {
             "title": "Aumenta la confianza de la marca",
@@ -392,7 +395,7 @@
         "duration": "Entre 3 y 6 semanas",
         "plans": [
           {
-            "name": "Plan Identity Starter",
+            "name": "Identity Starter",
             "description": "Ideal para marcas nuevas o emprendimientos que necesitan una base sólida.",
             "includes": [
               "Exploración conceptual.",
@@ -405,7 +408,7 @@
             "price": "valor a definir según alcance."
           },
           {
-            "name": "Plan Brand Experience",
+            "name": "Brand Experience",
             "description": "Ideal para empresas o productos digitales que necesitan una identidad más completa.",
             "includes": [
               "Estrategia de marca.",
@@ -419,7 +422,7 @@
             "price": "valor a definir según alcance."
           },
           {
-            "name": "Plan Rebrand Digital",
+            "name": "Rebrand Digital",
             "description": "Ideal para empresas que necesitan actualizar su imagen y presencia digital.",
             "includes": [
               "Auditoría de marca actual.",
@@ -524,7 +527,12 @@
   "cases": {
     "badge": "Casos de éxito",
     "titlePrefix": "Resultados reales para ",
-    "rotatingTexts": ["marcas ambiciosas", "grandes industrias", "empresas de prestigio", "desafíos complejos"],
+    "rotatingTexts": [
+      "marcas ambiciosas",
+      "grandes industrias",
+      "empresas de prestigio",
+      "desafíos complejos"
+    ],
     "description": "Conoce cómo hemos ayudado a empresas líderes y startups a resolver problemas complejos a través de estrategia, diseño y tecnología.",
     "searchPlaceholder": "Buscar casos...",
     "categoryAll": "TODOS",

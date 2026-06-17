@@ -39,6 +39,7 @@
           "Agencies needing specialized support in user experience.",
           "Organizations looking to improve the usability, conversion, or satisfaction of their users."
         ],
+        "valueDescription": "User-centered design not only improves usability, but directly impacts business results and optimizes resources.",
         "value": [
           {
             "title": "Reduces product uncertainty",
@@ -176,6 +177,7 @@
           "Agencies or consultancies needing support to materialize digital products.",
           "Product teams wanting to accelerate proofs of concept."
         ],
+        "valueDescription": "Building an MVP allows you to go to market quickly, validate hypotheses with real users, and minimize technical and financial risk.",
         "value": [
           {
             "title": "Allows faster time to market",
@@ -316,6 +318,7 @@
           "Entrepreneurs needing a more solid digital presence.",
           "Teams wanting to organize their visual and verbal communication."
         ],
+        "valueDescription": "A solid and consistent brand across all digital touchpoints builds trust, loyalty, and market differentiation.",
         "value": [
           {
             "title": "Increases brand trust",

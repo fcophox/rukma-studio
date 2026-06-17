@@ -217,13 +217,18 @@ export function ServiceDetailClient({ slug }: { slug: string }) {
 
               {/* Valor al negocio */}
               {selectedService.value?.length > 0 && (
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 pt-24">
                   {/* Left: título sticky */}
-                  <div className="md:col-span-4">
+                  <div className="md:col-span-1">
                     <div className="sticky top-32 space-y-4">
-                      <h4 className="text-3xl md:text-4xl font-light text-white leading-snug">
+                      <h4 className="text-4xl md:text-5xl font-light text-white leading-snug">
                         {dict.serviceDetail?.howItAddsValue || "¿Cómo aporta valor para el negocio?"}
                       </h4>
+                      {selectedService.valueDescription && (
+                        <p className="text-white/60 text-lg font-light leading-relaxed mt-4">
+                          {selectedService.valueDescription}
+                        </p>
+                      )}
                       {selectedService.duration && (
                         <p className="text-white/40 text-sm">
                           {dict.serviceDetail?.estimatedDuration || "Duración estimada:"}{" "}
@@ -234,8 +239,8 @@ export function ServiceDetailClient({ slug }: { slug: string }) {
                   </div>
 
                   {/* Right: cards grid */}
-                  <div className="md:col-span-8">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="md:col-span-1">
+                    <div className="grid grid-cols-1 sm:grid-cols-1 gap-4">
                       {selectedService.value.map((item: any, i: number) => {
                         const icons = [
                           // shield
@@ -263,7 +268,7 @@ export function ServiceDetailClient({ slug }: { slug: string }) {
                               </svg>
                             </div>
                             <div className="space-y-1">
-                              <p className="font-semibold text-white leading-snug">
+                              <p className="font-light text-white leading-snug text-2xl">
                                 {typeof item === "string" ? item : item.title}
                               </p>
                               {typeof item !== "string" && item.description && (
@@ -280,9 +285,9 @@ export function ServiceDetailClient({ slug }: { slug: string }) {
 
               {/* Proceso (si existe) */}
               {selectedService.process && (
-                <div className="space-y-8 pt-4">
-                  <h4 className="text-3xl font-semibold text-white">
-                    {dict.serviceDetail?.standardProcess || "Proceso estándar"}
+                <div className="space-y-8  pt-24">
+                  <h4 className="text-5xl font-light text-white">
+                    {dict.serviceDetail?.standardProcess || "Proceso estándar paso"}
                   </h4>
 
                   {selectedService.process.distribution && (
@@ -343,12 +348,12 @@ export function ServiceDetailClient({ slug }: { slug: string }) {
 
               {/* Planes */}
               {selectedService.plans?.length > 0 && (
-                <div className="space-y-8 pt-8 border-t border-white/10">
+                <div className="space-y-8 pt-24">
                   <div className="text-center space-y-2">
-                    <h4 className="text-3xl font-semibold text-white">
+                    <h4 className="text-5xl font-light text-white">
                       {dict.serviceDetail?.availablePlans || "Planes disponibles"}
                     </h4>
-                    <p className="text-white/50 text-sm">
+                    <p className="text-white/50 text-lg font-light">
                       {dict.serviceDetail?.plansSubtitle || "Pronto valores en USD. Horario LATAM. Reuniones semanales."}
                     </p>
                   </div>
@@ -362,7 +367,7 @@ export function ServiceDetailClient({ slug }: { slug: string }) {
                             <span className="text-[10px] font-bold uppercase tracking-[0.2em] px-3 py-1 rounded-full bg-color-terciario/10 text-color-terciario border border-color-terciario/20 w-fit mb-2">
                               {badgeText}
                             </span>
-                            <span className="text-2xl text-white font-semibold">{plan.name}</span>
+                            <span className="text-3xl text-white font-light">{plan.name}</span>
                             {plan.description && (
                               <p className="text-white/40 text-sm leading-tight">{plan.description}</p>
                             )}
