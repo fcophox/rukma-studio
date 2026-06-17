@@ -344,9 +344,14 @@ export function ServiceDetailClient({ slug }: { slug: string }) {
               {/* Planes */}
               {selectedService.plans?.length > 0 && (
                 <div className="space-y-8 pt-8 border-t border-white/10">
-                  <h4 className="text-3xl text-center font-semibold text-white">
-                    {dict.serviceDetail?.availablePlans || "Planes disponibles"}
-                  </h4>
+                  <div className="text-center space-y-2">
+                    <h4 className="text-3xl font-semibold text-white">
+                      {dict.serviceDetail?.availablePlans || "Planes disponibles"}
+                    </h4>
+                    <p className="text-white/50 text-sm">
+                      {dict.serviceDetail?.plansSubtitle || "Pronto valores en USD. Horario LATAM. Reuniones semanales."}
+                    </p>
+                  </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:w-[min(1100px,92vw)] lg:relative lg:left-1/2 lg:-translate-x-1/2">
                     {selectedService.plans.map((plan: any, i: number) => {
                       const badges = ["Starter", "Growth", "Scale"];
@@ -359,25 +364,25 @@ export function ServiceDetailClient({ slug }: { slug: string }) {
                             </span>
                             <span className="text-2xl text-white font-semibold">{plan.name}</span>
                             {plan.description && (
-                              <p className="text-white/70 leading-relaxed">{plan.description}</p>
+                              <p className="text-white/40 text-sm leading-tight">{plan.description}</p>
                             )}
                           </div>
 
-                        {plan.includes && (
-                          <div className="flex-1">
-                            <p className="text-sm text-white/50 mb-4 uppercase tracking-widest">
-                              {dict.serviceDetail?.includes || "Incluye"}
-                            </p>
-                            <ul className="space-y-3">
-                              {plan.includes.map((inc: string, j: number) => (
-                                <li key={j} className="flex items-start gap-3 text-white/80">
-                                  <span className="text-color-terciario mt-1">✓</span>
-                                  <span className="leading-relaxed">{inc}</span>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        )}
+                          {plan.includes && (
+                            <div className="flex-1">
+                              <p className="text-xs text-white/50 mb-4 uppercase tracking-widest">
+                                {dict.serviceDetail?.includes || "Incluye"}
+                              </p>
+                              <ul className="space-y-3">
+                                {plan.includes.map((inc: string, j: number) => (
+                                  <li key={j} className="flex items-start gap-3 text-white/80">
+                                    <span className="text-color-terciario">✓</span>
+                                    <span className="leading-relaxed text-sm">{inc}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          )}
 
 
                         </div>
