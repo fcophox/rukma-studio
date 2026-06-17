@@ -3,39 +3,7 @@ import { Footer } from "@/components/Footer";
 import { BlogClient } from "@/components/BlogClient";
 import { BlogHeader } from "@/components/BlogHeader";
 import { PageBackground } from "@/components/PageBackground";
-
-const mockPosts = [
-  {
-    id: "1",
-    slug: "ux-research-2024",
-    title: "UX Research en 2024: Métodos que están transformando productos digitales",
-    image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&q=80&w=800",
-    author: "Equipo Rukma",
-    authorImage: "/icon.svg",
-    category: "UX RESEARCH",
-    date: "2024-01-15",
-  },
-  {
-    id: "2",
-    slug: "diseno-sistemas",
-    title: "Cómo construir un Design System escalable",
-    image: "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?auto=format&fit=crop&q=80&w=800",
-    author: "Equipo Rukma",
-    authorImage: "/icon.svg",
-    category: "PRODUCT DESIGN",
-    date: "2024-02-20",
-  },
-  {
-    id: "3",
-    slug: "mvp-estrategia",
-    title: "MVP: De la idea al producto en 8 semanas",
-    image: "https://images.unsplash.com/photo-1512758017271-d7b84c2113f1?auto=format&fit=crop&q=80&w=800",
-    author: "Equipo Rukma",
-    authorImage: "/icon.svg",
-    category: "ESTRATEGIA",
-    date: "2024-03-10",
-  },
-];
+import { cms } from "@/lib/cms";
 
 export const metadata = {
   title: "Blog",
@@ -52,7 +20,23 @@ export const metadata = {
   },
 };
 
-export default function BlogPage() {
+export default async function BlogPage() {
+  const articles = await cms.articles.list({ category: "blog" }).catch(() => []);
+
+  const posts = articles.map((a) => {
+    const data = (a.data ?? {}) as { topic?: string; author?: string };
+    return {
+      id: a.id,
+      slug: a.slug,
+      title: a.title,
+      image: a.cover_image_url ?? "",
+      author: data.author ?? "Equipo Rukma",
+      authorImage: "/icon.svg",
+      category: data.topic ?? "",
+      date: a.published_at ?? "",
+    };
+  });
+
   return (
     <main className="min-h-screen bg-[#0D0F12] relative overflow-hidden">
       <PageBackground />
@@ -60,17 +44,14 @@ export default function BlogPage() {
       <div className="relative z-10">
         <Navbar />
 
-        {/* Blog Header */}
         <section className="pt-40 pb-20 px-6">
           <div className="max-w-7xl mx-auto">
 
             <BlogHeader />
 
-            {/* Divider */}
-            <div className="w-full h-px bg-white/10 mt-20 mb-8"></div>
+            <div className="w-full h-px bg-white/10 mt-20 mb-8" />
 
-            {/* Client Interactive Component */}
-            <BlogClient posts={mockPosts} />
+            <BlogClient posts={posts} />
 
           </div>
         </section>

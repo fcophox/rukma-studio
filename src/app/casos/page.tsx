@@ -3,33 +3,7 @@ import { Footer } from "@/components/Footer";
 import { CasesClient } from "@/components/CasesClient";
 import { CasesHeader } from "@/components/CasesHeader";
 import { PageBackground } from "@/components/PageBackground";
-
-const mockCases = [
-  {
-    id: "1",
-    slug: "fintech-ux",
-    title: "UX Research para Fintech",
-    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1200",
-    category: "UX RESEARCH",
-    shortDescription: "Investigación y validación de experiencia de usuario para una plataforma fintech en etapa temprana.",
-  },
-  {
-    id: "2",
-    slug: "ecommerce-redesign",
-    title: "Rediseño de Plataforma E-commerce",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200",
-    category: "PRODUCT DESIGN",
-    shortDescription: "Rediseño completo de experiencia de compra para un e-commerce regional.",
-  },
-  {
-    id: "3",
-    slug: "saas-platform",
-    title: "Plataforma SaaS para Gestión de Proyectos",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200",
-    category: "PRODUCT DESIGN",
-    shortDescription: "Diseño y desarrollo de MVP para una plataforma SaaS de gestión de proyectos.",
-  },
-];
+import { cms } from "@/lib/cms";
 
 export const metadata = {
   title: "Casos de Éxito",
@@ -46,7 +20,21 @@ export const metadata = {
   },
 };
 
-export default function CasesPage() {
+export default async function CasesPage() {
+  const articles = await cms.articles.list({ category: "casos" }).catch(() => []);
+
+  const casesData = articles.map((a) => {
+    const data = (a.data ?? {}) as { topic?: string };
+    return {
+      id: a.id,
+      slug: a.slug,
+      title: a.title,
+      image: a.cover_image_url ?? "",
+      category: data.topic ?? "",
+      shortDescription: a.excerpt ?? "",
+    };
+  });
+
   return (
     <main className="min-h-screen bg-[#0D0F12] relative overflow-hidden">
       <PageBackground />
@@ -54,17 +42,14 @@ export default function CasesPage() {
       <div className="relative z-10">
         <Navbar />
 
-        {/* Cases Header */}
         <section className="pt-40 pb-20 px-6">
           <div className="max-w-7xl mx-auto">
 
             <CasesHeader />
 
-            {/* Divider */}
-            <div className="w-full h-px bg-white/10 mt-20 mb-8"></div>
+            <div className="w-full h-px bg-white/10 mt-20 mb-8" />
 
-            {/* Client component with search and filter */}
-            <CasesClient casesData={mockCases} />
+            <CasesClient casesData={casesData} />
 
           </div>
         </section>
