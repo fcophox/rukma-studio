@@ -311,7 +311,7 @@ export function ServiceDetailClient({ slug }: { slug: string }) {
 
                   {/* Distribution block (Effort / Tiempos) */}
                   {selectedService.process.distribution && (
-                    <div className="space-y-4 max-w-5xl mx-auto">
+                    <div className="space-y-4 mx-auto">
                       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs font-bold tracking-wider text-white/40 uppercase mb-2">
                         <span>● Tiempos de aplicación (Distribución del esfuerzo)</span>
                         <span>Esfuerzo total: 100%</span>
@@ -344,7 +344,7 @@ export function ServiceDetailClient({ slug }: { slug: string }) {
 
                   {/* Roadmap Grid */}
                   {selectedService.process.milestones && (
-                    <div className="relative max-w-5xl mx-auto mt-16 pb-12">
+                    <div className="relative mx-auto mt-16 pb-12">
                       {/* Background dashed columns */}
                       <div className="absolute inset-y-0 left-0 w-full grid grid-cols-1 md:grid-cols-8 pointer-events-none z-0 border-l border-r border-dashed border-white/5">
                         <div className="border-r border-dashed border-white/5 h-full hidden md:block"></div>
