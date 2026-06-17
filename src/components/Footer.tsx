@@ -28,11 +28,9 @@ export function Footer() {
         {/* Navigation & Socials */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 mb-12">
           <nav className="flex flex-wrap items-center gap-x-5 gap-y-3 md:gap-10 text-[11px] font-bold tracking-[0.2em] uppercase text-white/80">
-            <Link href="#services" className="hover:text-white transition-colors">{dict.navbar.servicios}</Link>
             <Link href="/cases" className="hover:text-white transition-colors">Casos</Link>
-            <Link href="#about" className="hover:text-white transition-colors">{dict.navbar.nosotros}</Link>
-            <Link href="#blog" className="hover:text-white transition-colors">{dict.blog.badge}</Link>
-            <Link href="/contact" className="hover:text-white transition-colors">{dict.footer.contactTitle}</Link>
+            <Link href="/blog" className="hover:text-white transition-colors">{dict.navbar.blog}</Link>
+            <Link href="/contact" className="hover:text-white transition-colors">{dict.navbar.contacto}</Link>
           </nav>
           
           <div className="flex items-center gap-4 shrink-0">
