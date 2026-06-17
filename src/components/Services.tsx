@@ -28,7 +28,7 @@ export function Services() {
   };
 
   return (
-    <section className="bg-fondo-oscuro py-32 px-6" id="servicios">
+    <section className="bg-fondo-oscuro py-32 px-6" id="services">
       <div className="max-w-7xl mx-auto">
 
         {/* Header Section */}
@@ -75,7 +75,7 @@ export function Services() {
                 className={isCarousel ? "snap-start flex-shrink-0 w-[85vw] sm:w-[380px] md:w-[420px]" : "w-full"}
               >
                 <Link
-                  href={`/servicios/${service.slug}`}
+                  href={`/services/${service.slug}`}
                   className="block group relative w-full h-[500px] md:h-[580px] rounded-[2rem] overflow-hidden focus:outline-none transition-all"
                   data-cursor="card"
                 >

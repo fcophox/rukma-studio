@@ -1,35 +1,130 @@
 "use client";
 
-import { Calendar, User, Mail } from "lucide-react";
+import { Calendar, User, Mail, Loader2 } from "lucide-react";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import { useContactForm } from "./useContactForm";
 import { SubmitButton, SuccessMessage, ErrorMessage } from "./MessageForm";
+import {
+  cms,
+  generateSlots,
+  weekdayIndex,
+  type DayAvailability,
+} from "@/lib/cms";
 
 const isValidEmail = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
 
-const dates = [
-  [8, 9, 10, 11, 12, 13, 14],
-  [15, 16, 17, 18, 19, 20, 21]
-];
-const times = [
-  "18:30 - 18:45 hrs", "18:45 - 19:00 hrs", "19:00 - 19:15 hrs", "19:15 - 19:30 hrs",
-  "19:30 - 19:45 hrs", "19:45 - 20:00 hrs"
-];
-const disabledTimes = ["20:00 - 20:15 hrs", "20:15 - 20:30 hrs", "20:30 - 20:45 hrs", "20:45 - 21:00 hrs"];
+const WEEKS_TO_SHOW = 2;
+const toISO = (d: Date) =>
+  `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+
+interface DayCell {
+  iso: string;
+  dayNumber: number;
+  disabled: boolean;
+}
 
 export function MeetingForm() {
-  const { dict } = useLanguage();
+  const { dict, lang } = useLanguage();
   const { status, submit } = useContactForm();
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [selectedDate, setSelectedDate] = useState(9);
+  const [selectedDate, setSelectedDate] = useState<string | null>(null);
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
 
+  const [availability, setAvailability] = useState<DayAvailability[] | null>(null);
+  const [loadingCal, setLoadingCal] = useState(true);
+
+  // Cargar disponibilidad del CMS
+  useEffect(() => {
+    let active = true;
+    setLoadingCal(true);
+    cms.calendar
+      .getWeek()
+      .then((week) => {
+        if (active) setAvailability(week);
+      })
+      .catch(() => {
+        if (active) setAvailability([]);
+      })
+      .finally(() => {
+        if (active) setLoadingCal(false);
+      });
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  const byWeekday = useMemo(() => {
+    const map = new Map<number, DayAvailability>();
+    (availability ?? []).forEach((d) => map.set(d.weekday, d));
+    return map;
+  }, [availability]);
+
+  // Construye la grilla de fechas reales (Lunes-primero), bloqueando días pasados
+  // o con el día de la semana marcado como no disponible.
+  const weeks = useMemo<DayCell[][]>(() => {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const monday = new Date(today);
+    monday.setDate(today.getDate() - weekdayIndex(today));
+
+    const grid: DayCell[][] = [];
+    for (let w = 0; w < WEEKS_TO_SHOW; w++) {
+      const row: DayCell[] = [];
+      for (let wd = 0; wd < 7; wd++) {
+        const date = new Date(monday);
+        date.setDate(monday.getDate() + w * 7 + wd);
+        const isPast = date < today;
+        const dayCfg = byWeekday.get(wd);
+        const blocked = dayCfg?.full_day_blocked ?? true;
+        row.push({
+          iso: toISO(date),
+          dayNumber: date.getDate(),
+          disabled: isPast || blocked,
+        });
+      }
+      grid.push(row);
+    }
+    return grid;
+  }, [byWeekday]);
+
+  // Selecciona automáticamente la primera fecha disponible
+  useEffect(() => {
+    if (selectedDate || loadingCal) return;
+    const first = weeks.flat().find((c) => !c.disabled);
+    if (first) setSelectedDate(first.iso);
+  }, [weeks, loadingCal, selectedDate]);
+
+  // Slots para la fecha seleccionada: todos los del rango, marcando bloqueados.
+  const slots = useMemo(() => {
+    if (!selectedDate) return [];
+    const dayCfg = byWeekday.get(weekdayIndex(selectedDate));
+    if (dayCfg?.full_day_blocked) return [];
+    const blocked = new Set(dayCfg?.blocked_slots ?? []);
+    return generateSlots().map((s) => ({ ...s, disabled: blocked.has(s.id) }));
+  }, [selectedDate, byWeekday]);
+
+  // Reinicia el horario si deja de estar disponible al cambiar de día
+  useEffect(() => {
+    if (selectedTime && !slots.some((s) => s.id === selectedTime && !s.disabled)) {
+      setSelectedTime(null);
+    }
+  }, [slots, selectedTime]);
+
+  const monthLabel = useMemo(() => {
+    if (!weeks.length) return "";
+    const [y, m, d] = weeks[0][0].iso.split("-").map(Number);
+    return new Date(y, m - 1, d).toLocaleDateString(lang === "en" ? "en-US" : "es-ES", {
+      month: "long",
+      year: "numeric",
+    });
+  }, [weeks, lang]);
+
   const isValid =
-    name.trim() !== "" && isValidEmail(email) && selectedTime !== null;
+    name.trim() !== "" && isValidEmail(email) && selectedDate !== null && selectedTime !== null;
   const isSubmitting = status === "submitting";
 
   async function handleSubmit(e: React.FormEvent) {
@@ -38,7 +133,7 @@ export function MeetingForm() {
     await submit({
       name: name.trim(),
       email: email.trim(),
-      message: `Solicitud de reunión: día ${selectedDate}, ${selectedTime}`,
+      message: `Solicitud de reunión: ${selectedDate}, ${selectedTime} hrs`,
       subject: dict.contact.forms.meeting.title,
       source: "contacto-reunion",
       metadata: {
@@ -95,73 +190,91 @@ export function MeetingForm() {
       </div>
 
       <div className="mb-8">
-        <label className="block text-sm font-medium text-white/80 mb-4">{dict.contact.forms.meeting.dayLabel}</label>
+        <div className="flex items-center justify-between mb-4">
+          <label className="block text-sm font-medium text-white/80">{dict.contact.forms.meeting.dayLabel}</label>
+          {monthLabel && (
+            <span className="text-xs font-medium text-white/40 capitalize">{monthLabel}</span>
+          )}
+        </div>
         <div className="bg-[#1A1D21] border border-white/5 rounded-xl p-6">
-          <div className="grid grid-cols-7 text-center mb-4">
-            {dict.contact.forms.meeting.days.map((day: string) => (
-              <div key={day} className="text-[10px] font-bold text-white uppercase tracking-wider">{day}</div>
-            ))}
-          </div>
-          <div className="space-y-4">
-            {dates.map((week, weekIdx) => (
-              <div key={weekIdx} className="grid grid-cols-7 text-center">
-                {week.map((date) => {
-                  const isSelected = date === selectedDate;
-                  const isPast = date < 9 && date >= 8;
-                  return (
-                    <div key={date} className="flex justify-center">
-                      <button
-                        type="button"
-                        onClick={() => !isPast && setSelectedDate(date)}
-                        disabled={isPast}
-                        className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium transition-colors ${
-                          isSelected
-                            ? "bg-blue-500 text-white shadow-[0_0_15px_rgba(59,130,246,0.5)]"
-                            : isPast
-                              ? "text-white/20 cursor-not-allowed"
-                              : "text-white/70 hover:bg-white/10 hover:text-white"
-                        }`}
-                      >
-                        {date}
-                      </button>
-                    </div>
-                  );
-                })}
+          {loadingCal ? (
+            <div className="flex items-center justify-center py-10 text-white/40 gap-3">
+              <Loader2 size={20} className="animate-spin" />
+              <span className="text-sm">{dict.contact.forms.sending}</span>
+            </div>
+          ) : (
+            <>
+              <div className="grid grid-cols-7 text-center mb-4">
+                {dict.contact.forms.meeting.days.map((day: string) => (
+                  <div key={day} className="text-[10px] font-bold text-white uppercase tracking-wider">{day}</div>
+                ))}
               </div>
-            ))}
-          </div>
+              <div className="space-y-4">
+                {weeks.map((week, weekIdx) => (
+                  <div key={weekIdx} className="grid grid-cols-7 text-center">
+                    {week.map((cell) => {
+                      const isSelected = cell.iso === selectedDate;
+                      return (
+                        <div key={cell.iso} className="flex justify-center">
+                          <button
+                            type="button"
+                            onClick={() => !cell.disabled && setSelectedDate(cell.iso)}
+                            disabled={cell.disabled}
+                            className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium transition-colors ${
+                              isSelected
+                                ? "bg-blue-500 text-white shadow-[0_0_15px_rgba(59,130,246,0.5)]"
+                                : cell.disabled
+                                  ? "text-white/20 cursor-not-allowed"
+                                  : "text-white/70 hover:bg-white/10 hover:text-white"
+                            }`}
+                          >
+                            {cell.dayNumber}
+                          </button>
+                        </div>
+                      );
+                    })}
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
         </div>
       </div>
 
       <div className="mb-4">
         <label className="block text-sm font-medium text-white/80 mb-4">{dict.contact.forms.meeting.timeLabel}</label>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {times.map((time) => (
-            <button
-              key={time}
-              type="button"
-              onClick={() => setSelectedTime(time)}
-              className={`py-3 px-4 rounded-xl text-xs font-medium text-center transition-colors border ${
-                selectedTime === time
-                  ? "bg-[#1A1D21] border-color-terciario text-white"
-                  : "bg-[#1A1D21] border-transparent text-white/70 hover:bg-[#202429] hover:text-white"
-              }`}
-            >
-              {time}
-            </button>
-          ))}
-          {disabledTimes.map((time) => (
-            <div
-              key={time}
-              className="py-3 px-4 rounded-xl text-xs font-medium text-center bg-[#1A1D21]/50 border border-transparent text-white/20 cursor-not-allowed"
-            >
-              {time}
-            </div>
-          ))}
-        </div>
+        {slots.length === 0 ? (
+          <p className="text-sm text-white/40 py-4">{dict.contact.forms.meeting.noSlots}</p>
+        ) : (
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {slots.map((slot) =>
+              slot.disabled ? (
+                <div
+                  key={slot.id}
+                  className="py-3 px-4 rounded-xl text-xs font-medium text-center bg-[#1A1D21]/50 border border-transparent text-white/20 cursor-not-allowed"
+                >
+                  {slot.label}
+                </div>
+              ) : (
+                <button
+                  key={slot.id}
+                  type="button"
+                  onClick={() => setSelectedTime(slot.id)}
+                  className={`py-3 px-4 rounded-xl text-xs font-medium text-center transition-colors border ${
+                    selectedTime === slot.id
+                      ? "bg-[#1A1D21] border-color-terciario text-white"
+                      : "bg-[#1A1D21] border-transparent text-white/70 hover:bg-[#202429] hover:text-white"
+                  }`}
+                >
+                  {slot.label}
+                </button>
+              )
+            )}
+          </div>
+        )}
       </div>
 
-      <p className="text-xs text-white/50 mb-8">
+      <p className="text-xs text-white/50 mb-8 mt-4">
         {dict.contact.forms.meeting.meetNote}
       </p>
 

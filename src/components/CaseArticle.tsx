@@ -65,7 +65,7 @@ export function CaseArticle({ slug }: { slug: string }) {
         <article className="pt-40 pb-24 px-6">
           <div className="max-w-4xl mx-auto">
             <Link
-              href="/casos"
+              href="/cases"
               className="inline-flex items-center text-sm text-texto-secundario hover:text-white transition-colors mb-12"
             >
               <svg

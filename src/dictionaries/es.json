@@ -579,15 +579,16 @@
         "dayLabel": "Selecciona el día para agendar",
         "timeLabel": "Horario de reunión (15 mins)",
         "meetNote": "Reunión de contacto por Teams o Google Meet.",
+        "noSlots": "No hay horarios disponibles para este día.",
         "footer": "nos reuniremos contigo en este espacio breve para entender tu visión y explorar cómo podemos colaborar.",
         "days": [
-          "DOM",
           "LUN",
           "MAR",
           "MIÉ",
           "JUE",
           "VIE",
-          "SÁB"
+          "SÁB",
+          "DOM"
         ]
       }
     }

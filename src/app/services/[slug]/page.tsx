@@ -41,11 +41,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: `${service.title} | Rukma Studio`,
       description: service.description,
-      url: `https://rukma.studio/servicios/${slug}`,
+      url: `https://rukma.studio/services/${slug}`,
       type: "article",
     },
     alternates: {
-      canonical: `https://rukma.studio/servicios/${slug}`,
+      canonical: `https://rukma.studio/services/${slug}`,
     },
   };
 }

@@ -125,7 +125,7 @@ export function SuccessCases() {
             </p>
           </div>
           <Link
-            href="/casos"
+            href="/cases"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/20 text-white/90 hover:bg-white/10 transition-colors self-start md:self-auto"
           >
             Explorar todos
@@ -147,7 +147,7 @@ export function SuccessCases() {
             className="md:col-span-7"
           >
             {case1 ? (
-              <Link href={`/casos/${case1.slug}`} className="group block" data-cursor="card">
+              <Link href={`/cases/${case1.slug}`} className="group block" data-cursor="card">
                 <div className="relative w-full aspect-[16/9] rounded-2xl overflow-hidden mb-6">
                   <Image
                     src={case1.image}
@@ -179,7 +179,7 @@ export function SuccessCases() {
             className="md:col-span-5 mt-8 md:mt-0"
           >
             {case2 ? (
-              <Link href={`/casos/${case2.slug}`} className="group block" data-cursor="card">
+              <Link href={`/cases/${case2.slug}`} className="group block" data-cursor="card">
                 <div className="relative w-full aspect-2/1 rounded-2xl overflow-hidden mb-6">
                   <Image
                     src={case2.image}

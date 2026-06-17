@@ -145,7 +145,7 @@ export function CasesClient({ casesData }: CasesClientProps) {
       ) : paginatedCases.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {paginatedCases.map((caseItem) => (
-            <Link key={caseItem.id} href={`/casos/${caseItem.slug}`} className="group block" data-cursor="card">
+            <Link key={caseItem.id} href={`/cases/${caseItem.slug}`} className="group block" data-cursor="card">
               <div className="relative w-full aspect-[16/9] rounded-2xl overflow-hidden mb-6">
                 {caseItem.image && (
                   <Image

@@ -45,7 +45,7 @@ export function ServiceDetailClient({ slug }: { slug: string }) {
             {/* ===== Header (estilo artículo) ===== */}
             {/* Botón volver */}
             <Link
-              href="/#servicios"
+              href="/#services"
               className="inline-flex items-center text-sm text-texto-secundario hover:text-white transition-colors mb-12"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-3">
@@ -384,7 +384,7 @@ export function ServiceDetailClient({ slug }: { slug: string }) {
                   </div>
                   <div className="flex justify-center pt-8">
                     <Link
-                      href="/contacto"
+                      href="/contact"
                       className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-color-terciario text-[#0D0F12] font-bold text-[11px] uppercase tracking-[0.2em] hover:bg-opacity-90 transition-opacity"
                     >
                       {dict.serviceDetail?.getQuote || "Cotizar"}

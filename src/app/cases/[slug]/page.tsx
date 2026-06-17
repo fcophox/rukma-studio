@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: caseItem.seo_title ?? caseItem.title,
       description,
-      url: `https://rukma.studio/casos/${caseItem.slug}`,
+      url: `https://rukma.studio/cases/${caseItem.slug}`,
       type: "article",
       images: caseItem.cover_image_url
         ? [
@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         : undefined,
     },
     alternates: {
-      canonical: `https://rukma.studio/casos/${caseItem.slug}`,
+      canonical: `https://rukma.studio/cases/${caseItem.slug}`,
     },
   };
 }

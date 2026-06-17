@@ -28,13 +28,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8,
     },
     {
-      url: `${BASE_URL}/casos`,
+      url: `${BASE_URL}/cases`,
       lastModified: now,
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
-      url: `${BASE_URL}/contacto`,
+      url: `${BASE_URL}/contact`,
       lastModified: now,
       changeFrequency: "yearly",
       priority: 0.7,
@@ -43,7 +43,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Service detail pages
   const servicePages: MetadataRoute.Sitemap = serviceSlugs.map((slug) => ({
-    url: `${BASE_URL}/servicios/${slug}`,
+    url: `${BASE_URL}/services/${slug}`,
     lastModified: now,
     changeFrequency: "monthly" as const,
     priority: 0.9,
@@ -66,7 +66,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }));
 
     casePages = cases.map((c) => ({
-      url: `${BASE_URL}/casos/${c.slug}`,
+      url: `${BASE_URL}/cases/${c.slug}`,
       lastModified: c.published_at ? new Date(c.published_at) : now,
       changeFrequency: "monthly" as const,
       priority: 0.7,

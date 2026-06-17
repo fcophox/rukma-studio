@@ -11,10 +11,10 @@ export const metadata: Metadata = {
     title: "Contacto | Rukma Studio",
     description:
       "Hablemos sobre tu proyecto digital. Agenda una reunión o solicita una consultoría UX.",
-    url: "https://rukma.studio/contacto",
+    url: "https://rukma.studio/contact",
   },
   alternates: {
-    canonical: "https://rukma.studio/contacto",
+    canonical: "https://rukma.studio/contact",
   },
 };
 

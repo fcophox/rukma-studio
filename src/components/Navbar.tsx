@@ -74,9 +74,9 @@ export function Navbar() {
           <div className="hidden md:flex items-center gap-8 text-white/80 font-medium">
 
 
-            <Link href="/casos" className="hover:text-white transition-colors">Casos</Link>
+            <Link href="/cases" className="hover:text-white transition-colors">Casos</Link>
             <Link href="/blog" className="hover:text-white transition-colors">{dict.navbar.blog}</Link>
-            <Link href="/contacto" className="px-6 py-2.5 rounded-full border border-white/20 hover:bg-white/10 transition-colors text-white">
+            <Link href="/contact" className="px-6 py-2.5 rounded-full border border-white/20 hover:bg-white/10 transition-colors text-white">
               {dict.navbar.contacto}
             </Link>
             <div className="h-6 w-px bg-white/20 mx-2"></div>
@@ -120,13 +120,13 @@ export function Navbar() {
         >
 
 
-          <Link href="/casos" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-color-terciario transition-colors">
+          <Link href="/cases" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-color-terciario transition-colors">
             Casos
           </Link>
           <Link href="/blog" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-color-terciario transition-colors">
             {dict.navbar.blog}
           </Link>
-          <Link href="/contacto" onClick={() => setIsMobileMenuOpen(false)} className="px-10 py-4 rounded-full border border-white/20 hover:bg-white/10 transition-colors text-white mt-4 text-xl">
+          <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)} className="px-10 py-4 rounded-full border border-white/20 hover:bg-white/10 transition-colors text-white mt-4 text-xl">
             {dict.navbar.contacto}
           </Link>
           

@@ -579,15 +579,16 @@
         "dayLabel": "Select the day to schedule",
         "timeLabel": "Meeting time (15 mins)",
         "meetNote": "Contact meeting via Teams or Google Meet.",
+        "noSlots": "No time slots available for this day.",
         "footer": "we will meet with you in this brief space to understand your vision and explore how we can collaborate.",
         "days": [
-          "SUN",
           "MON",
           "TUE",
           "WED",
           "THU",
           "FRI",
-          "SAT"
+          "SAT",
+          "SUN"
         ]
       }
     }

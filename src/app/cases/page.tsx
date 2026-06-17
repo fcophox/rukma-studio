@@ -13,10 +13,10 @@ export const metadata = {
     title: "Casos de Éxito | Rukma Studio",
     description:
       "Resultados reales para marcas ambiciosas.",
-    url: "https://rukma.studio/casos",
+    url: "https://rukma.studio/cases",
   },
   alternates: {
-    canonical: "https://rukma.studio/casos",
+    canonical: "https://rukma.studio/cases",
   },
 };
 

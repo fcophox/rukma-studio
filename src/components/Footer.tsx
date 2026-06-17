@@ -28,11 +28,11 @@ export function Footer() {
         {/* Navigation & Socials */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 mb-12">
           <nav className="flex flex-wrap items-center gap-x-5 gap-y-3 md:gap-10 text-[11px] font-bold tracking-[0.2em] uppercase text-white/80">
-            <Link href="#servicios" className="hover:text-white transition-colors">{dict.navbar.servicios}</Link>
-            <Link href="/casos" className="hover:text-white transition-colors">Casos</Link>
-            <Link href="#nosotros" className="hover:text-white transition-colors">{dict.navbar.nosotros}</Link>
+            <Link href="#services" className="hover:text-white transition-colors">{dict.navbar.servicios}</Link>
+            <Link href="/cases" className="hover:text-white transition-colors">Casos</Link>
+            <Link href="#about" className="hover:text-white transition-colors">{dict.navbar.nosotros}</Link>
             <Link href="#blog" className="hover:text-white transition-colors">{dict.blog.badge}</Link>
-            <Link href="/contacto" className="hover:text-white transition-colors">{dict.footer.contactTitle}</Link>
+            <Link href="/contact" className="hover:text-white transition-colors">{dict.footer.contactTitle}</Link>
           </nav>
           
           <div className="flex items-center gap-4 shrink-0">
@@ -72,7 +72,7 @@ export function Footer() {
               {dict.footer.ctaTitle1}<br className="hidden md:block" />{dict.footer.ctaTitle2}
             </h2>
             <Link 
-              href="/contacto"
+              href="/contact"
               className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-color-terciario text-[#0D0F12] font-bold text-[11px] uppercase tracking-[0.2em] hover:bg-opacity-90 transition-opacity"
             >
               {dict.footer.ctaButton}
