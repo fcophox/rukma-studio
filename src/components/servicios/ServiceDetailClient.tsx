@@ -373,12 +373,7 @@ export function ServiceDetailClient({ slug }: { slug: string }) {
                           </div>
                         )}
 
-                        {plan.priceLabel && (
-                          <div className="pt-4 border-t border-white/10 mt-auto">
-                            <span className="text-sm text-white/50 uppercase tracking-widest">{plan.priceLabel}</span>
-                            <p className="text-white font-medium mt-1">{plan.price}</p>
-                          </div>
-                        )}
+
                       </div>
                     ))}
                   </div>
