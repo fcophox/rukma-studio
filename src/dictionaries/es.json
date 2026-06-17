@@ -550,6 +550,10 @@
       "emailPlaceholder": "tu@correo.com",
       "messageLabel": "Mensaje",
       "send": "Enviar",
+      "sending": "Enviando...",
+      "successTitle": "¡Mensaje enviado!",
+      "successDesc": "Gracias por contactarnos. Te responderemos a la brevedad.",
+      "errorDesc": "No pudimos enviar tu mensaje. Inténtalo de nuevo.",
       "teamRukma": "Hey, somos el Equipo Rukma,",
       "message": {
         "title": "Hablemos por mensaje",
@@ -566,6 +570,8 @@
         "urlPlaceholder": "https://tuweb.com",
         "budgetTitle": "¿Tienes un presupuesto inicial?",
         "budgetDesc": "Actívalo si ya cuentas con una idea inicial de inversión. Solo es referencial",
+        "budgetRangeLabel": "Rango de inversión inicial",
+        "budgetRangeHint": "Es importante cuidar los recursos, esto ayudará a ajustar entregables en tiempo y forma. (Es solo una referencia)",
         "footer": "analizaremos tu solicitud para ofrecerte recomendaciones claras, estratégicas y accionables."
       },
       "meeting": {

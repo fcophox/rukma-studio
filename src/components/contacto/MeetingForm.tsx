@@ -1,12 +1,14 @@
 "use client";
 
-import { Calendar, User, Mail, Send } from "lucide-react";
+import { Calendar, User, Mail } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 import { useLanguage } from "@/context/LanguageContext";
+import { useContactForm } from "./useContactForm";
+import { SubmitButton, SuccessMessage, ErrorMessage } from "./MessageForm";
 
-// We will fetch daysOfWeek from dict
-// const daysOfWeek = ["DOM", "LUN", "MAR", "MIÉ", "JUE", "VIE", "SÁB"];
+const isValidEmail = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+
 const dates = [
   [8, 9, 10, 11, 12, 13, 14],
   [15, 16, 17, 18, 19, 20, 21]
@@ -18,12 +20,40 @@ const times = [
 const disabledTimes = ["20:00 - 20:15 hrs", "20:15 - 20:30 hrs", "20:30 - 20:45 hrs", "20:45 - 21:00 hrs"];
 
 export function MeetingForm() {
+  const { dict } = useLanguage();
+  const { status, submit } = useContactForm();
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [selectedDate, setSelectedDate] = useState(9);
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
-  const { dict } = useLanguage();
+
+  const isValid =
+    name.trim() !== "" && isValidEmail(email) && selectedTime !== null;
+  const isSubmitting = status === "submitting";
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (!isValid || isSubmitting) return;
+    await submit({
+      name: name.trim(),
+      email: email.trim(),
+      message: `Solicitud de reunión: día ${selectedDate}, ${selectedTime}`,
+      subject: dict.contact.forms.meeting.title,
+      source: "contacto-reunion",
+      metadata: {
+        date: selectedDate,
+        time: selectedTime,
+      },
+    });
+  }
+
+  if (status === "success") {
+    return <SuccessMessage />;
+  }
 
   return (
-    <form className="animate-in fade-in slide-in-from-bottom-4 duration-500" onSubmit={(e) => e.preventDefault()}>
+    <form className="animate-in fade-in slide-in-from-bottom-4 duration-500" onSubmit={handleSubmit}>
       <div className="flex items-center gap-4 mb-10">
         <div className="w-12 h-12 rounded-2xl bg-[#1A1D21] flex items-center justify-center text-color-terciario">
           <Calendar size={24} strokeWidth={1.5} />
@@ -38,9 +68,11 @@ export function MeetingForm() {
             <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-white/40">
               <User size={18} strokeWidth={1.5} />
             </div>
-            <input 
-              type="text" 
-              placeholder={dict.contact.forms.namePlaceholder} 
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder={dict.contact.forms.namePlaceholder}
               className="w-full bg-[#1A1D21] border border-white/5 text-white placeholder:text-white/30 rounded-xl pl-12 pr-4 py-4 focus:outline-none focus:border-color-terciario transition-colors"
             />
           </div>
@@ -51,9 +83,11 @@ export function MeetingForm() {
             <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-white/40">
               <Mail size={18} strokeWidth={1.5} />
             </div>
-            <input 
-              type="email" 
-              placeholder={dict.contact.forms.emailPlaceholder} 
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder={dict.contact.forms.emailPlaceholder}
               className="w-full bg-[#1A1D21] border border-white/5 text-white placeholder:text-white/30 rounded-xl pl-12 pr-4 py-4 focus:outline-none focus:border-color-terciario transition-colors"
             />
           </div>
@@ -73,7 +107,7 @@ export function MeetingForm() {
               <div key={weekIdx} className="grid grid-cols-7 text-center">
                 {week.map((date) => {
                   const isSelected = date === selectedDate;
-                  const isPast = date < 9 && date >= 8; // Simulación de fechas pasadas o no disponibles
+                  const isPast = date < 9 && date >= 8;
                   return (
                     <div key={date} className="flex justify-center">
                       <button
@@ -81,10 +115,10 @@ export function MeetingForm() {
                         onClick={() => !isPast && setSelectedDate(date)}
                         disabled={isPast}
                         className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium transition-colors ${
-                          isSelected 
-                            ? "bg-blue-500 text-white shadow-[0_0_15px_rgba(59,130,246,0.5)]" 
-                            : isPast 
-                              ? "text-white/20 cursor-not-allowed" 
+                          isSelected
+                            ? "bg-blue-500 text-white shadow-[0_0_15px_rgba(59,130,246,0.5)]"
+                            : isPast
+                              ? "text-white/20 cursor-not-allowed"
                               : "text-white/70 hover:bg-white/10 hover:text-white"
                         }`}
                       >
@@ -108,8 +142,8 @@ export function MeetingForm() {
               type="button"
               onClick={() => setSelectedTime(time)}
               className={`py-3 px-4 rounded-xl text-xs font-medium text-center transition-colors border ${
-                selectedTime === time 
-                  ? "bg-[#1A1D21] border-color-terciario text-white" 
+                selectedTime === time
+                  ? "bg-[#1A1D21] border-color-terciario text-white"
                   : "bg-[#1A1D21] border-transparent text-white/70 hover:bg-[#202429] hover:text-white"
               }`}
             >
@@ -131,13 +165,9 @@ export function MeetingForm() {
         {dict.contact.forms.meeting.meetNote}
       </p>
 
-      <button 
-        type="submit" 
-        className="w-full bg-[#1A1D21] hover:bg-[#202429] border border-white/5 text-white/90 font-medium rounded-xl py-4 flex items-center justify-center gap-3 transition-colors mb-6 group"
-      >
-        {dict.contact.forms.send} 
-        <Send size={18} strokeWidth={1.5} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-      </button>
+      <SubmitButton isValid={isValid} isSubmitting={isSubmitting} />
+
+      {status === "error" && <ErrorMessage />}
 
       <div className="bg-[#1A1D21] rounded-xl p-4 flex items-center gap-4">
         <div className="relative w-10 h-10 shrink-0">

@@ -550,6 +550,10 @@
       "emailPlaceholder": "you@email.com",
       "messageLabel": "Message",
       "send": "Send",
+      "sending": "Sending...",
+      "successTitle": "Message sent!",
+      "successDesc": "Thanks for reaching out. We'll get back to you shortly.",
+      "errorDesc": "We couldn't send your message. Please try again.",
       "teamRukma": "Hey, we are Team Rukma,",
       "message": {
         "title": "Let's talk by message",
@@ -566,6 +570,8 @@
         "urlPlaceholder": "https://yourweb.com",
         "budgetTitle": "Do you have an initial budget?",
         "budgetDesc": "Activate it if you already have an initial investment idea. It's just a reference.",
+        "budgetRangeLabel": "Initial investment range",
+        "budgetRangeHint": "It's important to manage resources well; this helps us adjust deliverables in time and form. (Just a reference)",
         "footer": "we will analyze your request to offer clear, strategic, and actionable recommendations."
       },
       "meeting": {
