@@ -348,14 +348,20 @@ export function ServiceDetailClient({ slug }: { slug: string }) {
                     {dict.serviceDetail?.availablePlans || "Planes disponibles"}
                   </h4>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:w-[min(1100px,92vw)] lg:relative lg:left-1/2 lg:-translate-x-1/2">
-                    {selectedService.plans.map((plan: any, i: number) => (
-                      <div key={i} className="flex flex-col h-full p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-white/20 transition-colors gap-6">
-                        <div className="flex flex-col gap-2">
-                          <span className="text-2xl text-white font-semibold">{plan.name}</span>
-                          {plan.description && (
-                            <p className="text-white/70 leading-relaxed">{plan.description}</p>
-                          )}
-                        </div>
+                    {selectedService.plans.map((plan: any, i: number) => {
+                      const badges = ["Starter", "Growth", "Scale"];
+                      const badgeText = badges[i % badges.length];
+                      return (
+                        <div key={i} className="flex flex-col h-full p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-white/20 transition-colors gap-6">
+                          <div className="flex flex-col gap-2">
+                            <span className="text-[10px] font-bold uppercase tracking-[0.2em] px-3 py-1 rounded-full bg-color-terciario/10 text-color-terciario border border-color-terciario/20 w-fit mb-2">
+                              {badgeText}
+                            </span>
+                            <span className="text-2xl text-white font-semibold">{plan.name}</span>
+                            {plan.description && (
+                              <p className="text-white/70 leading-relaxed">{plan.description}</p>
+                            )}
+                          </div>
 
                         {plan.includes && (
                           <div className="flex-1">
@@ -374,8 +380,9 @@ export function ServiceDetailClient({ slug }: { slug: string }) {
                         )}
 
 
-                      </div>
-                    ))}
+                        </div>
+                      );
+                    })}
                   </div>
                   <div className="flex justify-center pt-8">
                     <Link
