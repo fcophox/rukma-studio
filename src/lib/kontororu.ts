@@ -6,12 +6,6 @@
 const BASE = process.env.KONTORORU_URL || "https://tu-instalacion.kontororu.app/api/v1";
 const KEY = process.env.KONTORORU_API_KEY;
 
-if (!KEY) {
-  throw new Error(
-    "Falta KONTORORU_API_KEY. Configúrala en .env.local\n" +
-    "Obtén tu clave en Kontorōru → Ajustes → API Keys"
-  );
-}
 
 export interface Post {
   id: string;
@@ -76,6 +70,13 @@ async function get<T>(
   path: string,
   tags: string[] = []
 ): Promise<T> {
+  if (!KEY) {
+    throw new Error(
+      "Falta KONTORORU_API_KEY. Configúrala en .env.local\n" +
+      "Obtén tu clave en Kontorōru → Ajustes → API Keys"
+    );
+  }
+
   const url = `${BASE}${path}`;
 
   const res = await fetch(url, {
