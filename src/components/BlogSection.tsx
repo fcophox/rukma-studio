@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
 import { motion } from "framer-motion";
-import { cms, type Article } from "@/lib/cms";
 
 interface FeaturedPost {
   slug: string;
@@ -15,16 +14,6 @@ interface FeaturedPost {
   author: string;
 }
 
-function toFeaturedPost(a: Article): FeaturedPost {
-  const data = (a.data ?? {}) as { topic?: string; author?: string };
-  return {
-    slug: a.slug,
-    title: a.title,
-    image: a.cover_image_url ?? "",
-    category: data.topic ?? "",
-    author: data.author ?? "Equipo Rukma",
-  };
-}
 
 function EmptyPostCard({ message }: { message: string }) {
   return (
@@ -79,12 +68,15 @@ export function BlogSection() {
   useEffect(() => {
     let active = true;
     setLoaded(false);
-    cms.articles
-      .list({ category: "blog", locale: lang, limit: 3 })
-      .then((articles) => {
-        if (active) setPosts(articles.map(toFeaturedPost));
+    fetch(`/api/posts?locale=${lang}&limit=3`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (active && data.posts) {
+          setPosts(data.posts);
+        }
       })
-      .catch(() => {
+      .catch((err) => {
+        console.error("Error fetching home posts:", err);
         if (active) setPosts([]);
       })
       .finally(() => {
