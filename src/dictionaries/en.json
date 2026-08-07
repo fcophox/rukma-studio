@@ -20,8 +20,13 @@
   },
   "services": {
     "badge": "Discover our capabilities",
-    "title": "Our Services",
-    "description": "We blend strategy, design and technology to support you at every stage of your digital product. Explore our areas of expertise and find out how we can help you grow.",
+    "title": "Our capabilities help",
+    "rotatingTexts": [
+      "to discover opportunities",
+      "to build digital products",
+      "to integrate AI into real processes"
+    ],
+    "description": "",
     "items": [
       {
         "id": "01",
@@ -513,21 +518,30 @@
   },
   "blog": {
     "badge": "Blog",
-    "titlePrefix": "Ideas and perspectives for",
-    "titleSuffix": "teams that innovate.",
+    "titlePrefix": "Ideas, perspectives and inspiration for",
+    "titleSuffix": "",
     "description": "Discover the latest ideas, strategies, and stories from the Rukma Studio team, where creativity meets data to drive impact.",
     "searchPlaceholder": "Search articles...",
     "categoryAll": "ALL",
     "noResults": "No articles found matching your search.",
-    "homeSectionTitle": "Ideas, perspectives and inspiration",
-    "homeSectionSubtitle": "for digital growth.",
+    "homeSectionTitle": "Ideas, perspectives and inspiration for",
+    "homeSectionSubtitle": "",
+    "rotatingTexts": [
+      "digital growth",
+      "innovation",
+      "designing better experiences"
+    ],
     "exploreButton": "Explore all resources",
     "emptyState": "New articles coming soon."
   },
   "cases": {
     "badge": "Success cases",
     "titlePrefix": "Real results for ",
-    "rotatingTexts": ["ambitious brands", "leading industries", "prestigious companies", "complex challenges"],
+    "rotatingTexts": [
+      "digital products",
+      "teams that innovate",
+      "businesses looking to grow"
+    ],
     "description": "Discover how we have helped leading companies and startups solve complex problems through strategy, design, and technology.",
     "searchPlaceholder": "Search cases...",
     "categoryAll": "ALL",

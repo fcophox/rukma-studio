@@ -111,13 +111,13 @@ export function SuccessCases() {
                 {dict.cases.badge}
               </span>
             </div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-white tracking-tight">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-white tracking-tight mb-1">
               {dict.cases.titlePrefix}
             </h2>
-            <p className="text-3xl md:text-4xl lg:text-5xl font-light text-color-terciario tracking-tight min-h-[1.5em]">
+            <p className="text-4xl md:text-5xl lg:text-6xl font-light text-color-terciario tracking-tight min-h-[1.5em]">
               <span
                 className={`inline-block transition-all duration-500 ease-in-out ${animate ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-                }`}
+                  }`}
               >
                 {dict.cases.rotatingTexts[textIndex]}
               </span>

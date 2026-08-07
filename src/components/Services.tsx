@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
@@ -10,6 +10,20 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 export function Services() {
   const { dict } = useLanguage();
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [textIndex, setTextIndex] = useState(0);
+  const [animate, setAnimate] = useState(true);
+
+  useEffect(() => {
+    if (!dict?.services?.rotatingTexts) return;
+    const interval = setInterval(() => {
+      setAnimate(false);
+      setTimeout(() => {
+        setTextIndex((prev) => (prev + 1) % dict.services.rotatingTexts.length);
+        setAnimate(true);
+      }, 500);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [dict?.services?.rotatingTexts?.length]);
 
   if (!dict?.services) return null;
 
@@ -37,15 +51,24 @@ export function Services() {
           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.7 }}
-          className="max-w-3xl mb-16 text-left"
+          className="max-w-4xl mb-16 text-left"
         >
           {dict.services.badge && (
             <span className="block text-[11px] font-bold text-color-terciario uppercase tracking-[0.2em] mb-5">
               {dict.services.badge}
             </span>
           )}
-          <h2 className="text-4xl md:text-5xl font-light text-white tracking-tight">
-            {dict.services.title}
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-white tracking-tight mb-1">
+            <span className="text-white block mb-2">{dict.services.title}</span>
+            <span className="text-color-terciario block min-h-[1.5em]">
+              <span
+                className={`inline-block transition-all duration-500 ease-in-out ${animate ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+                  }`}
+              >
+                {dict.services.rotatingTexts?.[textIndex] || ""}
+              </span>
+              <span className="text-white">.</span>
+            </span>
           </h2>
           {dict.services.description && (
             <p className="mt-6 text-base md:text-lg text-white/60 font-light leading-relaxed">

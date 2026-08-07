@@ -20,8 +20,13 @@
   },
   "services": {
     "badge": "Conoce nuestras capacidades",
-    "title": "Nuestros Servicios",
-    "description": "Combinamos estrategia, diseño y tecnología para acompañarte en cada etapa de tu producto digital. Explora nuestras áreas de especialización y descubre cómo podemos ayudarte a crecer.",
+    "title": "Nuestras capacidades ayudan",
+    "rotatingTexts": [
+      "a descubrir oportunidades",
+      "a construir productos digitales",
+      "a integrar IA en procesos reales"
+    ],
+    "description": "",
     "items": [
       {
         "id": "01",
@@ -513,14 +518,19 @@
   },
   "blog": {
     "badge": "Blog",
-    "titlePrefix": "Ideas y perspectivas para",
-    "titleSuffix": "equipos que innovan.",
+    "titlePrefix": "Perspectivas e inspiración",
+    "titleSuffix": "",
     "description": "Descubre las últimas ideas, estrategias e historias del equipo de Rukma Studio, donde la creatividad se une a los datos y la información genera impacto.",
     "searchPlaceholder": "Buscar artículos...",
     "categoryAll": "TODOS",
     "noResults": "No se encontraron artículos que coincidan con tu búsqueda.",
-    "homeSectionTitle": "Ideas, perspectivas e inspiración",
-    "homeSectionSubtitle": "para el crecimiento digital.",
+    "homeSectionTitle": "Perspectivas e inspiración para",
+    "homeSectionSubtitle": "",
+    "rotatingTexts": [
+      "para el crecimiento digital",
+      "para la innovación",
+      "para optimizar experiencias"
+    ],
     "exploreButton": "Explora todos los recursos",
     "emptyState": "Pronto publicaremos nuevos artículos."
   },
@@ -528,10 +538,9 @@
     "badge": "Casos de éxito",
     "titlePrefix": "Resultados reales para ",
     "rotatingTexts": [
-      "marcas ambiciosas",
-      "grandes industrias",
-      "empresas de prestigio",
-      "desafíos complejos"
+      "productos digitales",
+      "equipos que innovan",
+      "negocios que buscan crecer"
     ],
     "description": "Conoce cómo hemos ayudado a empresas líderes y startups a resolver problemas complejos a través de estrategia, diseño y tecnología.",
     "searchPlaceholder": "Buscar casos...",

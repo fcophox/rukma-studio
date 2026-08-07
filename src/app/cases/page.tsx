@@ -8,11 +8,11 @@ import { cms } from "@/lib/cms";
 export const metadata = {
   title: "Casos de Éxito",
   description:
-    "Resultados reales para marcas ambiciosas. Conoce cómo hemos ayudado a empresas a resolver problemas complejos con estrategia, diseño y tecnología.",
+    "Resultados reales para productos digitales, equipos que innovan y negocios que buscan crecer. Conoce cómo hemos ayudado a empresas a resolver problemas complejos con estrategia, diseño y tecnología.",
   openGraph: {
     title: "Casos de Éxito | Rukma Studio",
     description:
-      "Resultados reales para marcas ambiciosas.",
+      "Resultados reales para productos digitales, equipos que innovan y negocios que buscan crecer.",
     url: "https://rukma.studio/cases",
   },
   alternates: {

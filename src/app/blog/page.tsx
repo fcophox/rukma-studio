@@ -8,11 +8,11 @@ import { cms } from "@/lib/cms";
 export const metadata = {
   title: "Blog",
   description:
-    "Ideas, perspectivas y recursos para equipos que innovan. Artículos sobre UX, Product Design, tecnología y estrategia digital.",
+    "Perspectivas e inspiración para el crecimiento digital, la innovación y el diseño de mejores experiencias. Artículos sobre UX, Product Design, tecnología y estrategia digital.",
   openGraph: {
     title: "Blog | Rukma Studio",
     description:
-      "Ideas, perspectivas y recursos para equipos que innovan.",
+      "Perspectivas e inspiración para el crecimiento digital, la innovación y el diseño de mejores experiencias.",
     url: "https://rukma.studio/blog",
   },
   alternates: {
