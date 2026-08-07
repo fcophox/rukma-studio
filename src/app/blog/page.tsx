@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer";
 import { BlogClient } from "@/components/BlogClient";
 import { BlogHeader } from "@/components/BlogHeader";
 import { PageBackground } from "@/components/PageBackground";
-import { cms } from "@/lib/cms";
+import { kontororu } from "@/lib/kontororu";
 
 export const metadata = {
   title: "Blog",
@@ -21,21 +21,18 @@ export const metadata = {
 };
 
 export default async function BlogPage() {
-  const articles = await cms.articles.list({ category: "blog" }).catch(() => []);
+  const { data: articles } = await kontororu.posts.list().catch(() => ({ data: [] }));
 
-  const posts = articles.map((a) => {
-    const data = (a.data ?? {}) as { topic?: string; author?: string };
-    return {
-      id: a.id,
-      slug: a.slug,
-      title: a.title,
-      image: a.cover_image_url ?? "",
-      author: data.author ?? "Equipo Rukma",
-      authorImage: "/icon.svg",
-      category: data.topic ?? "",
-      date: a.published_at ?? "",
-    };
-  });
+  const posts = articles.map((article) => ({
+    id: article.id,
+    slug: article.slug,
+    title: article.title,
+    image: article.cover?.url ?? "",
+    author: (article.customFields?.author as string) ?? "Equipo Rukma",
+    authorImage: "/icon.svg",
+    category: (article.customFields?.topic as string) ?? article.category.name,
+    date: article.publishedAt,
+  }));
 
   return (
     <main className="min-h-screen bg-[#0D0F12] relative overflow-hidden">

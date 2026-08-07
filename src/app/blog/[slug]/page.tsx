@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { BlogArticle } from "@/components/BlogArticle";
-import { cms } from "@/lib/cms";
+import { kontororu, type PostDetail } from "@/lib/kontororu";
+import { BlogArticleView } from "@/components/BlogArticleView";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -8,27 +8,35 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  // Metadata en español (locale por defecto), consistente con el resto del sitio.
-  const post = await cms.articles.bySlug({ category: "blog", slug });
+  const result = await kontororu.posts.bySlug(slug);
 
-  if (!post) {
+  if (!result) {
     return {
       title: "Blog",
       description: "Artículo del blog de Rukma Studio.",
     };
   }
 
-  const description = post.seo_description ?? post.excerpt ?? "";
+  const post = result.data;
+  const description = post.seo.description ?? post.excerpt ?? "";
+
   return {
-    title: post.seo_title ?? post.title,
+    title: post.seo.title ?? post.title,
     description,
     openGraph: {
-      title: post.seo_title ?? post.title,
+      title: post.seo.title ?? post.title,
       description,
       url: `https://rukma.studio/blog/${post.slug}`,
       type: "article",
-      images: post.cover_image_url
-        ? [{ url: post.cover_image_url, width: 1200, height: 630, alt: post.title }]
+      images: post.cover
+        ? [
+            {
+              url: post.cover.url,
+              width: post.cover.width,
+              height: post.cover.height,
+              alt: post.cover.alt ?? post.title,
+            },
+          ]
         : undefined,
     },
     alternates: {
@@ -39,5 +47,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params;
-  return <BlogArticle slug={slug} />;
+  const result = await kontororu.posts.bySlug(slug);
+
+  if (!result) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <p className="text-white/60">Artículo no encontrado.</p>
+      </div>
+    );
+  }
+
+  return <BlogArticleView post={result.data} />;
 }
