@@ -45,21 +45,21 @@ export async function POST(req: Request) {
     // Revalidar según el tipo de evento
     if (event === "post.published" || event === "post.updated") {
       // Revalidar el post específico y la lista
-      revalidateTag(`post:${data.slug}`);
-      revalidateTag("posts");
+      revalidateTag(`post:${data.slug}`, { expire: 0 });
+      revalidateTag("posts", { expire: 0 });
 
       // Si cambió el slug anterior, también revalidar ese
       if (data.previousSlug) {
-        revalidateTag(`post:${data.previousSlug}`);
+        revalidateTag(`post:${data.previousSlug}`, { expire: 0 });
       }
     } else if (event === "post.deleted") {
       // Post eliminado
-      revalidateTag(`post:${data.slug}`);
-      revalidateTag("posts");
+      revalidateTag(`post:${data.slug}`, { expire: 0 });
+      revalidateTag("posts", { expire: 0 });
     } else if (event === "category.updated") {
       // Categoría actualizada
-      revalidateTag("categories");
-      revalidateTag("posts");
+      revalidateTag("categories", { expire: 0 });
+      revalidateTag("posts", { expire: 0 });
     }
 
     return new Response(
