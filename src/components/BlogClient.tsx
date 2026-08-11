@@ -2,6 +2,7 @@
 
 import { useState, useMemo, useEffect } from "react";
 import Image from "next/image";
+import { CoverImage } from "@/components/CoverImage";
 import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -159,17 +160,15 @@ export function BlogClient({ posts }: BlogClientProps) {
         </div>
       ) : paginatedPosts.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {paginatedPosts.map((post) => (
+          {paginatedPosts.map((post, idx) => (
             <Link key={post.id} href={`/blog/${post.slug}`} className="group block" data-cursor="card">
               <div className="relative w-full aspect-[16/9] rounded-2xl overflow-hidden mb-6">
-                {post.image && (
-                  <Image
-                    src={post.image}
-                    alt={post.title}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                )}
+                <CoverImage
+                  src={post.image}
+                  alt={post.title}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  priority={idx < 6}
+                />
               </div>
 
               <div className="flex items-center justify-between mb-4">

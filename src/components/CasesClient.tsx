@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import Image from "next/image";
+import { CoverImage } from "@/components/CoverImage";
 import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -144,17 +144,15 @@ export function CasesClient({ casesData }: CasesClientProps) {
         </div>
       ) : paginatedCases.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {paginatedCases.map((caseItem) => (
+          {paginatedCases.map((caseItem, idx) => (
             <Link key={caseItem.id} href={`/cases/${caseItem.slug}`} className="group block" data-cursor="card">
               <div className="relative w-full aspect-[16/9] rounded-2xl overflow-hidden mb-6">
-                {caseItem.image && (
-                  <Image
-                    src={caseItem.image}
-                    alt={caseItem.title}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                )}
+                <CoverImage
+                  src={caseItem.image}
+                  alt={caseItem.title}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  priority={idx < 6}
+                />
               </div>
 
               <div className="flex items-center justify-between mb-4">

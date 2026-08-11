@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
+import { CoverImage } from "@/components/CoverImage";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
@@ -13,8 +13,6 @@ interface FeaturedCase {
   category: string;
 }
 
-const FALLBACK_IMAGE =
-  "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1200";
 
 function EmptyCaseCard({ aspect, message }: { aspect: string; message: string }) {
   return (
@@ -63,11 +61,9 @@ export function SuccessCases() {
     setLoaded(false);
     fetch(`/api/cases?locale=${lang}&limit=2`, { signal: controller.signal })
       .then((res) => res.json())
-      .then((data: { cases: FeaturedCase[] }) =>
-        setCases(
-          (data.cases ?? []).map((c) => ({ ...c, image: c.image || FALLBACK_IMAGE }))
-        )
-      )
+      // Sin portada NO se rellena con una foto de archivo: `CoverImage` pinta un
+      // bloque de color. Una imagen genérica miente sobre el caso.
+      .then((data: { cases: FeaturedCase[] }) => setCases(data.cases ?? []))
       .catch((e) => {
         if (e.name !== "AbortError") setCases([]);
       })
@@ -138,11 +134,11 @@ export function SuccessCases() {
             {case1 ? (
               <Link href={`/cases/${case1.slug}`} className="group block" data-cursor="card">
                 <div className="relative w-full aspect-[16/9] rounded-2xl overflow-hidden mb-6">
-                  <Image
+                  <CoverImage
                     src={case1.image}
                     alt={case1.title}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, 60vw"
+                    priority
                   />
                 </div>
                 <div className="space-y-3">
@@ -170,11 +166,11 @@ export function SuccessCases() {
             {case2 ? (
               <Link href={`/cases/${case2.slug}`} className="group block" data-cursor="card">
                 <div className="relative w-full aspect-2/1 rounded-2xl overflow-hidden mb-6">
-                  <Image
+                  <CoverImage
                     src={case2.image}
                     alt={case2.title}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, 40vw"
+                    priority
                   />
                 </div>
                 <div className="space-y-3">

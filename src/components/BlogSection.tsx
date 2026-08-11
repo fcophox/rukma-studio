@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
+import { CoverImage } from "@/components/CoverImage";
 import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
 import { motion } from "framer-motion";
@@ -159,14 +159,12 @@ export function BlogSection() {
                 >
                   <Link href={`/blog/${post.slug}`} className="group block" data-cursor="card">
                     <div className="relative w-full aspect-2/1 rounded-2xl overflow-hidden mb-6">
-                      {post.image && (
-                        <Image
-                          src={post.image}
-                          alt={post.title}
-                          fill
-                          className="object-cover transition-transform duration-700 group-hover:scale-105"
-                        />
-                      )}
+                      <CoverImage
+                        src={post.image}
+                        alt={post.title}
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        priority
+                      />
                     </div>
                     <div className="flex items-center justify-between mb-4">
                       <span className="text-sm font-medium text-white">{post.author}</span>
