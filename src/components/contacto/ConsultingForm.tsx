@@ -34,17 +34,19 @@ export function ConsultingForm() {
     e.preventDefault();
     if (!isValid || isSubmitting) return;
     await submit({
+      formKey: "consultoria",
       name: name.trim(),
       email: email.trim(),
       message: message.trim(),
-      subject: dict.contact.forms.consulting.title,
-      source: "contacto-consultoria",
-      metadata: {
-        estimatedTime: time.trim() || null,
-        url: url.trim() || null,
-        hasBudget,
-        budgetRange: hasBudget
-          ? { min: budgetRange[0], max: budgetRange[1], currency: "USD" }
+      // Plano y en español: el detalle de la bandeja lista el payload tal cual,
+      // así que cada clave se lee como la etiqueta del campo.
+      payload: {
+        asunto: dict.contact.forms.consulting.title,
+        plazoEstimado: time.trim() || null,
+        sitioWeb: url.trim() || null,
+        tienePresupuesto: hasBudget,
+        presupuesto: hasBudget
+          ? `${formatUSD(budgetRange[0])} - ${formatUSD(budgetRange[1])} USD`
           : null,
       },
     });

@@ -6,18 +6,25 @@ import { useState, useEffect, useMemo } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import { useContactForm } from "./useContactForm";
 import { SubmitButton, SuccessMessage, ErrorMessage } from "./MessageForm";
-import {
-  cms,
-  generateSlots,
-  weekdayIndex,
-  type DayAvailability,
-} from "@/lib/cms";
+import type { CalendarAvailability } from "@/lib/kontororu";
 
 const isValidEmail = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
 
 const WEEKS_TO_SHOW = 2;
 const toISO = (d: Date) =>
   `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+
+/** Índice del día con la semana empezando en lunes (la grilla se dibuja así). */
+function mondayIndex(date: Date | string): number {
+  let d: Date;
+  if (typeof date === "string" && /^\d{4}-\d{2}-\d{2}$/.test(date)) {
+    const [y, m, day] = date.split("-").map(Number);
+    d = new Date(y, m - 1, day);
+  } else {
+    d = typeof date === "string" ? new Date(date) : date;
+  }
+  return (d.getDay() + 6) % 7; // getDay: 0=Domingo…6=Sábado
+}
 
 interface DayCell {
   iso: string;
@@ -34,32 +41,29 @@ export function MeetingForm() {
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
 
-  const [availability, setAvailability] = useState<DayAvailability[] | null>(null);
+  const [availability, setAvailability] = useState<CalendarAvailability | null>(null);
   const [loadingCal, setLoadingCal] = useState(true);
 
-  // Cargar disponibilidad del CMS
+  // Cargar la disponibilidad del complemento Calendario de Kontorōru
   useEffect(() => {
-    let active = true;
+    const controller = new AbortController();
     setLoadingCal(true);
-    cms.calendar
-      .getWeek()
-      .then((week) => {
-        if (active) setAvailability(week);
-      })
-      .catch(() => {
-        if (active) setAvailability([]);
+    fetch("/api/calendar", { signal: controller.signal })
+      .then((res) => res.json())
+      .then((data: CalendarAvailability) => setAvailability(data))
+      .catch((e) => {
+        if (e.name !== "AbortError") setAvailability(null);
       })
       .finally(() => {
-        if (active) setLoadingCal(false);
+        if (!controller.signal.aborted) setLoadingCal(false);
       });
-    return () => {
-      active = false;
-    };
+    return () => controller.abort();
   }, []);
 
+  /** Días de la semana indexados como los dibuja la grilla (0 = lunes). */
   const byWeekday = useMemo(() => {
-    const map = new Map<number, DayAvailability>();
-    (availability ?? []).forEach((d) => map.set(d.weekday, d));
+    const map = new Map<number, CalendarAvailability["week"][number]>();
+    (availability?.week ?? []).forEach((d) => map.set((d.weekday + 6) % 7, d));
     return map;
   }, [availability]);
 
@@ -69,7 +73,7 @@ export function MeetingForm() {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
     const monday = new Date(today);
-    monday.setDate(today.getDate() - weekdayIndex(today));
+    monday.setDate(today.getDate() - mondayIndex(today));
 
     const grid: DayCell[][] = [];
     for (let w = 0; w < WEEKS_TO_SHOW; w++) {
@@ -79,7 +83,9 @@ export function MeetingForm() {
         date.setDate(monday.getDate() + w * 7 + wd);
         const isPast = date < today;
         const dayCfg = byWeekday.get(wd);
-        const blocked = dayCfg?.full_day_blocked ?? true;
+        // Sin configuración, cerrado o sin un solo tramo libre: el día no se
+        // puede elegir. Ofrecerlo llevaría a un calendario vacío al pulsarlo.
+        const blocked = !dayCfg || dayCfg.isClosed || dayCfg.available.length === 0;
         row.push({
           iso: toISO(date),
           dayNumber: date.getDate(),
@@ -98,14 +104,19 @@ export function MeetingForm() {
     if (first) setSelectedDate(first.iso);
   }, [weeks, loadingCal, selectedDate]);
 
-  // Slots para la fecha seleccionada: todos los del rango, marcando bloqueados.
+  // Slots para la fecha seleccionada: la rejilla completa del día, marcando
+  // como deshabilitados los que ese día no están disponibles.
   const slots = useMemo(() => {
-    if (!selectedDate) return [];
-    const dayCfg = byWeekday.get(weekdayIndex(selectedDate));
-    if (dayCfg?.full_day_blocked) return [];
-    const blocked = new Set(dayCfg?.blocked_slots ?? []);
-    return generateSlots().map((s) => ({ ...s, disabled: blocked.has(s.id) }));
-  }, [selectedDate, byWeekday]);
+    if (!selectedDate || !availability) return [];
+    const dayCfg = byWeekday.get(mondayIndex(selectedDate));
+    if (!dayCfg || dayCfg.isClosed) return [];
+    const free = new Set(dayCfg.available.map((s) => s.start));
+    return availability.slots.map((s) => ({
+      id: s.start,
+      label: `${s.start} - ${s.end} hrs`,
+      disabled: !free.has(s.start),
+    }));
+  }, [selectedDate, byWeekday, availability]);
 
   // Reinicia el horario si deja de estar disponible al cambiar de día
   useEffect(() => {
@@ -131,14 +142,14 @@ export function MeetingForm() {
     e.preventDefault();
     if (!isValid || isSubmitting) return;
     await submit({
+      formKey: "reunion",
       name: name.trim(),
       email: email.trim(),
       message: `Solicitud de reunión: ${selectedDate}, ${selectedTime} hrs`,
-      subject: dict.contact.forms.meeting.title,
-      source: "contacto-reunion",
-      metadata: {
-        date: selectedDate,
-        time: selectedTime,
+      payload: {
+        asunto: dict.contact.forms.meeting.title,
+        fecha: selectedDate,
+        hora: selectedTime,
       },
     });
   }

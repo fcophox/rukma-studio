@@ -24,11 +24,11 @@ export function MessageForm() {
     e.preventDefault();
     if (!isValid || isSubmitting) return;
     await submit({
+      formKey: "mensaje",
       name: name.trim(),
       email: email.trim(),
       message: message.trim(),
-      subject: dict.contact.forms.message.title,
-      source: "contacto-mensaje",
+      payload: { asunto: dict.contact.forms.message.title },
     });
   }
 
