@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
-import { cms, type Article } from "@/lib/cms";
 
 interface FeaturedCase {
   slug: string;
@@ -16,16 +15,6 @@ interface FeaturedCase {
 
 const FALLBACK_IMAGE =
   "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1200";
-
-function toFeatured(a: Article): FeaturedCase {
-  const data = (a.data ?? {}) as { topic?: string };
-  return {
-    slug: a.slug,
-    title: a.title,
-    image: a.cover_image_url ?? FALLBACK_IMAGE,
-    category: data.topic ?? "",
-  };
-}
 
 function EmptyCaseCard({ aspect, message }: { aspect: string; message: string }) {
   return (
@@ -70,22 +59,22 @@ export function SuccessCases() {
   }, [dict?.cases?.rotatingTexts?.length]);
 
   useEffect(() => {
-    let active = true;
+    const controller = new AbortController();
     setLoaded(false);
-    cms.articles
-      .list({ category: "casos", locale: lang, limit: 2 })
-      .then((articles) => {
-        if (active) setCases(articles.map(toFeatured));
-      })
-      .catch(() => {
-        if (active) setCases([]);
+    fetch(`/api/cases?locale=${lang}&limit=2`, { signal: controller.signal })
+      .then((res) => res.json())
+      .then((data: { cases: FeaturedCase[] }) =>
+        setCases(
+          (data.cases ?? []).map((c) => ({ ...c, image: c.image || FALLBACK_IMAGE }))
+        )
+      )
+      .catch((e) => {
+        if (e.name !== "AbortError") setCases([]);
       })
       .finally(() => {
-        if (active) setLoaded(true);
+        if (!controller.signal.aborted) setLoaded(true);
       });
-    return () => {
-      active = false;
-    };
+    return () => controller.abort();
   }, [lang]);
 
   if (!dict?.cases) return null;

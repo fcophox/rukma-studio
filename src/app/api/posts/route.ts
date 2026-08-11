@@ -1,22 +1,23 @@
 import { NextResponse } from "next/server";
-import { kontororu } from "@/lib/kontororu";
+import { listBlogPosts, topicOf } from "@/lib/content";
+import { parseLocale } from "@/lib/lang";
 
 export const dynamic = "force-dynamic";
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
-  const locale = searchParams.get("locale") || "es";
+  const locale = parseLocale(searchParams.get("locale"));
   const limit = parseInt(searchParams.get("limit") || "3", 10);
 
   try {
-    const { data: articles } = await kontororu.posts.list({ limit, locale });
-    
-    const posts = articles.map((article) => ({
+    const articles = await listBlogPosts(locale);
+
+    const posts = articles.slice(0, limit).map((article) => ({
       id: article.id,
       slug: article.slug,
       title: article.title,
       image: article.cover?.url ?? "",
-      category: (article.customFields?.topic as string) ?? article.category.name,
+      category: topicOf(article),
       author: (article.customFields?.author as string) ?? "Equipo Rukma",
       authorImage: "/icon.svg",
       date: article.publishedAt,

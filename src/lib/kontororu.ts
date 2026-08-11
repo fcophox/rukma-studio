@@ -23,6 +23,9 @@ function apiKey(): string {
 }
 
 
+/** Tipo de contenido de una categoría. Es lo estable: el slug cambia por idioma. */
+export type PostKind = "BLOG" | "CASE_STUDY" | "SERVICE" | "CUSTOM";
+
 export interface Post {
   id: string;
   slug: string;
@@ -36,12 +39,17 @@ export interface Post {
     description: string;
   };
   customFields: Record<string, unknown>;
+  /**
+   * Puede ser `null`: las categorías son por idioma, así que una traducción
+   * cuyo idioma no tiene categoría equivalente llega sin ella. Darlo por hecho
+   * reventaba `/blog` en español con un 500.
+   */
   category: {
     id: string;
     slug: string;
     name: string;
-    kind: string;
-  };
+    kind: PostKind;
+  } | null;
   cover: {
     id: string;
     url: string;
@@ -251,7 +259,7 @@ export const kontororu = {
      * Listado de categorías.
      */
     list: async (params?: {
-      kind?: "BLOG" | "CASE_STUDY" | "SERVICE" | "CUSTOM";
+      kind?: PostKind;
     }): Promise<{ data: Category[] }> => {
       const query = new URLSearchParams();
       if (params?.kind) query.append("kind", params.kind);

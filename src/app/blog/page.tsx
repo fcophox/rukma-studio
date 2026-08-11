@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer";
 import { BlogClient } from "@/components/BlogClient";
 import { BlogHeader } from "@/components/BlogHeader";
 import { PageBackground } from "@/components/PageBackground";
-import { kontororu } from "@/lib/kontororu";
+import { listBlogPosts, topicOf } from "@/lib/content";
 import { getLocale } from "@/lib/server-locale";
 
 export const metadata = {
@@ -23,9 +23,7 @@ export const metadata = {
 
 export default async function BlogPage() {
   const locale = await getLocale();
-  const { data: articles } = await kontororu.posts
-    .list({ locale, limit: 100 })
-    .catch(() => ({ data: [] }));
+  const articles = await listBlogPosts(locale);
 
   const posts = articles.map((article) => ({
     id: article.id,
@@ -34,7 +32,7 @@ export default async function BlogPage() {
     image: article.cover?.url ?? "",
     author: (article.customFields?.author as string) ?? "Equipo Rukma",
     authorImage: "/icon.svg",
-    category: (article.customFields?.topic as string) ?? article.category.name,
+    category: topicOf(article),
     date: article.publishedAt,
   }));
 

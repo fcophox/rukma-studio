@@ -3,7 +3,8 @@ import { Footer } from "@/components/Footer";
 import { CasesClient } from "@/components/CasesClient";
 import { CasesHeader } from "@/components/CasesHeader";
 import { PageBackground } from "@/components/PageBackground";
-import { cms } from "@/lib/cms";
+import { listCaseStudies, topicOf } from "@/lib/content";
+import { getLocale } from "@/lib/server-locale";
 
 export const metadata = {
   title: "Casos de Éxito",
@@ -21,19 +22,17 @@ export const metadata = {
 };
 
 export default async function CasesPage() {
-  const articles = await cms.articles.list({ category: "casos" }).catch(() => []);
+  const locale = await getLocale();
+  const articles = await listCaseStudies(locale);
 
-  const casesData = articles.map((a) => {
-    const data = (a.data ?? {}) as { topic?: string };
-    return {
-      id: a.id,
-      slug: a.slug,
-      title: a.title,
-      image: a.cover_image_url ?? "",
-      category: data.topic ?? "",
-      shortDescription: a.excerpt ?? "",
-    };
-  });
+  const casesData = articles.map((a) => ({
+    id: a.id,
+    slug: a.slug,
+    title: a.title,
+    image: a.cover?.url ?? "",
+    category: topicOf(a),
+    shortDescription: a.excerpt ?? "",
+  }));
 
   return (
     <main className="min-h-screen bg-[#0D0F12] relative overflow-hidden">

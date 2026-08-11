@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { cms } from "@/lib/cms";
+import { listBlogPosts, listCaseStudies } from "@/lib/content";
 
 const BASE_URL = "https://rukma.studio";
 
@@ -54,20 +54,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   let casePages: MetadataRoute.Sitemap = [];
   try {
     const [posts, cases] = await Promise.all([
-      cms.articles.list({ category: "blog" }),
-      cms.articles.list({ category: "casos" }),
+      listBlogPosts("es"),
+      listCaseStudies("es"),
     ]);
 
     blogPages = posts.map((post) => ({
       url: `${BASE_URL}/blog/${post.slug}`,
-      lastModified: post.published_at ? new Date(post.published_at) : now,
+      lastModified: post.publishedAt ? new Date(post.publishedAt) : now,
       changeFrequency: "yearly" as const,
       priority: 0.6,
     }));
 
     casePages = cases.map((c) => ({
       url: `${BASE_URL}/cases/${c.slug}`,
-      lastModified: c.published_at ? new Date(c.published_at) : now,
+      lastModified: c.publishedAt ? new Date(c.publishedAt) : now,
       changeFrequency: "monthly" as const,
       priority: 0.7,
     }));
