@@ -38,11 +38,20 @@ export const isBlogPost = (post: Post) =>
 export const topicOf = (post: Post) =>
   (post.customFields?.topic as string) ?? post.category?.name ?? "";
 
+/*
+ * Un fallo del CMS devuelve lista vacía en vez de romper la página: una caída
+ * de Kontorōru no debe tumbar el sitio entero. Pero se REGISTRA — sin el log,
+ * una clave mal configurada en producción es indistinguible de "aún no hay
+ * artículos", y eso cuesta horas de buscar en el sitio equivocado.
+ */
 async function listPosts(locale: Locale): Promise<Post[]> {
-  const { data } = await kontororu.posts
-    .list({ locale, limit: MAX_POSTS })
-    .catch(() => ({ data: [] as Post[] }));
-  return data;
+  try {
+    const { data } = await kontororu.posts.list({ locale, limit: MAX_POSTS });
+    return data;
+  } catch (error) {
+    console.error(`No se pudo leer el contenido de Kontorōru (locale=${locale})`, error);
+    return [];
+  }
 }
 
 export async function listBlogPosts(locale: Locale): Promise<Post[]> {
