@@ -12,11 +12,14 @@ export async function GET(request: Request) {
     const { data: articles } = await kontororu.posts.list({ limit, locale });
     
     const posts = articles.map((article) => ({
+      id: article.id,
       slug: article.slug,
       title: article.title,
       image: article.cover?.url ?? "",
       category: (article.customFields?.topic as string) ?? article.category.name,
       author: (article.customFields?.author as string) ?? "Equipo Rukma",
+      authorImage: "/icon.svg",
+      date: article.publishedAt,
     }));
 
     return NextResponse.json({ posts });

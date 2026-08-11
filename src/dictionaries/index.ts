@@ -1,13 +1,16 @@
+import es from "./es.json";
+import en from "./en.json";
+
 const dictionaries = {
-  es: () => import('./es.json').then((module) => module.default),
-  en: () => import('./en.json').then((module) => module.default),
+  es,
+  en,
 };
 
 export type Locale = keyof typeof dictionaries;
 
-export const getDictionary = async (locale: string) => {
+export const getDictionary = (locale: string) => {
   if (locale in dictionaries) {
-    return dictionaries[locale as Locale]();
+    return dictionaries[locale as Locale];
   }
-  return dictionaries['es']();
+  return dictionaries['es'];
 };

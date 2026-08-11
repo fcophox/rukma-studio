@@ -4,15 +4,16 @@ import { BlogClient } from "@/components/BlogClient";
 import { BlogHeader } from "@/components/BlogHeader";
 import { PageBackground } from "@/components/PageBackground";
 import { kontororu } from "@/lib/kontororu";
+import { getLocale } from "@/lib/server-locale";
 
 export const metadata = {
   title: "Blog",
   description:
-    "Perspectivas e inspiración para el crecimiento digital, la innovación y el diseño de mejores experiencias. Artículos sobre UX, Product Design, tecnología y estrategia digital.",
+    "Ideas e inspiración para el crecimiento digital, la innovación y el diseño de mejores experiencias. Artículos sobre UX, Product Design, tecnología y estrategia digital.",
   openGraph: {
     title: "Blog | Rukma Studio",
     description:
-      "Perspectivas e inspiración para el crecimiento digital, la innovación y el diseño de mejores experiencias.",
+      "Ideas e inspiración para el crecimiento digital, la innovación y el diseño de mejores experiencias.",
     url: "https://rukma.studio/blog",
   },
   alternates: {
@@ -21,7 +22,10 @@ export const metadata = {
 };
 
 export default async function BlogPage() {
-  const { data: articles } = await kontororu.posts.list().catch(() => ({ data: [] }));
+  const locale = await getLocale();
+  const { data: articles } = await kontororu.posts
+    .list({ locale, limit: 100 })
+    .catch(() => ({ data: [] }));
 
   const posts = articles.map((article) => ({
     id: article.id,

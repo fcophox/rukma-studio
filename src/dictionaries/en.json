@@ -3,6 +3,7 @@
     "servicios": "Services",
     "metodologia": "Methodology",
     "nosotros": "About Us",
+    "casos": "Case Studies",
     "blog": "Blog",
     "contacto": "Let's Talk"
   },
@@ -518,13 +519,13 @@
   },
   "blog": {
     "badge": "Blog",
-    "titlePrefix": "Ideas, perspectives and inspiration for",
+    "titlePrefix": "Ideas and inspiration for",
     "titleSuffix": "",
     "description": "Discover the latest ideas, strategies, and stories from the Rukma Studio team, where creativity meets data to drive impact.",
     "searchPlaceholder": "Search articles...",
     "categoryAll": "ALL",
     "noResults": "No articles found matching your search.",
-    "homeSectionTitle": "Ideas, perspectives and inspiration for",
+    "homeSectionTitle": "Ideas and inspiration for",
     "homeSectionSubtitle": "",
     "rotatingTexts": [
       "digital growth",

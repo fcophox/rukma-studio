@@ -124,14 +124,29 @@ export const kontororu = {
     /**
      * Detalle de un post por slug, incluyendo el contenido.
      */
-    bySlug: async (slug: string): Promise<{ data: PostDetail } | null> => {
+    bySlug: async (slug: string, locale?: string): Promise<{ data: PostDetail } | null> => {
       try {
-        return await get<{ data: PostDetail }>(`/posts/${slug}`, [
+        const query = locale ? `?locale=${locale}` : "";
+        return await get<{ data: PostDetail }>(`/posts/${slug}${query}`, [
           "posts",
           `post:${slug}`,
         ]);
       } catch (error) {
         if (error instanceof Error && error.message.includes("404")) {
+          // If no locale was explicitly specified, try fallback to "en"
+          if (!locale) {
+            try {
+              return await get<{ data: PostDetail }>(`/posts/${slug}?locale=en`, [
+                "posts",
+                `post:${slug}`,
+              ]);
+            } catch (fallbackError) {
+              if (fallbackError instanceof Error && fallbackError.message.includes("404")) {
+                return null;
+              }
+              throw fallbackError;
+            }
+          }
           return null;
         }
         throw error;

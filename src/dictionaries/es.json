@@ -3,6 +3,7 @@
     "servicios": "Servicios",
     "metodologia": "Metodología",
     "nosotros": "Nosotros",
+    "casos": "Casos",
     "blog": "Blog",
     "contacto": "Hablemos"
   },
@@ -518,13 +519,13 @@
   },
   "blog": {
     "badge": "Blog",
-    "titlePrefix": "Perspectivas e inspiración",
+    "titlePrefix": "Ideas e inspiración",
     "titleSuffix": "",
     "description": "Descubre las últimas ideas, estrategias e historias del equipo de Rukma Studio, donde la creatividad se une a los datos y la información genera impacto.",
     "searchPlaceholder": "Buscar artículos...",
     "categoryAll": "TODOS",
     "noResults": "No se encontraron artículos que coincidan con tu búsqueda.",
-    "homeSectionTitle": "Perspectivas e inspiración para",
+    "homeSectionTitle": "Ideas e inspiración para",
     "homeSectionSubtitle": "",
     "rotatingTexts": [
       "para el crecimiento digital",

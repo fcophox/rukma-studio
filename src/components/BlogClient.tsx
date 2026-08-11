@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
@@ -30,26 +30,33 @@ export function BlogClient({ posts }: BlogClientProps) {
     noResults: "No se encontraron artículos que coincidan con tu búsqueda."
   };
 
+  // El listado llega ya localizado desde el Server Component (cookie de idioma).
+  const postsList = posts;
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState(blogDict.categoryAll);
   const [currentPage, setCurrentPage] = useState(1);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
+  // Reset selected category when dictionary changes
+  useEffect(() => {
+    setSelectedCategory(blogDict.categoryAll);
+  }, [blogDict.categoryAll]);
+
   // Extract unique categories for dropdown
   const categories = useMemo(() => {
-    const cats = new Set(posts.map((post) => post.category));
+    const cats = new Set(postsList.map((post) => post.category));
     return [blogDict.categoryAll, ...Array.from(cats)];
-  }, [posts, blogDict.categoryAll]);
+  }, [postsList, blogDict.categoryAll]);
 
   // Filter posts
   const filteredPosts = useMemo(() => {
-    return posts.filter((post) => {
+    return postsList.filter((post) => {
       const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
                             post.author.toLowerCase().includes(searchQuery.toLowerCase());
       const matchesCategory = selectedCategory === blogDict.categoryAll || post.category === selectedCategory;
       return matchesSearch && matchesCategory;
     });
-  }, [posts, searchQuery, selectedCategory, blogDict.categoryAll]);
+  }, [postsList, searchQuery, selectedCategory, blogDict.categoryAll]);
 
   // Pagination logic
   const totalPages = Math.ceil(filteredPosts.length / ITEMS_PER_PAGE);
@@ -128,7 +135,7 @@ export function BlogClient({ posts }: BlogClientProps) {
       </div>
 
       {/* Grid */}
-      {posts.length === 0 ? (
+      {postsList.length === 0 ? (
         /* Empty state: no articles in DB */
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {[0, 1, 2].map((i) => (

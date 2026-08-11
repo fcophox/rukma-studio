@@ -1,3 +1,8 @@
+"use client";
+
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { useLanguage } from "@/context/LanguageContext";
 import Link from "next/link";
 import Image from "next/image";
 import { Navbar } from "@/components/Navbar";
@@ -9,11 +14,29 @@ const DEFAULT_AUTHOR = "Equipo Rukma";
 const DEFAULT_AUTHOR_IMAGE = "/icon.svg";
 
 export function BlogArticleView({ post }: { post: PostDetail }) {
-  const formattedDate = new Date(post.publishedAt).toLocaleDateString("es-ES", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  }).toUpperCase();
+  const { lang } = useLanguage();
+  const router = useRouter();
+
+  // El servidor ya entrega el artículo en el idioma de la cookie. Si aun así el
+  // idioma activo no coincide (cambio de idioma sin recargar) y la traducción
+  // vive en otro slug, navegamos a ella.
+  useEffect(() => {
+    if (!post.locale || post.locale === lang) return;
+
+    const translatedSlug = post.translations?.[lang];
+    if (translatedSlug && translatedSlug !== post.slug) {
+      router.replace(`/blog/${translatedSlug}`);
+    }
+  }, [lang, post.locale, post.translations, post.slug, router]);
+
+  const formattedDate = new Date(post.publishedAt).toLocaleDateString(
+    post.locale === "en" ? "en-US" : "es-ES",
+    {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    }
+  ).toUpperCase();
 
   const topic = (post.customFields?.topic as string) ?? "";
 
@@ -45,7 +68,7 @@ export function BlogArticleView({ post }: { post: PostDetail }) {
                 <line x1="19" y1="12" x2="5" y2="12" />
                 <polyline points="12 19 5 12 12 5" />
               </svg>
-              Volver al blog
+              {lang === "en" ? "Back to blog" : "Volver al blog"}
             </Link>
 
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight leading-[1.1] mb-6 text-white/90">
