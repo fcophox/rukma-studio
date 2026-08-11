@@ -3,9 +3,24 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
+import { useState, useEffect } from "react";
 
 export function Footer() {
   const { dict } = useLanguage();
+  const [textIndex, setTextIndex] = useState(0);
+  const [animate, setAnimate] = useState(true);
+
+  useEffect(() => {
+    if (!dict?.footer?.ctaRotatingTexts) return;
+    const interval = setInterval(() => {
+      setAnimate(false);
+      setTimeout(() => {
+        setTextIndex((prev) => (prev + 1) % dict.footer.ctaRotatingTexts.length);
+        setAnimate(true);
+      }, 500);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [dict?.footer?.ctaRotatingTexts?.length]);
 
   if (!dict) return null;
 
@@ -62,12 +77,16 @@ export function Footer() {
         <div className="w-full h-px bg-white/10 mb-12 md:mb-16"></div>
 
         {/* Body Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
-
-          {/* Left Column - CTA */}
-          <div className="lg:col-span-7 flex flex-col items-start gap-8 md:gap-10">
+        <div className="flex flex-col items-center justify-center text-center w-full my-12 md:my-20">
+          {/* CTA */}
+          <div className="flex flex-col items-center gap-8 md:gap-10 max-w-4xl mx-auto">
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-white tracking-tight leading-[1.1]">
-              {dict.footer.ctaTitle1}<br className="hidden md:block" />{dict.footer.ctaTitle2}
+              {dict.footer.ctaTitle1}<br className="hidden md:block" />
+              {dict.footer.ctaTitle2Prefix}
+              <span className={`inline-block text-color-terciario transition-all duration-500 ease-in-out ${animate ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
+                {dict.footer.ctaRotatingTexts ? dict.footer.ctaRotatingTexts[textIndex] : ""}
+              </span>
+              {dict.footer.ctaTitle2Suffix}
             </h2>
             <Link
               href="/contact"
@@ -76,37 +95,6 @@ export function Footer() {
               {dict.footer.ctaButton}
               <span className="ml-3 font-normal text-lg leading-none">→</span>
             </Link>
-          </div>
-
-          {/* Right Column - Newsletter & Contact */}
-          <div className="lg:col-span-5 flex flex-col gap-12">
-
-            {/* Newsletter */}
-            <div className="flex flex-col gap-6">
-              <h3 className="text-[10px] font-bold text-white uppercase tracking-[0.2em] pb-4 border-b border-white/10">
-                {dict.footer.newsletterTitle}
-              </h3>
-              <p className="text-white/70 font-light">
-                {dict.footer.newsletterDesc}
-              </p>
-              <Link
-                href="#newsletter"
-                className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-white/5 border border-white/10 text-white font-bold text-[11px] uppercase tracking-[0.2em] hover:bg-white/10 transition-colors w-fit"
-              >
-                {dict.footer.newsletterButton}
-              </Link>
-            </div>
-
-            {/* Contact */}
-            <div className="flex flex-col gap-6">
-              <h3 className="text-[10px] font-bold text-white uppercase tracking-[0.2em] pb-4 border-b border-white/10">
-                {dict.footer.contactTitle}
-              </h3>
-              <a href="mailto:hola@rukmastudio.com" className="text-xl md:text-2xl text-white font-light hover:text-color-terciario transition-colors">
-                hola@rukmastudio.com
-              </a>
-            </div>
-
           </div>
         </div>
 

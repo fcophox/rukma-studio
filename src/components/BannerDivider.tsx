@@ -2,13 +2,21 @@
 
 import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
-import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
-import { useState, useRef } from "react";
+import { motion, AnimatePresence, useScroll, useMotionValueEvent, useMotionValue, useSpring } from "framer-motion";
+import { useState, useRef, useEffect } from "react";
 
 export function BannerDivider() {
   const { dict } = useLanguage();
   const [currentIndex, setCurrentIndex] = useState(0);
   const containerRef = useRef<HTMLElement>(null);
+  
+  // Custom cursor state
+  const cursorX = useMotionValue(-100);
+  const cursorY = useMotionValue(-100);
+  const springConfig = { damping: 25, stiffness: 700 };
+  const cursorXSpring = useSpring(cursorX, springConfig);
+  const cursorYSpring = useSpring(cursorY, springConfig);
+  const [isHovering, setIsHovering] = useState(false);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -29,6 +37,11 @@ export function BannerDivider() {
 
   const currentSlide = dict.banner.slides[currentIndex];
 
+  const handleMouseMove = (e: React.MouseEvent) => {
+    cursorX.set(e.clientX - 50); // 100px width / 2
+    cursorY.set(e.clientY - 50); // 100px height / 2
+  };
+
   return (
     <section 
       ref={containerRef}
@@ -41,7 +54,10 @@ export function BannerDivider() {
           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="relative w-full h-full overflow-hidden flex items-center justify-center shadow-2xl"
+          className="relative w-full h-full overflow-hidden flex items-center justify-center shadow-2xl cursor-none"
+          onMouseMove={handleMouseMove}
+          onMouseEnter={() => setIsHovering(true)}
+          onMouseLeave={() => setIsHovering(false)}
         >
           <AnimatePresence>
             <motion.div
@@ -82,7 +98,7 @@ export function BannerDivider() {
         </motion.div>
 
         {/* Navigation Dots */}
-        <div className="absolute right-6 top-1/2 transform -translate-y-1/2 flex flex-col gap-3 z-30">
+        <div className="absolute right-6 top-1/2 transform -translate-y-1/2 flex flex-col gap-3 z-30 pointer-events-none">
           {dict.banner.slides.map((_: any, idx: number) => (
             <div 
               key={idx} 
@@ -90,7 +106,28 @@ export function BannerDivider() {
             />
           ))}
         </div>
+
+        {/* Custom Scroll Cursor */}
+        <motion.div
+          className="fixed top-0 left-0 pointer-events-none z-50 flex flex-col items-center justify-center bg-black/20 backdrop-blur-md rounded-full border border-white/10 text-white"
+          style={{
+            width: 100,
+            height: 100,
+            x: cursorXSpring,
+            y: cursorYSpring,
+            opacity: isHovering ? 1 : 0,
+            scale: isHovering ? 1 : 0.5,
+          }}
+          transition={{ opacity: { duration: 0.2 }, scale: { duration: 0.2 } }}
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mb-1">
+            <path d="m7 15 5 5 5-5"/>
+            <path d="m7 9 5-5 5 5"/>
+          </svg>
+          <span className="text-[10px] tracking-[0.2em] font-semibold">SCROLL</span>
+        </motion.div>
       </div>
     </section>
   );
 }
+

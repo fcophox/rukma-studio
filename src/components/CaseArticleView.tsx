@@ -108,8 +108,8 @@ export function CaseArticleView({ post }: { post: PostDetail }) {
                 <Image
                   src={post.cover.url}
                   alt={post.cover.alt ?? post.title}
-                  width={post.cover.width}
-                  height={post.cover.height}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 900px"
                   className="object-cover"
                   priority
                 />
