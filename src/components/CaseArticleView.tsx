@@ -8,6 +8,7 @@ import Image from "next/image";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { PageBackground } from "@/components/PageBackground";
+import { ReactionButton } from "@/components/ReactionButton";
 import type { PostDetail } from "@/lib/kontororu";
 
 const DEFAULT_AUTHOR = "Equipo Rukma";
@@ -120,6 +121,11 @@ export function CaseArticleView({ post }: { post: PostDetail }) {
               className="prose prose-invert prose-lg md:prose-xl max-w-none text-white/70 font-light leading-relaxed"
               dangerouslySetInnerHTML={{ __html: post.content.html }}
             />
+
+            {/* ── Reacciones ─────────────────────────────────── */}
+            <div className="mt-12 border-t border-white/10">
+              <ReactionButton slug={post.slug} locale={lang} />
+            </div>
           </div>
         </article>
 
