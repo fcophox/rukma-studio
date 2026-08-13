@@ -25,10 +25,54 @@ export function Footer() {
   if (!dict) return null;
 
   return (
-    <footer className="bg-fondo-oscuro pt-16 md:pt-24 pb-8 px-6 border-t border-white/5">
+    <footer className="bg-fondo-oscuro pt-16 md:pt-24 pb-8 px-6">
       <div className="max-w-7xl mx-auto">
-        {/* Top Section - Logo */}
-        <div className="mb-12">
+
+        {/* CTA Card — dark card with aurora gradient effect */}
+        <div className="relative overflow-hidden rounded-3xl border border-white/[0.06] bg-[#0a0d10]">
+          {/* Aurora gradient overlays */}
+          <div
+            className="pointer-events-none absolute inset-0"
+            style={{
+              background:
+                "radial-gradient(ellipse 60% 50% at 30% 20%, rgba(15,42,46,0.55) 0%, transparent 70%), " +
+                "radial-gradient(ellipse 50% 60% at 70% 30%, rgba(58,70,77,0.35) 0%, transparent 70%), " +
+                "radial-gradient(ellipse 40% 40% at 50% 80%, rgba(183,206,199,0.08) 0%, transparent 60%)",
+            }}
+          />
+          {/* Subtle light streak */}
+          <div
+            className="pointer-events-none absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(135deg, rgba(255,255,255,0.04) 0%, transparent 40%, transparent 60%, rgba(255,255,255,0.02) 100%)",
+            }}
+          />
+
+          <div className="relative flex flex-col items-center justify-center text-center px-6 py-20 md:py-28 lg:py-32">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-white tracking-tight leading-[1.1] max-w-4xl">
+              {dict.footer.ctaTitle1}<br className="hidden md:block" />
+              {dict.footer.ctaTitle2Prefix}
+              <span className={`inline-block text-color-terciario transition-all duration-500 ease-in-out ${animate ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
+                {dict.footer.ctaRotatingTexts ? dict.footer.ctaRotatingTexts[textIndex] : ""}
+              </span>
+              {dict.footer.ctaTitle2Suffix}
+            </h2>
+            <p className="mt-5 md:mt-6 text-sm md:text-base text-white/50 max-w-xl leading-relaxed">
+              {dict.footer.subtitle}
+            </p>
+            <Link
+              href="/contact"
+              className="mt-8 md:mt-10 inline-flex items-center justify-center px-8 py-4 rounded-full bg-white text-[#0D0F12] font-bold text-[11px] uppercase tracking-[0.2em] hover:bg-white/90 transition-colors"
+            >
+              {dict.footer.ctaButton}
+              <span className="ml-3 font-normal text-lg leading-none">›</span>
+            </Link>
+          </div>
+        </div>
+
+        {/* Logo */}
+        <div className="mt-14 md:mt-16 mb-12">
           <Link href="/">
             <Image
               src="/brand/logotipo-rukma-horizontal.svg"
@@ -73,33 +117,8 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Divider */}
-        <div className="w-full h-px bg-white/10 mb-12 md:mb-16"></div>
-
-        {/* Body Section */}
-        <div className="flex flex-col items-center justify-center text-center w-full my-12 md:my-20">
-          {/* CTA */}
-          <div className="flex flex-col items-center gap-8 md:gap-10 max-w-4xl mx-auto">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-white tracking-tight leading-[1.1]">
-              {dict.footer.ctaTitle1}<br className="hidden md:block" />
-              {dict.footer.ctaTitle2Prefix}
-              <span className={`inline-block text-color-terciario transition-all duration-500 ease-in-out ${animate ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
-                {dict.footer.ctaRotatingTexts ? dict.footer.ctaRotatingTexts[textIndex] : ""}
-              </span>
-              {dict.footer.ctaTitle2Suffix}
-            </h2>
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-color-terciario text-[#0D0F12] font-bold text-[11px] uppercase tracking-[0.2em] hover:bg-opacity-90 transition-opacity"
-            >
-              {dict.footer.ctaButton}
-              <span className="ml-3 font-normal text-lg leading-none">→</span>
-            </Link>
-          </div>
-        </div>
-
         {/* Bottom Bar */}
-        <div className="mt-16 md:mt-24 pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-texto-secundario/60 text-center md:text-left">
+        <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-texto-secundario/60 text-center md:text-left">
           <p>{dict.footer.rights.replace('{year}', new Date().getFullYear().toString())}</p>
           <div className="flex gap-6">
             <Link href="/privacidad" className="hover:text-white transition-colors">{dict.footer.privacy}</Link>
