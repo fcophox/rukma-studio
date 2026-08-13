@@ -2,62 +2,36 @@
 
 import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
-import { motion, AnimatePresence, useScroll, useMotionValueEvent, useMotionValue, useSpring } from "framer-motion";
-import { useState, useRef, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
 
 export function BannerDivider() {
   const { dict } = useLanguage();
   const [currentIndex, setCurrentIndex] = useState(0);
-  const containerRef = useRef<HTMLElement>(null);
-  
-  // Custom cursor state
-  const cursorX = useMotionValue(-100);
-  const cursorY = useMotionValue(-100);
-  const springConfig = { damping: 25, stiffness: 700 };
-  const cursorXSpring = useSpring(cursorX, springConfig);
-  const cursorYSpring = useSpring(cursorY, springConfig);
-  const [isHovering, setIsHovering] = useState(false);
 
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"]
-  });
-
-  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+  // Auto-rotate slides every 5 seconds
+  useEffect(() => {
     if (!dict?.banner?.slides) return;
     const slidesCount = dict.banner.slides.length;
-    let newIndex = Math.floor(latest * slidesCount);
-    if (newIndex >= slidesCount) newIndex = slidesCount - 1;
-    if (newIndex !== currentIndex) {
-      setCurrentIndex(newIndex);
-    }
-  });
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % slidesCount);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [dict?.banner?.slides?.length]);
 
   if (!dict?.banner?.slides) return null;
 
   const currentSlide = dict.banner.slides[currentIndex];
 
-  const handleMouseMove = (e: React.MouseEvent) => {
-    cursorX.set(e.clientX - 50); // 100px width / 2
-    cursorY.set(e.clientY - 50); // 100px height / 2
-  };
-
   return (
-    <section 
-      ref={containerRef}
-      className="bg-[#0D0F12]"
-      style={{ height: `${dict.banner.slides.length * 100}vh` }}
-    >
-      <div className="sticky top-[25vh] h-[50vh] flex items-center justify-center overflow-hidden">
+    <section className="bg-[#0D0F12]">
+      <div className="relative h-[50vh] flex items-center justify-center overflow-hidden">
         <motion.div 
           initial={{ opacity: 0, y: 40, filter: "blur(10px)" }}
           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="relative w-full h-full overflow-hidden flex items-center justify-center shadow-2xl cursor-none"
-          onMouseMove={handleMouseMove}
-          onMouseEnter={() => setIsHovering(true)}
-          onMouseLeave={() => setIsHovering(false)}
+          className="relative w-full h-full overflow-hidden flex items-center justify-center shadow-2xl"
         >
           <AnimatePresence>
             <motion.div
@@ -106,28 +80,7 @@ export function BannerDivider() {
             />
           ))}
         </div>
-
-        {/* Custom Scroll Cursor */}
-        <motion.div
-          className="fixed top-0 left-0 pointer-events-none z-50 flex flex-col items-center justify-center bg-black/20 backdrop-blur-md rounded-full border border-white/10 text-white"
-          style={{
-            width: 100,
-            height: 100,
-            x: cursorXSpring,
-            y: cursorYSpring,
-            opacity: isHovering ? 1 : 0,
-            scale: isHovering ? 1 : 0.5,
-          }}
-          transition={{ opacity: { duration: 0.2 }, scale: { duration: 0.2 } }}
-        >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mb-1">
-            <path d="m7 15 5 5 5-5"/>
-            <path d="m7 9 5-5 5 5"/>
-          </svg>
-          <span className="text-[10px] tracking-[0.2em] font-semibold">SCROLL</span>
-        </motion.div>
       </div>
     </section>
   );
 }
-
