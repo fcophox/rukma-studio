@@ -4,9 +4,11 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
+import { useCasesAvailability } from "@/context/CasesContext";
 
 export function Navbar() {
   const { lang, dict, changeLanguage } = useLanguage();
+  const { hasCases } = useCasesAvailability();
   const otherLang = lang === "es" ? "en" : "es";
 
   const [isScrolled, setIsScrolled] = useState(false);
@@ -73,8 +75,9 @@ export function Navbar() {
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-8 text-white/80 font-medium">
 
-
-            <Link href="/cases" className="hover:text-white transition-colors">{dict.navbar.casos}</Link>
+            {hasCases && (
+              <Link href="/cases" className="hover:text-white transition-colors">{dict.navbar.casos}</Link>
+            )}
             <Link href="/blog" className="hover:text-white transition-colors">{dict.navbar.blog}</Link>
             <Link href="/contact" className="px-6 py-2.5 rounded-full border border-white/20 hover:bg-white/10 transition-colors text-white">
               {dict.navbar.contacto}
@@ -119,10 +122,11 @@ export function Navbar() {
           }`}
         >
 
-
-          <Link href="/cases" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-color-terciario transition-colors">
-            {dict.navbar.casos}
-          </Link>
+          {hasCases && (
+            <Link href="/cases" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-color-terciario transition-colors">
+              {dict.navbar.casos}
+            </Link>
+          )}
           <Link href="/blog" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-color-terciario transition-colors">
             {dict.navbar.blog}
           </Link>

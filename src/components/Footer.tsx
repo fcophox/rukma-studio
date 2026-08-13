@@ -3,10 +3,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
+import { useCasesAvailability } from "@/context/CasesContext";
 import { useState, useEffect } from "react";
 
 export function Footer() {
   const { dict } = useLanguage();
+  const { hasCases } = useCasesAvailability();
   const [textIndex, setTextIndex] = useState(0);
   const [animate, setAnimate] = useState(true);
 
@@ -87,7 +89,9 @@ export function Footer() {
         {/* Navigation & Socials */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 mb-12">
           <nav className="flex flex-wrap items-center gap-x-5 gap-y-3 md:gap-10 text-[11px] font-bold tracking-[0.2em] uppercase text-white/80">
-            <Link href="/cases" className="hover:text-white transition-colors">Casos</Link>
+            {hasCases && (
+              <Link href="/cases" className="hover:text-white transition-colors">Casos</Link>
+            )}
             <Link href="/blog" className="hover:text-white transition-colors">{dict.navbar.blog}</Link>
             <Link href="/contact" className="hover:text-white transition-colors">{dict.navbar.contacto}</Link>
           </nav>

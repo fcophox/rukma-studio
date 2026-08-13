@@ -4,6 +4,7 @@ import "./globals.css";
 import { LanguageProvider } from "@/context/LanguageContext";
 import { CustomCursor } from "@/components/CustomCursor";
 import { JsonLd } from "@/components/JsonLd";
+import { CasesProvider } from "@/context/CasesContext";
 
 const sansation = Sansation({
   weight: ["300", "400", "700"],
@@ -95,8 +96,10 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col font-sans" suppressHydrationWarning>
         <JsonLd />
         <LanguageProvider>
-          <CustomCursor />
-          {children}
+          <CasesProvider>
+            <CustomCursor />
+            {children}
+          </CasesProvider>
         </LanguageProvider>
       </body>
     </html>

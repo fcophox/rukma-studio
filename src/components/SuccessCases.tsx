@@ -5,6 +5,7 @@ import { CoverImage } from "@/components/CoverImage";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
+import { useCasesAvailability } from "@/context/CasesContext";
 
 interface FeaturedCase {
   slug: string;
@@ -39,6 +40,7 @@ function EmptyCaseCard({ aspect, message }: { aspect: string; message: string })
 
 export function SuccessCases() {
   const { dict, lang } = useLanguage();
+  const { hasCases } = useCasesAvailability();
   const [cases, setCases] = useState<FeaturedCase[]>([]);
   const [loaded, setLoaded] = useState(false);
   const [textIndex, setTextIndex] = useState(0);
@@ -73,7 +75,7 @@ export function SuccessCases() {
     return () => controller.abort();
   }, [lang]);
 
-  if (!dict?.cases) return null;
+  if (!dict?.cases || !hasCases) return null;
   const case1 = cases[0];
   const case2 = cases[1];
   const emptyMessage = dict.cases.emptyState;
