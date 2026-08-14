@@ -100,7 +100,12 @@ async function get<T>(
     headers: {
       Authorization: `Bearer ${apiKey()}`,
     },
-    next: { tags, revalidate: 60 },
+    // 24h como red de seguridad: la frescura real la da el webhook de
+    // /api/revalidate/kontororu, que invalida al instante en cada publish.
+    // Un revalidate corto rota la URL firmada de Supabase que trae `cover.url`
+    // en cada refetch, así que el optimizador de imágenes de Vercel nunca
+    // llegaba a acumular cache hits para la portada de un artículo.
+    next: { tags, revalidate: 86400 },
   });
 
   if (!res.ok) {

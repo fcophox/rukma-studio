@@ -10,6 +10,7 @@ import { Footer } from "@/components/Footer";
 import { PageBackground } from "@/components/PageBackground";
 import { ReadingProgressBar } from "@/components/ReadingProgressBar";
 import { ReactionButton } from "@/components/ReactionButton";
+import { CurtainImage } from "@/components/CurtainImage";
 import type { PostDetail } from "@/lib/kontororu";
 
 const DEFAULT_AUTHOR = "Equipo Rukma";
@@ -108,16 +109,12 @@ export function BlogArticleView({ post }: { post: PostDetail }) {
             </div>
 
             {post.cover && (
-              <div className="relative w-full aspect-[16/9] md:aspect-[21/9] rounded-[2rem] overflow-hidden mb-16 shadow-2xl">
-                <Image
-                  src={post.cover.url}
-                  alt={post.cover.alt ?? post.title}
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 900px"
-                  className="object-cover"
-                  priority
-                />
-              </div>
+              <CurtainImage
+                src={post.cover.url}
+                alt={post.cover.alt ?? post.title}
+                sizes="(max-width: 1024px) 100vw, 900px"
+                className="w-full aspect-[16/9] md:aspect-[21/9] rounded-[2rem] mb-16 shadow-2xl"
+              />
             )}
 
             <div
