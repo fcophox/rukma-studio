@@ -8,6 +8,7 @@ import Image from "next/image";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { PageBackground } from "@/components/PageBackground";
+import { ReadingProgressBar } from "@/components/ReadingProgressBar";
 import { ReactionButton } from "@/components/ReactionButton";
 import type { PostDetail } from "@/lib/kontororu";
 
@@ -42,6 +43,7 @@ export function CaseArticleView({ post }: { post: PostDetail }) {
 
   return (
     <main className="min-h-screen bg-[#0D0F12] relative text-white overflow-hidden">
+      <ReadingProgressBar />
       <PageBackground />
 
       <div className="relative z-10">

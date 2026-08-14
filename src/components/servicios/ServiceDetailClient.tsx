@@ -9,6 +9,7 @@ import { notFound } from "next/navigation";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { PageBackground } from "@/components/PageBackground";
+import { ReadingProgressBar } from "@/components/ReadingProgressBar";
 
 export function ServiceDetailClient({ slug }: { slug: string }) {
   const { dict } = useLanguage();
@@ -35,6 +36,7 @@ export function ServiceDetailClient({ slug }: { slug: string }) {
 
   return (
     <main className="min-h-screen bg-[#0D0F12] relative text-white">
+      <ReadingProgressBar />
       <PageBackground />
 
       <div className="relative z-10">
