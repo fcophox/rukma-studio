@@ -29,7 +29,7 @@ export async function POST(req: Request) {
         // Falla cerrado y ruidoso: sin secreto no se puede verificar nada, y
         // aceptar a ciegas convierte este endpoint en un botón público para
         // forzar regeneraciones.
-        console.error("95155de90e09aed27293d5ac75de416ce68cccf6e2e8c820");
+        console.error("Falta KONTORORU_WEBHOOK_SECRET");
         return NextResponse.json({ error: "No configurado" }, { status: 500 });
     }
 
