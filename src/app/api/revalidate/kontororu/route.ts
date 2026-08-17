@@ -43,8 +43,15 @@ export async function POST(req: Request) {
     const { event, data } = JSON.parse(body);
 
     // Revalidar según el tipo de evento
-    if (event === "post.published" || event === "post.updated") {
-      // Revalidar el post específico y la lista
+    //
+    // Todos los eventos de contenido invalidan lo mismo: la ficha y el
+    // listado. Un post despublicado o borrado tiene que desaparecer de la
+    // lista igual que uno nuevo tiene que aparecer, así que separarlos por
+    // ramas sólo deja hueco a olvidarse de uno — que es lo que pasaba con
+    // `post.created` y `post.unpublished`, ausentes hasta ahora: al
+    // despublicar, el artículo seguía visible en el listado durante las 24 h
+    // que dura el caché de respaldo.
+    if (event.startsWith("post.")) {
       revalidateTag(`post:${data.slug}`, { expire: 0 });
       revalidateTag("posts", { expire: 0 });
 
@@ -52,10 +59,6 @@ export async function POST(req: Request) {
       if (data.previousSlug) {
         revalidateTag(`post:${data.previousSlug}`, { expire: 0 });
       }
-    } else if (event === "post.deleted") {
-      // Post eliminado
-      revalidateTag(`post:${data.slug}`, { expire: 0 });
-      revalidateTag("posts", { expire: 0 });
     } else if (event === "category.updated") {
       // Categoría actualizada
       revalidateTag("categories", { expire: 0 });
