@@ -233,7 +233,7 @@ export function MeetingForm() {
                             disabled={cell.disabled}
                             className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium transition-colors ${
                               isSelected
-                                ? "bg-blue-500 text-white shadow-[0_0_15px_rgba(59,130,246,0.5)]"
+                                ? "bg-color-primario text-white shadow-[0_0_15px_var(--color-color-primario)]"
                                 : cell.disabled
                                   ? "text-white/20 cursor-not-allowed"
                                   : "text-white/70 hover:bg-white/10 hover:text-white"
