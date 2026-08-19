@@ -43,7 +43,7 @@ Archivo de configuración con variables de entorno.
 2. Crea una nueva API Key y cópiala
 3. Ve a **Ajustes → Webhooks**
 4. Crea un webhook con:
-   - **URL:** `https://rukma.studio/api/revalidate/kontororu`
+   - **URL:** `https://www.rukma.studio/api/revalidate/kontororu`
    - Copia el **Secret**
 
 ### 2. Actualizar `.env.local`
