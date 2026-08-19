@@ -117,7 +117,7 @@ export function CaseArticleView({ post }: { post: PostDetail }) {
             )}
 
             <div
-              className="prose prose-invert prose-lg md:prose-xl max-w-none text-white/70 font-light leading-relaxed"
+              className="prose prose-invert max-w-none text-white/70 font-light leading-relaxed"
               dangerouslySetInnerHTML={{ __html: post.content.html }}
             />
 
