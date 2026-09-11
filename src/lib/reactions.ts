@@ -13,7 +13,7 @@
 
 const BASE =
   process.env.NEXT_PUBLIC_KONTORORU_URL ||
-  "https://kontororu-cms-production.up.railway.app/api/v1";
+  "https://kontororu-cms.onrender.com/api/v1";
 
 /** Espacio en Kontorōru. El endpoint lo exige junto al slug. */
 const TENANT = process.env.NEXT_PUBLIC_KONTORORU_TENANT || "rukma";
