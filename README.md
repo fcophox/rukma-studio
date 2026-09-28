@@ -90,7 +90,7 @@ El sitio estará disponible en [http://localhost:3000](http://localhost:3000).
 
 ## 🎨 Sistema de Diseño
 
-El proyecto cuenta con un sistema de tokens administrado desde [DESIGN.md](file:///Users/fcophox/code/rukma-studio/DESIGN.md). Las modificaciones en el archivo JSON de colores de dicho documento se compilan y aplican automáticamente a `src/app/globals.css` mediante el script `watch-theme.mjs`.
+El proyecto cuenta con un sistema de tokens administrado desde [DESIGN.md](DESIGN.md). Las modificaciones en el archivo JSON de colores de dicho documento se compilan y aplican automáticamente a `src/app/globals.css` mediante el script `watch-theme.mjs`.
 
 
 
