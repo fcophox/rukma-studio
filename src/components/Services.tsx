@@ -108,7 +108,7 @@ export function Services() {
                     alt={service.title}
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
-                    sizes="(max-w-768px) 85vw, 420px"
+                    sizes="(max-width: 768px) 85vw, 420px"
                     priority={index === 0}
                   />
 

@@ -46,6 +46,7 @@ export function BannerDivider() {
                 src={currentSlide.image}
                 alt="Banner"
                 fill
+                sizes="100vw"
                 className="object-cover"
                 priority={currentIndex === 0}
               />

@@ -67,7 +67,7 @@ export function ServiceDetailClient({ slug }: { slug: string }) {
 
             {/* Imagen principal */}
             <div className="relative w-full aspect-[16/9] md:aspect-[21/9] rounded-[2rem] overflow-hidden mb-16 shadow-2xl">
-              <Image src={selectedService.image} alt={selectedService.title} fill className="object-cover" priority />
+              <Image src={selectedService.image} alt={selectedService.title} fill sizes="(min-width: 1152px) 1152px, 100vw" className="object-cover" priority />
             </div>
 
             {/* ===== Cuerpo (componentes con estilos originales) ===== */}
