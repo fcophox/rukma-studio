@@ -174,7 +174,7 @@ export function BlogClient({ posts }: BlogClientProps) {
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-3">
                   <div className="relative w-8 h-8 rounded-full overflow-hidden border border-white/10">
-                    <Image src={post.authorImage} alt={post.author} fill className="object-cover" />
+                    <Image src={post.authorImage} alt={post.author} fill sizes="32px" className="object-cover" />
                   </div>
                   <span className="text-sm font-medium text-white">{post.author}</span>
                 </div>
